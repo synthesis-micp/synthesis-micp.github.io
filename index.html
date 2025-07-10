@@ -158,24 +158,114 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Paper method -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach Summary</h2>
+        <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 20px;">
+          <div style="text-align: center; width: 100%;">
+            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+              <source src="static/videos/unstructured-2-vis.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-5" style="margin-top: 10px;">Unstructured Terrain with a Gap</p>
 
-<!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Unstructured Terrain</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <!-- Inserted image -->
+            <img src="static/images/system_diagram.png" alt="Example Image" style="margin-top: 20px; width: 100%; max-width: 600px;">
+            <p class="subtitle is-5" style="margin-top: 10px;">Fig.1 System Diagram</p>
           </div>
+        </div>
+
+
+
+        <div class="content has-text-justified">
+          <p>
+            We manage complexity at both symbolic and physical levels. At the symbolic level, we leverage reactive synthesis to decompose the local navigation problem into manageable subproblems whose solutions can be reused by synthesis for different scenarios. Each subproblem corresponds to finding controls for a short-horizon symbolic transition and is solved via a MICP to provide physical feasibility certificates of the transition. As shown in Fig.1, our framework consists of offline synthesis, online execution, and low-level tracking control.
+            
+            During the offline phase, we generate a set of potentially useful skills and corresponding locomotion gaits based on predefined terrain states and goals, while leveraging symbolic repair to  find missing yet necessary symbolic transitions. At runtime, we leverage runtime repair to identify new symbolic transitions necessary for unforeseen terrain configurations or intermediate request goals.
+          </p>
         </div>
       </div>
     </div>
   </div>
-</section> -->
-<!-- End youtube video -->
+</section>
+<!-- End paper method -->
+
+
+<!-- Unstructured Terrain -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Unstructured Terrain</h2>
+      <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Scenario 1</h3>
+      <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <div style="text-align: center; width: 45%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/unstructured-1-sideview.mp4" type="video/mp4">
+          </video>
+          <p class="subtitle is-5" style="margin-top: 10px;">Side View</p>
+        </div>
+        <div style="text-align: center; width: 45%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/unstructured-1-frontview.mp4" type="video/mp4">
+          </video>
+          <p class="subtitle is-5" style="margin-top: 10px;">Front View</p>
+        </div>
+      </div>
+
+      <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 40px;">Scenario 2</h3>
+      <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <div style="text-align: center; width: 100%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/unstructured-2.mp4" type="video/mp4">
+          </video>
+          <!-- <p class="subtitle is-5" style="margin-top: 10px;">Side View</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Unstructured Terrain -->
+
+<!-- Rebar Terrain -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Rebar Terrain</h2>
+      <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Scenario 1</h3>
+      <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <div style="text-align: center; width: 100%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/rebar-1.mp4" type="video/mp4">
+          </video>
+          <!-- <p class="subtitle is-5" style="margin-top: 10px;">Side View</p> -->
+        </div>
+      </div>
+
+      <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 40px;">Scenario 2</h3>
+      <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <div style="text-align: center; width: 100%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/rebar-2.mp4" type="video/mp4">
+          </video>
+          <!-- <p class="subtitle is-5" style="margin-top: 10px;">Side View</p> -->
+        </div>
+      </div>
+
+      <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 40px;">Scenario 3</h3>
+      <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+        <div style="text-align: center; width: 100%;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <source src="static/videos/rebar-3.mp4" type="video/mp4">
+          </video>
+          <!-- <p class="subtitle is-5" style="margin-top: 10px;">Side View</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Rebar Terrain -->
 
 
 
