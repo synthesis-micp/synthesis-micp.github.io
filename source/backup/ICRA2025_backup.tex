@@ -1,0 +1,1039 @@
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}
+\IEEEoverridecommandlockouts                          
+\overrideIEEEmargins                                      % Needed to meet printer requiremen
+
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\let\labelindent\relax
+\usepackage[inline]{enumitem}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{amssymb,amsfonts}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subfloat}
+\usepackage{textcomp}
+\usepackage{xcolor}
+% \usepackage{algorithm}
+\usepackage{verbatim} 
+\usepackage{mathrsfs}
+\usepackage{subfigure}
+\usepackage{empheq}
+\usepackage{courier}
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{mathtools, cuted}
+\usepackage{bm}
+\usepackage{ wasysym } % For /ocircle
+\usepackage{soul}
+\usepackage[colorlinks,citecolor=red,urlcolor=black,bookmarks=false,hypertexnames=true,hidelinks]{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% \usepackage{tikz,xcolor,hyperref}
+\input{commands}
+
+\makeatother
+\begin{document}
+
+\newcommand{\vg}[1]{\bm{#1}}
+\renewcommand{\v}[1]{\mathbf{#1}}
+
+% \title{Reactive Gait Synthesis and Footstep Planning for Safety-Critical Quadrupedal Locomotion\\
+\title{\LARGE \bf Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion via Trajectory Optimization and Symbolic Repair\\
+}
+
+\author{
+\large Ziyi Zhou$^{1}$,
+Qian Meng$^{2}$, 
+% Eohan George$^{3}$,
+Hadas Kress-Gazit$^{2}$, and
+Ye Zhao$^{1}$
+% <-this % stops a space
+\thanks{$^{1}$Ziyi Zhou, and Ye Zhao are with Georgia Institute of Technology. {\tt\small \{zhouziyi, yzhao301\}@gatech.edu.}}
+\thanks{$^{2}$Qian Meng and Hadas Kress-Gazit are with Cornell University. {\tt\small \{qm34,hadaskg\}@cornell.edu.}}
+% \thanks{$^{3}$Eohan George is Principal Investigator at SkyMul Inc. {\tt\small eg@skymul.com.}}
+}
+\maketitle
+
+\begin{abstract}
+% Challenging but safety-critical scenarios, like hazardous debris or scattered construction sites, demand that robots respond to dynamic environments not only versatilely, but also safely and promptly. Although legged robots excel on rough terrains with proven versatility, a formal guarantee of their safety and reactivity remains a significant challenge, hindering their deployment in urgent applications.
+
+% In this work, we adopt linear temporal logic (LTL)-based reactive synthesis to abstract the terrain-adaptive dynamic locomotion problem as a symbolic level gait design and decision-making problem.
+This study proposes a hierarchically integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains.
+Existing footstep planning approaches either rely heavily on heuristics, compromising safety and reliability, or directly solve a holistic optimization, suffering from expensive computation as terrain features become complex.
+% \qm{maybe we could fill this up with heuristic methods and their disadvantages}, 
+To address this challenge, our approach integrates reactive synthesis and Mixed-Integer Convex Program (MICP) to leverage the strength of both approaches. Specifically, we employ reactive synthesis to provide formal safety guarantees at the abstraction level and MICP to ensure footstep planning with physical feasibility for each symbolic transition.
+% \qm{We should add a few sentences to summarize our approach: a global planner to produce a nominal trajectory. MICP,  symbolic repair to guide the search of gait configuration, and online execution that can generalize to unseen terrain combinations.}
+% while leveraging convex optimization to provide global feasibility certificate at the motion planning level. 
+% The mismatch between the robot's symbolic-level decisions and its physical-level capabilities in navigating adversarial environments is addressed in both the offline and online phases.
+% To address the mismatch between the robot's symbolic-level decisions and its physical-level capabilities in maneuvering through adversarial environments, we propose an offline-online framework. 
+% A Mixed-Integer Convex Program (MICP) generates motion primitves and offers an approximate dynamics-feasibility guarantee based on terrain information given a prior. 
+To handle unrealizable specifications due to limited feasible symbolic transitions, we leverage a 
+% closed-loop 
+symbolic repair process to identify dynamically feasible missing skills in both offline and online phases. %, thereby ensuring that the synthesis remains realizable.
+During the online execution phase, we re-run the MICP using real-world terrain data to bridge the gap between offline synthesis and online execution, along with online symbolic repair to handle unforeseen terrains.
+Extensive simulations demonstrate the efficacy of our framework in discovering missing locomotion skills and enabling prompt reactions to safety-critical environments, such as scattered stepping stones and rebars.
+\end{abstract}
+
+\section{Introduction}
+% New outline:
+
+% 1. The primary motivation for using reactive synthesis in terrain-adaptive locomotion lies in its contributions to safety and computational efficiency. First, reactive synthesis provides a formal method to ensure safety by systematically considering possible interactions between the robot and surrounding adversarial terrains. Second, it abstracts complex and rich features of the environment, enabling faster computation compared to traditional methods that directly reason about the intricate relationship between the environment and robot dynamics.
+
+% 2. Symbolic repair is crucial for guiding the search for necessary gait configurations traversing adversial terrains. One reason is that it reduces the effort needed to identify all essential skills required for different terrains. Additionally, symbolic repair facilitates the accumulation of experience. As repairs are conducted, the robot identifies and stores necessary skills, progressively enhancing its capabilities as it encounters a wider variety of terrains.
+
+% 3. During the online phase, we address the gap between discrete abstraction and real-world information for both the robot and its environment. This is achieved by solving the MICP in real-time using up-to-date robot and terrain data. Online repair also utilizes real-time terrain information to handle previously unseen environments that were not encountered during offline synthesis. Unlike learning-based approaches, which may struggle with out-of-distribution terrains, our method remains adaptable to new conditions.
+
+Terrain-adaptive locomotion is crucial for enhancing the traversing capabilities of legged robots and advancing beyond blind walking \cite{di2018dynamic,kim2019highly, zhou2022momentum}. Existing approaches often use heuristics \cite{fankhauser2018robust,jenelten2020perceptive,agrawal2022vision,grandia2023perceptive, asselmeier2024hierarchical} to simplify foot placement selection given a nominal reference trajectory. However, formal guarantees on locomotion safety, considering the robot's physical capabilities, are rarely explored—despite their importance in safety-critical scenarios like hazardous debris and construction sites. Moreover, complex features of surrounding terrains significantly increase the computational burden for optimization-based methods, such as mixed-integer program (MIP) \cite{valenzuela2016mixed,shirai2022simultaneous,jiang2023locomotion}, which directly address the interplay between terrain segments and robot kinematics and dynamics. Other MIP-based methods rely on simplifications to enhance speed, \textit{e.g.}, assuming predetermined contact sequences and timing \cite{deits2014footstep,ponton2016convex,ding2020kinodynamic,tonneau2020sl1m,risbourg2022real,acosta2023bipedal} or fixing the number of footsteps \cite{aceituno2017simultaneous}, but still face challenges in scaling up with the number of terrain segments.
+
+Motivated by this fact, our study aims to combine formal control methods, \textit{i.e.}, linear temporal logic (LTL)-based reactive synthesis \cite{bloem2012synthesis}, with MIP-based approaches, to safely and promptly react to dynamically changing environments. Continuous robot states and local environments are abstracted into symbolic states to systematically study high-level interactions between the robot and surrounding challenging terrains such as obstacles and large gaps exceeding the robot's physical limit. Then, a Mixed-Integer Convex Program (MICP) is solved to provide a physical feasibility certificate for each symbolic transition. This integrated framework not only bridges the gap between high-level abstraction and low-level physical capabilities but also alleviates the computational burden of MICP through symbolic-level guidance, focusing on a nominal desired direction and specific regions to explore.
+% focusing on a nominal desired moving direction and limiting the number of regions to explore. 
+The proposed approach is flexible in that it can be used to follow commands from a global/higher-level planner \cite{wermelinger2016navigation, fernbach2017kinodynamic,norby2020fast,chignoli2022rapid,liao2023walking,feng2023gpf} or from a user, and can incorporate additional locomotion behavior as needed.
+
+%%%%% Fig. 9 grid %%%%
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{preliminary_drawing.pdf}
+    \caption{Terrain abstraction and skill definition. (a) Top-down view of the real-world terrain before abstraction. (b) Abstraction of the terrain and robot's skills (pink) moving from one location to another. (c) Repair process to find a new skill (blue).}
+    \label{fig:preliminary_nine_squares}
+\end{figure}
+%%%%%%%%%%%%%%%
+
+Enabling complex reasoning about physical interaction with a terrain-feature-rich environment requires an accurate abstraction of the robot states or terrain. However, this induces a scalability challenge, particularly when evaluating numerous symbolic transitions for underactuated, hybrid systems such as legged robots. Rather than solving for abundant feasible transitions \cite{bhatia2010sampling,liu2013synthesis,maly2013iterative,gu2022reactive} for each terrain combination, it is more computationally efficient to utilize existing motion primitives such as a fixed set of gait configurations, and ensure traversability among a limited set of terrains selected by prior knowledge or experience. In addition, merely deploying the existing proven feasible motion primitives provides another layer of safety.
+% it is more computationally efficient to utilize existing motion primitives such as a fixed set of gait configurations, tailored to a limited set of terrains informed by prior knowledge or experience. In addition, deploying the existing proven feasible motion primitives provides another layer of safety. 
+However, missing enough transition capabilities
+% it 
+often leads to \textit{unrealizable specifications}. Therefore, it is essential to develop a method that automatically identifies physically feasible symbolic transitions necessary for legged robots to maneuver in challenging environments. In this work, we adopt a symbolic repair approach based on \cite{pacheck2022physically}, incorporating dynamic feasibility checks, to design missing yet necessary motion primitives for our terrain-adaptive locomotion problem.
+
+During online execution of a synthesized high-level transition strategy, two critical issues may arise, potentially leading to execution failures. First, discrepancies between offline-checked terrain and real-world one are often inevitable, and can lead to a mismatch between the desired symbolic transition and what is physically possible. Second, newly encountered terrains may also make the symbolic specifications unrealizable, as they were not accounted for during offline synthesis. %Existing efforts in the LTL synthesis literature address unexpected environmental changes and robot action failures mainly at the specification level \cite{livingston2012backtracking,ehlers2014resilience,guo2013revising,li2021reactive,zhou2022reactive,cao2022leveraging,meng2024automated}. Studies that consider both robot and environmental mismatches at symbolic and physical levels remain largely underexplored, yet become increasingly crucial for safety-critical, terrain-adaptive locomotion. 
+
+In this work, we solve an MICP online while executing the synthesized transition strategy, using real-world terrain data to ensure motion feasibility and fidelity. More importantly, an online symbolic repair is performed, similar to the offline repair, to identify possible transitions based on the new terrain and updated feasibility provided by the online MICP, allowing the robot to explore previously unseen terrains.
+% for progressive generalization to a wider range of terrains.
+
+The primary contributions of this paper are as follows:
+\begin{itemize}
+    \item We propose a hierarchically integrated planning framework for terrain-adaptive locomotion by combining reactive synthesis with MICP. This framework generates motion primitives, a computationally expensive process, based on the actual needs of the robot, by leveraging symbolic search over an abstraction to limit the number of required motion primitives.
+    %\item To address unrealizable specifications due to limited predefined motion primitives, we introduce a symbolic repair approach that incorporates dynamic feasibility checks, and automatically identifies the missing but necessary transitions for legged robots to effectively navigate adversarial terrains.
+    \item During online execution, we address the disparity between offline synthesis and real-world terrain conditions at both physical and symbolic levels. Our approach leverages an online MICP solver along with an online symbolic repair process to account for real-world terrain discrepancies and newly encountered conditions, enhancing motion feasibility and safety during execution.
+    % \item The entire framework is implemented in an online manner and validated through both simulation and hardware experiments. To the best of our knowledge, this is the first real-time local planner that determines both gait and foothold with a safety guarantee.
+\end{itemize}
+
+% \input{additional_tex/related_work.tex}
+
+\section{Preliminaries}
+Let us use an example to elaborate our framework:
+% throughout the paper.
+
+\noindent
+\textbf{Example~\examplelabel{example:1}}.
+% (9-grid locomotion). 
+\textit{Consider the 2D grid world with nine cells in Fig.~\ref{fig:preliminary_nine_squares}. The robot must move from an initial square (usually the center square) 
+to a desired goal square indicated by the star. 
+Each cell is assigned a terrain type, such as $\textit{Dense}$ or $\textit{Sparse}$ stepping stones.}
+\subsection{Abstractions}\label{sec:preliminaries_abstraction}
+We abstract the environment states and the robot actions into a set of atomic propositions $\ap$.
+We partition $\ap$
+% $ = \mathcal{I} \cup \mathcal{O}$ 
+into sets of inputs $\mathcal{I}$
+% $= \{\mathcal{X}_{\rm{cen}}, \mathcal{E}, \mathcal{X}_{\rm{req}}\}$ 
+% (``environment" in the two-player game) 
+and outputs $\mathcal{O}$
+($\ap = \inp \cup \out$).
+% (``robot" in the two-player game). 
+The inputs $\mathcal{I}$ consist of
+the centroidal inputs $\inpcen$,
+% which describe the robot's centroidal states,
+% $\mathcal{X}_{\rm{cen}}$ of the robot, 
+the terrain inputs $\inpterrain$,
+% that describe the environment states surrounding the robot,
+% $\mathcal{E}$ that surrounds the robot, 
+and the request inputs $\inprequest$
+% that specify the goal states provided by the higher-level planner or the user
+% the requested robot state $\mathcal{X}_{\rm{req}}$ given by a higher-level planner or user input
+($\inp = \inpcen \cup \inpterrain \cup \inprequest$).
+The centroidal inputs $\inpcen$ describe the robot's centroidal states,
+grounding to the robot's centroidal keyframes
+defined as $\mathcal{X} = \{x, y\}$, where the translational states $x$ and $y$ are located at the center of each grid based on the Cartesian-space discretization. 
+% A centroidal state $\inpstatecen \subseteq \inpcen$
+% We exclude the vertical height of the robot since it can be purely decided by the terrain information. 
+%
+The terrain inputs $\inpterrain$
+characterize the terrains around the robot,
+providing abstracted information about the terrain heights
+or terrain densities.
+% terrain sparsities, or obstacle detection.
+% given the classified terrain information: $\mathcal{E} = \{\rm{cT}, \rm{lT}, \rm{rT}, \rm{uT}, \rm{dT}\}$, where $\rm cT$ stands for current terrain, $\rm lT$ stands for left terrain, $\rm rT$ stands for right terrain, $\rm uT$ stands for upper terrain, and $\rm dT$ stands for down terrain. 
+% Each environmental input encodes abstracted information about the terrain, 
+% such as the height, sparsity, 
+% or obstacle detection. 
+%
+The request inputs $\inprequest$ allow the high-level planner or the user to specify the target robot states.
+%
+Since the robot can only control the values of centroidal inputs $\inpcen$, 
+we also refer to centroidal inputs $\inpcen$ as controllable inputs
+and
+terrain and request inputs ($\inpterrain\cup \inprequest$) as uncontrollable inputs.
+%
+In Example~\ref{example:1},
+$\inpcen \coloneqq \{x_0, x_1, x_2, y_0, y_1, y_2\}$,
+$\inprequest \coloneqq \{v^\textrm{req} \mid v \in \inpcen\}$,
+and
+$\inpterrain \coloneqq \{\tvar{x_i}{y_j} \mid i,j\in \{0, 1, 2\}\}$
+where each input $\tvar{x_i}{y_j}$ is True iff the terrain $(x_i, y_j)$ is Dense.
+%
+% A centroidal state $\inpstatecen \subseteq \inpcen$
+% is a 
+We define 
+the
+centroidal states $\inpstatecen \subseteq \inpcen$, 
+terrain states $\inpstateterrain \subseteq \inpterrain$, 
+and request states
+$\inpstaterequest \subseteq \inprequest$
+as
+subsets of 
+centroidal inputs $\inpcen$, 
+terrain inputs $\inpterrain$, 
+and request inputs $\inprequest$,
+respectively.
+% Thus is the same as the robot states ($\inprequest = \inpcen$).
+%
+% The requested state $\mathcal{X}_{\rm{req}}$ is defined same as the robot state: $\mathcal{X}_{\rm{req}} = \mathcal{X}_{\rm{cen}}^{\rm{des}}$. 
+% One example with only translational centroidal states is shown in Fig.~\ref{fig:cartoon_problem}(a).
+%
+In Fig.~\ref{fig:preliminary_nine_squares}b,
+the centroidal state is $\{x_1, y_1\}$,
+the request state is $\{x_0^{\textrm{req}}, y_2^{\textrm{req}}\}$,
+and the terrain state is $\{\tvar{x_1}{y_0}, \tvar{x_1}{y_1}, \tvar{x_1}{y_2}\}$.
+
+% \qm{To be deleted} Furthermore, we partition the inputs $\inp$ into controllable inputs $\inpsyms$ and uncontrollable inputs $\inpuser$.
+% Controllable inputs $\inpsyms$ represent the environment states the robot can control, i.e. the robot's centroidal states ($\inpsyms = \inpcen$).
+% Uncontrollable inputs describe the part of the physical world that the robot does not have control over, i.e. 
+% the terrain states $\inpterrain$ and the requested goal states $\inprequest$ ($\inpuser = \inpterrain \cup \inprequest$).
+
+The outputs
+% aforementioned output propositions 
+$\out$ 
+represent
+% consists of 
+the skills 
+that allow the robot to transit among centroidal states,
+given terrain states.
+% $\mathcal{A}$, which define the capabilities of transitioning from one keyframe $\mathcal{X}_{\rm cen}$ to another given certain environment $\mathcal{E}$. 
+% Following a TAMP-style definition for future repair process, 
+A skill $\skill \in \out$
+consists of 
+a set of preconditions $\skillpre \subseteq 2^{\inpcen \cup \inpterrain}$
+from which the skill is allowed to execute,
+and a set of postconditions $\skillpost \subseteq 2^\inpcen$, the resulting centroidal states after executing the skill.
+%
+In Example~\ref{example:1},
+the skill $\skillcustom{0}$ moves the robot from the middle to the upper terrain grid (Fig.~\ref{fig:preliminary_nine_squares}b).
+The precondition of $\skillcustom{0}$ is
+$\skillprecustom{\skillcustom{0}} = \{\{x_1, y_1, \tvar{x_1}{y_0}, \tvar{x_1}{y_1}, \tvar{x_1}{y_2}\}\}$, and
+the postcondition is
+$\skillpostcustom{\skillcustom{0}} = \{\{x_0, y_1\}\}$.
+% More details of this skill will be provided in Sec.~\ref{sec:spec_gen}.
+
+%%%% Fig.2 System architecture %%%%
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1\linewidth]{system_diagram.pdf}
+    \caption{System architecture overview. The solid lines indicate online communication, while dashed lines represent offline processes.
+    }
+    \label{fig:system_diagram}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Reactive  Synthesis}
+\subsection{Specifications}
+We use the Generalized Reactivity(1) (GR(1)) fragment of Linear Temporal Logic (LTL)~\cite{bloem2012synthesis}
+% has been widely used 
+to encode task specifications.
+% ~\cite{bloem2012synthesis}.
+% and automatically synthesize the system's transition behaviors. 
+GR(1) specifications $\spec$ 
+% is constructed from atomic propositions $\pi \in AP$, which is evaluated to be ${\rm True}$ or ${\rm False}$ and 
+follow the grammar 
+$\spec \: := \var \:|\: \neg\: \spec \:|\: \spec \:\land\: \spec \:|\: \bigcirc\spec \:|\: \square \spec \:|\: \lozenge \spec$,
+where $\var \in \ap$ is an atomic proposition,
+$\neg$ ``not'' and $\land$ ``and'' are Boolean operators,
+and
+$\bigcirc$ ``next'',
+$\square$ ``always'',
+and $\lozenge$ ``eventually''
+are temporal operators.
+% . Boolean operators $\neg$ ``not'' and $\wedge$ ``and'' in addition to a set of temporal operators $\ocircle$ ``next'', $\mathcal{U}$ ``until'', and $\mathcal{R}$ ``release'', are denoted. To be concise, we omit the derivations of other boolean operators such as $\vee$ ``or'', $\rightarrow$ ``implies'', and $\leftrightarrow$ ``if and only if'', as well as temporal operators $\Diamond\,\varphi$ ``eventually $\varphi$'' and $\square\,\varphi$ ``always $\varphi$''. 
+We refer the readers to~\cite{baier2008principles} for a detailed description of LTL.
+% A detailed description of LTL can be referred to \cite{baier2008principles}.
+
+GR(1) specifications are expressed in the form of 
+$\spec = \envspec \to \sysspec$,
+where $\envspec = \envinit \land \envsafety \land \envlive$ 
+is the assumptions on the behaviors of the possibly adversarial environment,
+and $\sysspec = \sysinit \land \syssafety \land \syslive$
+is the guarantee of the robot's behaviors.
+% Specifically,
+For $\alpha \in \{e, s\}$,
+$\alphainit, \alphasafety, \alphalive$
+characterize the 
+initial conditions,
+safety constraints,
+and liveness requirements
+respectively.
+%
+We divide the environment safety assumptions $\envsafety$ into skill assumptions $\envsafetynothard$,
+which describe the postconditions of the skills (see Sec.~\ref{sec:spec_gen}),
+and hard assumptions $\envsafetyhard$ that cannot be modified
+($\envsafety = \envsafetynothard \land \envsafetyhard$).
+Similarly, we split the safety guarantees $\syssafety$ into skill guarantees $\syssafetynothard$,
+which represent the preconditions of the skills,
+and hard guarantees $\syssafetyhard$ that cannot be modified
+($\syssafety = \syssafetynothard \land \syssafetyhard$).
+
+
+
+% In this work, we consider specifications expressed in the Generalized Reactivity(1) (GR(1)) fragment of LTL \cite{bloem2012synthesis}. The problem of realizability is explored in a two-player game between the robot and its possibly adversarial environment. The winning condition, as known as the GR(1) condition, is provided by:
+% \begin{equation}
+    % \varphi = \varphi_e \rightarrow \varphi_s    
+% \end{equation}
+% where $\varphi_e = \varphi_e^i \wedge \varphi_e^t \wedge \varphi_e^g$ specifies the environment behavior and $\varphi_s = \varphi_s^i \wedge \varphi_s^t \wedge \varphi_s^g$ specifies the system's behavior. More specifically, $\varphi^i,\varphi^t$ and $\varphi^g$ characterize the initial states, safety constraints, and liveness requirements, respectively.
+
+% \subsection{9-Grid Example for Terrain-Adaptive Locomotion}
+% For the ease of elaborating our algorithm, let us introduce a basic 9-grid locomotion example first. 
+
+% \begin{figure}[t]
+%     \centering
+%     \includegraphics[width=\linewidth]{preliminary_drawing.pdf}
+%     \caption{Terrain abstraction and skill definition. (a) Top-down view of the real-world terrain before abstraction. (b) Abstraction of the terrain and robot's skills (pink) moving from one location to another. (c) Repair process to find a new skill (blue).}
+%     \label{fig:preliminary_nine_squares}
+% \end{figure}
+
+% % In this work, we consider a specific perceptive locomotion problem, where
+% \noindent\textbf{Example~\examplelabel{example:1}}
+% (9-grid locomotion). 
+% \textit{Consider a 2D grid world with 9 discretized grid cells in Fig.~\ref{fig:preliminary_nine_squares}. The robot is commanded to move from an initial square (usually the center square), to a desired goal square indicated by the star. Each grid is assigned with a terrain type, such as $\textit{Dense}$ and $\textit{Sparse}$ stepping stones.}
+
+% %The terrains are only characterized into $\textit{Flat}$ and $\textit{High}$ ones, although 
+% More complex terrain types can also be defined. In Sec.~\ref{sec:experiments}, we will show more examples with realistic set-ups.
+
+% \section{Problem Statement}\label{sec:problem_statement}
+% We aim to address the following problems, which span from symbolic abstraction to motion planning (see Fig.~\ref{fig:cartoon_problem}):
+
+% \textbf{Problem 1 (Sec.~\ref{sec:reactive_gait_synthesis}):} How can we abstract perceptive locomotion as a decision-making problem using reactive synthesis, given continuous information about the robot and its environment?
+
+% \textbf{Problem 2 (Sec.~\ref{sec:online_execution}):} How can we encode online information into the execution process to bridge the gap between offline strategies and real-world scenarios, acknowledging the inherent discrepancies between the abstracted and actual environments?
+
+% \section{System Overview}
+
+
+% \subsection{Robot Model and System Dynamics}
+% We consider quadrupedal robots with $n_j$ actuated DoFs and 6 underactuated DoFs for the floating base. The equations of motion is provided by: 
+% \begin{equation} \label{eq:fbEoM}
+%     \begin{aligned}
+%         &\mathbf{M}(\mathbf{q}) \mathbf{\dot{v}} 
+%         + \mathbf{C}(\mathbf{q, v}) 
+%         = \underbrace{ \begin{bmatrix} \textbf{0} \\ \textbf{I} \end{bmatrix} }_{\mathbf{B}} \vg \tau
+%         + \mathbf{J_{\rm c}^{\top}} \mathbf{F_{\rm c}} &&
+%         % \vspace{4mm}
+%         % & \hspace{4cm} \mathbf{\dot{q}} = \mathbf{T}(\mathbf{q})\mathbf{v} &&
+%     \end{aligned}
+%     % \vspace{0.5mm}
+% \end{equation}
+% where $\mathbf{q} = \begin{bmatrix} \mathbf{q_{\rm b}}^{\top} & \mathbf{q_{\rm j}}^{\top} \end{bmatrix}^{\top} \in \mathbb{R}^{n_{q}} \vspace{1mm}$, $\mathbf{v} = \begin{bmatrix} \vg{\nu}_{\rm b}^{\top} & \mathbf{\dot{q}_{\rm j}}^{\top} \end{bmatrix}^{\top} \in \mathbb{R}^{n_{v}}$ are the generalized coordinates and velocities partitioned in base and joint variables. The subscripts $\rm b$ and $\rm j$ are base and joint related quantities, respectively. Base coordinates $\mathbf{q_{\rm b}} = \begin{bmatrix} \mathbf{p_{\rm b}}^{\top} & \vg{\theta}^{\top} \end{bmatrix}^{\top} \in \mathbb{R}^{6}$ are partitioned as base position and orientation parameterized by Euler angles. Base velocities $\vg{\nu}_{\rm b} = \begin{bmatrix} \mathbf{\dot{p}_{\rm b}}^{\top} & \vg{\omega}^{\top} \end{bmatrix}^{\top} \in \mathbb{R}^{6} \vspace{1mm}$ are partitioned as base linear and angular velocities in the world frame. $\mathbf{M(q)}$ is the joint space mass matrix. $\mathbf{C(q, v)}$ captures the nonlinear effects. $\vg{\tau} \in \mathbb{R}^{n_{j}}$ denotes joint torques. $\mathbf{J_{\rm c}(q)}$ is the stacked contact Jacobian and $\mathbf{F_{\rm c}}$ is the stacked contact reaction force vector.
+
+% Assuming full control authority over the joint variables $\mathbf{q_{\rm j}}$, Eq. (\ref{eq:fbEoM}) can be converted into Newton-Euler equations of motion about the robot's center-of-mass (CoM):
+% \begin{equation}\label{eq:cenDyn}
+%   \resizebox{0.45\hsize}{!}{$ 
+%     \mathbf{\dot{h}} = \begin{bmatrix} \mathbf{\dot{k}} \\ \mathbf{\dot{l}} \end{bmatrix} 
+%     = \begin{bmatrix} \sum\limits_{j = 0}^{n_{f}-1}\mathbf{f}_{j} + m \mathbf{g} \\ \sum\limits_{j=0}^{n_{f}-1}(\mathbf{p}_{j} - \mathbf{r}) \times \mathbf{f}_{j} \end{bmatrix}
+%     $}
+% \end{equation}
+% where it is assumed that the robot has $n_f$ feet with point contacts. $\mathbf{h} = \begin{bmatrix} \mathbf{k}^{\top} & \mathbf{l}^{\top}\end{bmatrix}^{\top}$ are the linear and angular centroidal momentum. $\mathbf{p_{\rm{j}}}$ and $\mathbf{r}$ are the individual individual end-effector (EE) and CoM position in the world frame. $\mathbf{f_{\rm j}}$ are the individual foot contact forces. This reduced-order model will be referred to as the \textbf{centroidal dynamics} throughout this paper. When the legs are assumed to be light weighted, the robot can be further simplified to be a single rigid body. 
+% % Therefore, the robot dynamics can be further written as:
+
+% \section{System Architecture}
+\section{Approach Summary}
+Our planning framework consists of two main modules: 
+offline synthesis (Sec.~\ref{sec:reactive_gait_synthesis}) 
+and
+online execution (Sec.~\ref{sec:online_execution}), as shown in Fig.~\ref{fig:system_diagram}.
+% a MICP planner (Sec.~\ref{sec:motion_primitive}),
+% and a tracking controller (Sec.~\ref{sec:tracking_control}). 
+The offline synthesis module generates a strategy that moves the robot to any goal waypoint over all possible terrain states,
+utilizing a MICP to obtain feasible robot skills corresponding to the symbolic strategy.
+% If the skills are not enough to generate a strategy,
+% for the robot to reach any goal waypoint over any possible terrain states, 
+% we leverage symbolic repair (Sec.~\ref{sec:symbolic_repair}) to generate new skills 
+% and utilize the MICP planner with gait reconfiguration to check the feasibility of the suggestions.
+% The online execution module
+% takes in
+%as input
+Given
+a local waypoint
+produced by a global navigation planner,
+and the segmented terrain information
+provided by a terrain segmentation module\cite{miki2022elevation},
+% a global navigation planner provides a series of local goal waypoints,
+% and a perception module 
+%
+% supplies the segmented terrain information.
+the online execution module executes the strategy to navigate the robot toward the goal waypoint, 
+utilizing the same MICP planner but with online terrain segments and a tracking controller
+to achieve precise locomotion at the low level,
+and leverages online repair 
+% (Sec.~\ref{sec:online_repair}) 
+to handle unexpected terrain configurations.
+
+
+
+% In this work, we assume the presence of a desired local waypoint, either directly requested by a user or provided by a global navigation planner. The segmented terrains are assumed to be supplied by a perception module, such as in \cite{Fankhauser2014RobotCentricElevationMapping,miki2022elevation}. The main contributions of this study focus on offline synthesis and online execution, both of which involve interactions with the MICP planner to obtain physical feasibility feedback. Although not explicitly shown here, the symbolic repair process occurs in both phases.
+% The proposed framework is composed of separate modules including reactive gait synthesis, footstep planning, and motion execution, as shown in Fig.~\ref{fig:system_diagram}.
+
+% \subsection{Terrain Abstraction}
+% In this work, we assume that there exists a terrain segmentation module that parses perceptive data such as point clouds into convex polygons, which will be used for our planning framework. Then a terrain classification module can be deployed to provide further symbolic terrain states to decide robot movement.  
+
+\section{Offline Synthesis}\label{sec:reactive_gait_synthesis}
+% \section{Reactive Synthesis for Locomotion}\label{sec:reactive_gait_synthesis}
+% As illustrated in Fig.~\ref{fig:combined_offline_online}, 
+The offline synthesis module 
+% $\inpstateterrainposs \subseteq 2^\inpterrain$,
+% and 
+generates a strategy 
+that enables the robot
+to reach any goal waypoints over all possible terrain states.
+%
+As shown in Fig.~\ref{fig:combined_offline_online}(a),
+this module takes in
+a set of motion primitives,
+such as all transitions with a one-second trotting gait,
+and
+a set of possible terrain states from prior knowledge of the workspace.
+We first solve a MICP problem to determine the feasibility of each motion primitive 
+(Sec.~\ref{sec:motion_primitive}), and then encode all feasible transitions as robot skills in a specification
+(Sec.~\ref{sec:spec_gen}).
+If the specification is realizable, we generate a strategy for online execution.
+Otherwise, we leverage a repair process to suggest new robot skills that make the specification realizable
+(Sec.~\ref{sec:symbolic_repair}).
+
+
+% The reactive synthesis process has two phases: offline synthesis and online execution. 
+% We begin by introducing the essential specifications that define our terrain-adaptive locomotion problem. The objective is to construct a high-level robot gait and keyframe transition strategy by solving a two-player game between the gait planner and its possibly adversarial environment. The Linear Temporal Logic (LTL) specifications are designed by human experts, who provide logical rules that guide the planning process. It is nothworthy that the specification design is not unique and may vary according to expert input.
+% Add a mapping function from the discrete state to the continuous state?
+
+% \subsection{Motion Primitives to Robot Skills}\label{sec:motion_primitive}
+\subsection{Motion Primitive and Feasibility Checking via MICP}\label{sec:motion_primitive}
+
+We leverage
+mixed-integer convex programming (MICP) 
+to check the physical feasibility of the given motion primitives 
+over discontinuous terrains,
+and only use the feasible primitives as robot skills to synthesize robot strategies.
+% to provide feasibility certificates for robot skills
+% a Mixed-Integer Convex Program (MICP) to provide feasibility certificates 
+% One special feature of this work is to provide a feasibility certificate given discontinuous terrains. 
+We assume that each skill
+% , i.e., an atomic action, 
+comes with a fixed gait pattern $\mathcal{G}$ that includes the contact sequence and timing and a time horizon $T$.
+% is also given. 
+We define the motion primitive corresponding to the gait $\mathcal{G}$ and time horizon $T$ as $L = \mathcal{M}(G, T)$. 
+% Then, 
+% we formulate a MICP problem that
+% each MICP solve can 
+% takes in 
+The MICP problem takes in
+the initial and final robot states of the skill, 
+information about the initial and final terrain status,
+% from the possible symbolic transition, 
+and the contact information provided by the motion primitive $\mathcal{M}$.
+% we formulate the MICP problem in Fig.~\ref{fig:micp}:
+
+Eq.~\ref{ocp:mip_general} shows our MICP formulation, where the decision variables $\vg \phi$ include base position $\v r$, velocity $\dot{\v r}$, acceleration $\ddot{\v r}$, orientation $\vg \theta$ parameterized by Euler angle and its derivative $\dot{\vg \theta}$, individual 
+end-effector
+(EE)
+position $\v p_j$, velocity $\dot{\v p}_j$, and acceleration $\ddot{\v p}_j$, and individual contact force $\v f_j$ for the foot $j$. The cost function consists of tracking costs and regularization terms governed by diagonal matrices $\v Q$ and $\v R$. 
+The tracking costs include the deviation from a desired base trajectory interpolating a path between the terrain grid locations defined in each skill.
+For any natural number $n \in \naturals$,
+we denote the set $\{0, \dots, n-1\}$ as $\range{n}$.
+We use $N$, $n_f$, and $n_s$, and $R$ to represent the number of timesteps, the number of feet, the number of footsteps specified by the gait configuration for each foot, and the number of convex terrain polygons to be considered, respectively. For example,  Fig.~\ref{fig:combined_offline_online}(b) shows a case with four polygons. Note that, during the offline phase, the terrain polygons are predefined and homogeneous, as depicted in Fig.~\ref{fig:preliminary_nine_squares}(a).
+% \qm{plz also explain $N, n_f, n_s,$ and $R$}
+
+% In Eq.~\ref{eq:dynamics},
+We encode the system dynamics as a single rigid body in Eq.~\ref{eq:dynamics},
+using a simplified Euler equation to keep the dynamics constraint convex. To incorporate safe region constraints to select proper footholds, we introduce binary variables $\v H_{r,k,j}$, with $r$, $k$, and $j$ expressing the $r^{\rm th}$ convex region, $k^{\rm th}$ footstep, and $j^{\rm th}$ foot. 
+Eq.~\ref{eq:safe_region} restricts
+the robot's EE to stay within one of the convex polygons. 
+Frictional constraints are defined in Eqs.~\ref{eq:force_non_zero} - \ref{eq:force_friction_cone}, with $\v n$ as the normal vector of the terrain corresponding to the position $\v p^{xy}_j$ and $\mathcal{C}_j$ as the set of timesteps indicating stance for the $j^{\rm th}$ foot. Contact constraints in Eqs.~\ref{eq:ee_velocity_zero} - \ref{eq:force_zero} check the given contact states and activate at different timesteps.
+Since the joint angles are omitted in the single rigid body model, we use a fixed Jacobian at a nominal joint pose to approximately consider the torque limit constraint in Eq.~\ref{eq:max_torque}. 
+Lastly, the kinematics constraint in Eq.~\ref{eq:rom} strictly limits the possible EE movements to assure safety.
+% Fig.~\ref{fig:mip_a1} shows the essential decision variables optimized in \ref{ocp:mip_general}. 
+Due to the convex nature of this MICP, we can determine the feasibility of a possible symbolic transition by checking if the optimal solution exists.
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.75\linewidth]{mip_a1.pdf}
+%     \caption{Caption}
+%     \label{fig:mip_a1}
+% \end{figure}
+
+%%%% Fig.3 MICP formulation %%%%
+\begin{figure}
+    \centering
+    
+    % \boxed{
+    \begin{minipage}{0.9\linewidth}
+    \begin{subequations}\label{ocp:mip_general}
+    \begin{alignat}{2}
+        % \nonumber &\hspace{0.8cm} \underset{\vg \phi, \v H_{r,k,j}}{\min} \ \sum_{i = 0}^{N-1} \hspace{2pt} \delta \vg \phi[i]^T\mathbf{Q}\hspace{2pt}\delta \vg \phi[i] + \vg \phi[i]^{T}\mathbf{R}\vg \phi[i]
+        % \\
+        % \nonumber
+        % &(\textit{\rm Variables}) \hspace{0.5cm} \vg \phi[i] = [\v r[i]^{\top}, \dot{\v r}[i]^{\top}, \ddot{\v r}[i]^{\top}, \vg \theta[i]^{\top}, \dot{\vg \theta}[i]^{\top},
+        % \\\nonumber
+        % &\hspace{3.2cm} \v p_j[i]^{\top}, \dot{\v p}_j[i]^{\top}, \ddot{\v p}_j[i]^{\top}, \v f_j[i]^{\top}]^{\top} \\
+        % \nonumber
+        % &\hspace{2.1cm} \forall i \in \range{N}, j\in\range{n_f}, 
+        % \\\nonumber &\hspace{2.25cm} k\in\range{n_s}, r\in\range{R}
+        \nonumber &\underset{\vg \phi, \v H_{r,k,j}}{\min} && \sum_{i = 0}^{N-1} \hspace{2pt} \delta \vg \phi[i]^T\mathbf{Q}\hspace{2pt}\delta \vg \phi[i] + \vg \phi[i]^{T}\mathbf{R}\vg \phi[i]\\
+     \nonumber & \text{ subject to} && \forall i \in \range{N}, j\in\range{n_f}, k\in\range{n_s}, r\in\range{R},\\
+        \nonumber
+        \\\label{eq:dynamics}
+        &(\textit{\rm Dynamics}) &&  
+        \vg \phi[i+1] = \mathcal{F}(\vg \phi[i])
+     %    \begin{bmatrix} \v r[i+1]\\\
+     %    \dot{\v r}[i+1]\\\
+     %    m \ddot{\v r}[i]\\\
+     %    \vg \theta[i+1]\\\
+     %    \dot{\vg \theta}[i]
+     %    \end{bmatrix}= \begin{bmatrix}
+     %    \v r[i] + \Delta t \cdot \dot{\v r}[i+1]\\
+     %    \dot {\v r}[i] + \Delta t \cdot \ddot{\v r}[i+1]\\
+     %    \sum\nolimits_{j} \v f_j[i] + m \v g \\
+	    % % \sum\nolimits_j (\v{p}_j[i] - \v r[i]) \times \v f_j[i] \\
+     %        \vg \theta[i] + \Delta t \cdot \dot{\vg \theta}[i+1]\\
+     %        W(\v I^{-1}\v l)
+	    % \end{bmatrix}
+        \\\label{eq:safe_region}
+        &(\textit{\rm Safe Region})
+        && H_{r,k,j} \Rightarrow \v A_r \v p_j \leq \v b_r
+        \\\nonumber
+        & &&\sum_{r=0}^{R-1}\v H_{r,k,j} = 1
+        \\\nonumber
+        & &&\v H_{r,k,j} \in \{0, 1\}
+        \\\label{eq:force_non_zero}
+        &(\textit{\rm Frictional}) 
+        % \hspace{1.05cm} \text{if} \ i \in \mathcal{C}_j \ \text{(in contact):}\\
+        &&\v f_j[i] \cdot \v n(\v p_j^{xy}[i]) \ge 0, \ \forall i \in \mathcal{C}_j
+        \\\label{eq:force_friction_cone}
+        & &&\v f_j[i] \in \mathcal{F}(\mu, \v n, \v p_j^{xy}[i]), \ \forall i \in \mathcal{C}_j
+         \\\label{eq:ee_velocity_zero}
+            &(\textit{\rm Contact}) 
+            &&\dot{\v p}_j[i]=0, \ \forall i \in \mathcal{C}_j
+        \\\label{eq:force_zero}
+         & && \v f_j[i] = 0, \ \forall i \notin \mathcal{C}_j
+         \\\label{eq:max_torque}
+         &(\textit{\rm Torque})
+         && \v J_j^{\top} \v f_j[i] \leq \vg \tau_{\rm max}
+        \\\label{eq:rom}
+            &(\textit{\rm Kinematics}) &&\v p_j[i] \in \mathcal{R}_j(\v r[i],\vg \theta[i])
+    \end{alignat}
+\end{subequations}
+\end{minipage}
+% }
+    \caption{MICP formulation for physical feasibility checking.}
+    \label{fig:micp}
+    \vspace{-0.15in}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Fig4. System overview %%%%
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\linewidth]{combined_offline_online.pdf}
+    \caption{System overview for offline synthesis and online execution. During the offline synthesis (black dashed arrows), an initial set of motion primitives is given and symbolic skills are iteratively generated by solving MICP. When the task specifications are unrealizable, a symbolic repair is triggered to seek missing skills. During the online execution (black solid arrows), MICP is solved again taking online terrain segments and the symbolic state only advances when a solution is found. Online repair is triggered (blue solid arrow) when a solving failure or an unseen terrain is detected. 
+    % both abstracted and real-world terrain information is fed into the automaton.
+    }
+    \label{fig:combined_offline_online}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{GR(1) Specifications given Robot Skills}\label{sec:spec_gen}
+\subsection{Task Specification Encoding}\label{sec:spec_gen}
+
+After acquiring a set of feasible robot skills, 
+we encode the skills into the specification $\spec$ 
+as part of the environment safety assumptions $\envsafety$ 
+and system safety guarantees $\syssafety$.
+%
+% We divide the safety assumptions $\envsafety$ into mutable assumptions $\envsafetynothard$,
+% which describe the postconditions of the skills,
+% and hard assumptions $\envsafetyhard$ that cannot be modified, 
+% i.e.
+% $\envsafety = \envsafetynothard \land \envsafetyhard$.
+% Similarly, we divide the safety guarantees $\syssafety$ into mutable guarantees $\syssafetynothard$,
+% which represent the preconditions of the skills,
+% and hard guarantees $\syssafetyhard$ that cannot be modified
+% ($\syssafety = \syssafetynothard \land \syssafetyhard$).
+%
+% To translate from states to formulas, 
+We define a function $\formplain$ that takes as input
+two subsets $\statevar, \statevar' \subseteq \ap$,
+where $\statevar \subseteq \statevar'$,
+and generates a Boolean formula
+$\form{\statevar'}{\statevar} \coloneqq \bigwedge_{\var\in\statevar}\var \land \bigwedge_{\var \in \statevar'\setminus\statevar} \neg\var$.
+For any subset $\statevar \subseteq \ap$,
+we use $\bigcirc\statevar$ to denote the set $\{\bigcirc \pi \mid \pi \in \statevar\}$.
+
+% We encode the postconditions of the skills into the environment safety assumptions $\envsafety$ of the specification $\spec$.
+
+
+
+% each skill $\texttt{skill} \in \mathcal{A}$ comes with a precondition $\sum_{\texttt{skill}}^{\rm{pre}} \in 2^{\mathcal{I}_G}$ and a postcondition $\sum_{\texttt{skill}}^{\rm{post}} \in 2^{\mathcal{I}_G}$ similar to \cite{pacheck2022physically}. In Fig.~\ref{fig:preliminary_nine_squares}(b) and (c), it shows a skill $\texttt{skill0}$ with precondition $\sum_{\texttt{skill0}}^{\rm{pre}} = \{(x=1,y=2,\rm cT = \rm Flat, \rm rT = \rm High)\}$ and postcondition $\sum_{\texttt{skill0}}^{\rm{post}} = \{(x=2,y=2)\}$. The skills are encoded in the GR(1) formula as part of $\phi^\textrm{t}_\textrm{e}$ and $\phi^\textrm{t}_\textrm{s}$, 
+% which can be further divided into $\phi^{\textrm{t}}_{\textrm{e}} = \phi^{\textrm{t, mutable}}_{\textrm{e}} \wedge \phi^{\textrm{t, hard}}_{\textrm{e}}$ and $\phi^{\textrm{t}}_{\textrm{s}} = \phi^{\textrm{t, mutable}}_{\textrm{s}} \wedge \phi^{\textrm{t, hard}}_{\textrm{s}}$. $\phi^{\textrm{t, mutable}}_{\textrm{e}}$ and $\phi^{\textrm{t, mutable}}_{\textrm{s}}$ capture the postconditions and preconditions that the repair process might modify, respectively. $\phi^{\textrm{t, hard}}_{\textrm{e}}$ and $\phi^{\textrm{t, hard}}_{\textrm{s}}$ encode the hard constraints specified by the user remain unchanged and always hold.   
+
+% \subsubsection{Postconditions}
+The skill assumptions $\envsafetynothard$ encode the postconditions of the skills. 
+% As shown in Eq.~\ref{eq:env_trans}, 
+The assumptions ensure that after the skill execution, 
+at least one postcondition of the skill must hold:
+% s in the next timestep:
+
+\begin{equation}\label{eq:env_trans}
+\begin{aligned}
+    \envsafetynothard \coloneqq \bigwedge_{\skill \in \mathcal{O}} \big( \skill 
+    % \land 
+    % \form{\inpcen\cup\inpterrain}{\skillpre} \\ 
+    \to
+    \bigvee_{\statevar\in\skillpost} \form{\bigcirc\inpcen}{\bigcirc\statevar} \big)
+    % \bigvee_{\sigma_\textrm{pre} \in \sum_{\texttt{skill}}^\textrm{pre}} \varphi_{\sigma_{\textrm{pre}}}) \rightarrow \\
+    % &\bigcirc \bigvee_{\sigma_\textrm{post} \in \sum_{\texttt{skill}}^\textrm{post}} \varphi_{\sigma_\textrm{post}}\bigg)
+\end{aligned}
+\end{equation}
+%
+In Example~\ref{fig:preliminary_nine_squares},
+% $\skillprecustom{\skillcustom{0}}$,
+the postcondition of skill $\skillcustom{0}$
+is defined as:
+% encoded asin Eq.~\ref{eq:skill_0_post}:
+% Therefore, as an example, the postcondition specification for $\texttt{skill0}$ is defined as:
+\begin{equation}\label{eq:skill_0_post}
+\begin{aligned}
+     \square (\skillcustom{0} 
+     % \land x_1 \land y_1 \land \tvar{x_1}{y_0} \land \tvar{x_1}{y_1} \land \tvar{x_1}{y_2}
+     % \land \bigwedge_{\var\in\inpcen\cup\inpterrain\setminus\skillprecustom{\skillcustom{0}}} \neg \var \\
+    \to &\bigcirc x_0 \land \bigcirc y_1 \land \neg \dots)
+    % &\neg \bigcirc x_1 \land 
+    % \neg \bigcirc x_2 \land 
+    % \neg \bigcirc y_0 \land 
+    % \neg \bigcirc y_2 \big)
+     % \bigwedge_{\var\in\inpcen\setminus\skillpostcustom{\skillcustom{0}}} \neg \bigcirc \var \big)
+     % x=1 \wedge y=2 \wedge \rm cT = \rm Flat \wedge \rm rT = \rm High \big) \rightarrow \\
+     % &\bigcirc \big(x=2 \wedge y=2 \big) \big)
+\end{aligned}
+\end{equation}
+where we omit the centroidal inputs that are False.
+
+% \subsubsection{Preconditions}
+The skill guarantees $\syssafetynothard$ encode the preconditions of the skills.
+The guarantees impose restrictions on when a skill can be executed.
+% As shown in Eq.~\ref{eq:sys_trans},
+The guarantees only allow the robot to execute a skill 
+if one of the skill's preconditions holds:
+% The preconditions encode constraints in $\varphi_{\textrm s}^{\textrm{t}, \textrm{mutable}}$. It restricts the conditions that a specific skill can be chosen. Therefore, it allows the overall system to choose a skill only when a precondition is satisfied, but does not require the system to do so. 
+
+\begin{equation}\label{eq:sys_trans}
+\begin{aligned}
+    \syssafetynothard \coloneqq 
+    \bigwedge_{\skill \in \mathcal{O}} \bigg(
+    \neg \big(
+    \bigvee_{\statevar\in\skillprecustom{\skill}}
+    \form{\bigcirc\inpcen\cup\bigcirc\inpterrain}{\bigcirc\statevar}
+    \big)
+    % \\
+    % \form{\bigcirc(\inpcen\cup\inpterrain)}{\bigcirc\skillprecustom{\skill}}\\
+    \to \neg \bigcirc \skill
+    \bigg)
+    % \\
+    % \varphi_{\textrm s}^{\textrm{t}, \textrm{mutable}} = \bigwedge_{\pi_{\texttt{skill}} \in \mathcal{O}} \bigg( & \neg (\bigcirc \bigvee_{\sigma_\textrm{pre} \in \sum_{\texttt{skill}}^\textrm{pre}} \varphi_{\sigma_{\textrm{pre}}}) \rightarrow 
+    % &\neg \bigcirc \pi_{\texttt{skill}}\bigg)
+\end{aligned}
+\end{equation}
+%
+In Example~\ref{example:1}, the precondition of skill $\skillcustom{0}$ is defined as:
+\begin{equation}
+\begin{aligned}
+     \square \big( \neg 
+     (
+     \bigcirc x_1 \land 
+     \bigcirc y_1 \land 
+     \bigcirc \tvar{x_1}{y_0} \land 
+     \bigcirc \tvar{x_1}{y_1} \land 
+     \bigcirc \tvar{x_1}{y_2}\land \\
+     \neg \dots)
+     % \neg \bigcirc x_0 \land
+     % \neg \bigcirc x_2 \land
+     % \neg \bigcirc y_0 \land
+     % \neg \bigcirc y_2 \land \\
+     % \bigwedge_{i\in\{0,2\}, j\in\{0,1,2\}}
+     % \neg \bigcirc \tvar{x_i}{y_j}\big)
+     % \bigwedge_{\var\in\inpcen\cup\inpterrain\setminus\skillprecustom{\skillcustom{0}}} \neg \bigcirc \var
+     % \big)
+     % \\
+     \to \neg \bigcirc \skillcustom{0} \big)
+     % \\
+     % (\bigcirc (x=1 \wedge y=2 \wedge \rm cT = \rm Flat \wedge \rm rT = \rm High)) \rightarrow \\
+     % \neg \bigcirc \pi_\texttt{skill0}\big)
+\end{aligned}
+\end{equation}
+where we omit the centroidal and terrain inputs that are False.
+% include the keyframe transition action $\mathcal{K}$ and gait primitives $\mathcal{G}$. We further divide $\mathcal{G}$ into $\mathcal{G} = \{\rm{gaitType}, \rm{gaitSpeed}\}$. We incorporate extra input propositions $\mathcal{E}$ to represent the terrain information, which shows up in the preconditions as well.
+% \subsubsection{Hard Constraints}\label{sec:hard_constraints}
+
+The hard constraints ($\envsafetyhard$, $\syssafetyhard$) are constraints that a repair cannot modify 
+(see Sec.~\ref{sec:symbolic_repair}).
+To strictly guarantee $\syssafetyhard$,
+we only allow the robot to execute one skill at a time:
+    $\square\big(\neg (\bigcirc\skill \land \bigcirc\skill')\big)$, for any two different skills $\skill, \skill' \in \out$. Given that, 
+    %such that $\skill \neq \skill'$.
+we encode the following hard assumptions $\envsafetyhard$:
+% as hard constraints in $\envsafetyhard$ and $\syssafetyhard$:
+% The hard assumptions $\envsafetyhard$ states that
+\begin{enumerate}[label=\arabic*),ref=\arabic*]
+    \item The uncontrollable terrain and request inputs 
+    % $\inpterrain \cup \inprequest$
+    % which include the terrain and request inputs ($\inpuser = \inpterrain\cup\inprequest$), 
+    cannot change during execution:
+    % $\forall \var \in \inpuser$,
+    $\square (\var \leftrightarrow \bigcirc \var)$,
+    $\forall \var \in \inpterrain \cup \inprequest$.
+    \item The centroidal inputs $\inpcen$ remain unchanged if no skill is executed: 
+    $\square\big(\bigwedge_{\skill\in\out} \neg \skill \to \bigwedge_{\var\in\inpcen} (\var \leftrightarrow \bigcirc \var)\big)$.
+    \item \label{assumption:poss_terrain}
+    The terrain state must come from the set of possible terrain states $\inpstateterrainposs \subseteq 2^{\inpterrain}$ provided by the user:
+    $\envterrain \coloneqq \square (
+    \bigvee_{\statevar\in\inpstateterrainposs}
+    \form{\inpterrain}{\statevar}
+    )$.
+\end{enumerate}
+
+% Certain constraints also need to be incorporated as hard constraints. $\varphi_{\textrm e}^{\textrm{t}, \textrm{hard}}$ and $\varphi_{\textrm s}^{\textrm{t}, \textrm{hard}}$. For instance, specifications such as enforcing movements among adjacent grids are encoded as hard constraints. Other constraints such as the mutual exclusion of different skills are also added here. 
+
+% For the nine-square example, we 
+
+% Due to the space limit, we only highlight the specifications that build connections between the environment and the robot action. We construct the following specifications based on locomotion heuristics:
+
+% Hard specifications. React to terrain abstraction. Mutual exclusion of each skill and each grounded state.
+
+
+
+% \subsection{Offline Synthesis with Feasibility Check}
+% Fig.~\ref{fig:combined_offline_online} illustrates the system overview for both offline synthesis and online execution. This section focuses on the offline synthesis process. Using prior knowledge provided by humans, we first define a set of motion primitives, such as a one-second trotting gait, and a set of potential terrains described at the symbolic level. Based on the abstracted robot and terrain states defined in Sec.\ref{sec:preliminaries_abstraction}, we iterate over the grid locations and solve the MICP to check if a solution exists when the desired goal is the adjacent grid. If a solution is found, the corresponding skill is added to the specification. Once the hard constraints and physically feasible skills are incorporated into the specification, we assess its realizability. If it is realizable, a strategy is generated for online execution. If not, an offline repair is introduced, as discussed in the next section.
+
+\subsection{Symbolic Repair}\label{sec:symbolic_repair}
+The specification $\spec$ generated in Sec.~\ref{sec:spec_gen} may be unrealizable
+if the physical feasibility checking in Sec.~\ref{sec:motion_primitive} does not generate enough skills for the robot to reach all goal locations over all possible terrain combinations.
+%
+To adress this issue, we leverage the ideas in~\cite{pacheck2022physically} 
+% to ensure that the generated specification $\spec$
+% (Sec.~\ref{sec:spec_gen}) is realizable~\cite{pacheck2022physically}.
+% The specification $\spec$ can be unrealizable if the physical feasibility checking (Sec.~\ref{sec:motion_primitive}) does not generate enough skills for the robot to traverse to all goal locations over all possible terrain combinations.
+% The repair 
+to
+generate
+new skill suggestions necessary for the robot to accomplish the task.
+%over all possible terrain environments.
+Different from~\cite{pacheck2022physically}, we assume that skills do not contain intermediate states,
+and the skill preconditions
+are over both the controllable centroidal inputs $\inpcen$ and uncontrollable terrain inputs $\inpterrain$, 
+while the postconditions remain to contain 
+controllable
+centroidal inputs $\inpcen$ only.
+
+% We extend repair to handle skills whose preconditions are over both the controllable centroidal inputs $\inpcen$ and terrain inputs $\inpterrain$ while the postconditions still only contain controllable inputs $\inpcen$.
+
+For any subset $\statevar\subseteq \ap$, we say that $\statevar$ is a winning state
+if the robot can guarantee to satisfy the task from $\statevar$
+despite adversarial environment behaviors.
+The repair process systematically expands the set of winning states until
+it intersects with all liveness goals and contains all initial states.
+To this end, the repair alternatively modifies the preconditions and postconditions of existing skills.
+When modifying preconditions, the repair randomly selects a skill whose postcondition is winning, and modifies its precondition to a non-winning state, thus making the new precondition possible to win.
+When modifying postconditions, the repair randomly selects a skill whose preconditions and postconditions are both non-winning, and modifies its postcondition to a winning state, thus making the original precondition possible to win.
+%
+Fig~\ref{fig:preliminary_nine_squares}c illustrates the use of repair in Example~\ref{example:1}. 
+To create a skill that reaches the requested grid $(x_0, y_0)$, the
+repair selects the skill transition that moves the robot from the grid $(x_1, y_0)$ to $(x_2, y_0)$,
+and modifies the postcondition to reach $(x_0, y_0)$ instead.
+
+We attempt to implement the suggested skills by reconfiguring the gait in terms of contact sequence to generate new motion primitives. This can be achieved either by leveraging human knowledge to introduce new candidate gait parameters or by solving a gait-free version of Eq.~\ref{ocp:mip_general}. The latter involves introducing additional binary variables to determine contact states, which, however, requires a longer computation time.
+If any suggested skill is not feasible, 
+we add the symbolic transition as a hard constraint on repair,
+and repeat the repair process.
+
+% % \subsection{Outline}
+% \begin{enumerate}
+%     \item We define a state $\statevar \subseteq \ap$ to be winning,
+%     and thus $\statevar$ is a winning state,
+%     if the robot can guarantee to satisfy the task goals from $\statevar$ despite adversarial environment behaviors
+%     % \item We define the set of winning states as $\winning$
+%     \item Repair systematically expands the set of winning states by alternatively modifying the pre and postconditions of existing skills.
+%     \item When modifying postconditions, repair randomly selects a transition whose pre and post-conditions are both not winning, and modifies the postcondition to a winning state, thus making the precondition also possible to win.
+%     \item When modifying preconditions, repair randomly selects a transition whose postcondition is winning, and modifies the precondition to a not-winning state, thus making the new precondition more likely to win.
+%     \item Fig~\ref{fig:preliminary_nine_squares}c illustrates the use of repair in Example~\ref{example:1}. 
+%     Repair selects the skill that moves the robot from the grid $(x_1, y_0)$ to $(x_2, y_0)$,
+%     and modifies the postcondition to be $\{x_0, y_0\}$.
+%     \item 
+%     In Example~\ref{example:1}, the robot does not have enough skills to reach the requested goal grid $(x_0, y_0)$, as shown in 
+%     Fig~\ref{fig:preliminary_nine_squares}c. 
+%     Repair randomly selects the skill $\skillcustom{1}$ whose precondition is in $(x_1, y_0)$ and postcondition is in $(x_2, y_0)$,
+%     and modifies 
+%     % - states from which the robot can guarantee to satisfy the task goals.
+%     % This extension allows the skills 
+%     % \begin{enumerate*}[label=(\roman*),ref=\roman*]
+%         % \item skills do not contain intermediate states,
+%         % \item we only add new skills instead of modifying existing skills, and
+%         % \item 
+%     % \end{enumerate*}
+    
+%     % the specification $\spec$ generated in Sec.~\ref{sec:reactive_gait_synthesis} becomes unrealizable.
+%     % \item We utilize a symbolic repair tool to generate new robot skills that make $\spec$ realizable~\cite{pacheck2022physically}.
+    
+    
+% \end{enumerate}
+% When the specifications above are not realizable, we perform a repairing process (green arrows in Fig.~\ref{fig:combined_offline_online}). In contrast to \cite{pacheck2022physically}, we assume: (i) no intermediate state is considered for existing skills; (ii) the existing skills remain unchanged and we only add new skills; (iii) the new skill's precondition and postcondition are adjacent to each other; (iv) we incorporate extra input propositions $\mathcal{E}$ to represent the terrain information, which shows up in the preconditions as well. During the repair, human is obligated to provide new motion primitives to restore the missing skills found by the repair. The human can forfeit the current symbolic suggestion and move on to the next one. 
+
+% \subsection{New Skills Generation}
+% Preconditions and postconditions modification.
+% \begin{itemize}
+%     \item Reactive inputs pre-processing.
+%     \item Terrain inputs.
+% \end{itemize}
+
+% \subsection{Gait Optimization}
+% (TODO) To potentially add the new skills suggested by the symbolic 
+
+% \subsection{Semi-Automatic Repair: Human in the Loop}
+% The human is in charge of collecting more locomotion primitives to allow for more feasible transitions.
+
+\section{Online Execution}\label{sec:online_execution}
+The online execution module takes as input
+a terrain state $\inpstateterrain \subseteq \inpterrain$
+from the perception module, 
+a request state $\inpstaterequest \subseteq \inprequest$
+from the global planner,
+and a strategy $\strategy$
+from the offline synthesis module (Sec.~\ref{sec:reactive_gait_synthesis}).
+As shown in Fig.~\ref{fig:combined_offline_online},
+if the robot encounters an unseen terrain state, 
+% is unexpected and thus not considered by the offline synthesis module,
+we leverage symbolic repair to create new skills that handle the unexpected terrain state online 
+% $\inpstateterrain$ 
+% and re-synthesize a strategy
+(Sec.~\ref{sec:online_repair}).
+This module then executes the strategy automaton $\strategy$
+by solving a MICP problem again 
+with more detailed and accurate terrain information 
+to generate a nominal trajectory for each transition (Sec.~\ref{sec:automaton_online_evaluation}). This nominal trajectory will be further tracked by a tracking controller in real time
+(Sec.~\ref{sec:tracking_control}).
+After reaching the request state $\inpstaterequest$,
+the robot resets the strategy with new terrain, requests states,
+and repeats the execution
+until reaching the final goal state.
+% We formulate a MICP problem using 
+
+
+
+
+
+% During the online execution, we consider the mismatch between the abstracted and continuous information including both the robot and environmental states. 
+% The online execution is divided into an online strategy execution process and a tracking control module.
+
+\subsection{Online Repair}\label{sec:online_repair}
+During online execution, 
+the robot may encounter unexpected terrain states
+that the initial model of the workspace structure does not take into consideration.
+We leverage an online repair tool~\cite{meng2024automated} 
+to detect and recover from such unexpected terrain states.
+
+The online repair tool first generates a monitor that detects violations of the environment assumptions $\envsafety$ during online execution.
+%
+Note that $\envsafety$ includes the assumption
+$\envterrain = $ $
+    \square (
+    \bigvee_{\statevar\in\inpstateterrainposs}
+    \form{\inpterrain}{\statevar})$,
+which assumes that 
+at any time, 
+at least one terrain state from the set of possible terrain states $\inpstateterrainposs$ must hold
+% the current terrain state $\inpstateterrain$
+% must always come from
+% $\inpstateterrainposs$, 
+% the set of possible terrain states provided by the user
+(see Sec.~\ref{sec:spec_gen}).
+% Suppose the current terrain state $\inpstateterrain$ is not in $\inpstateterrainposs$, the set of possible terrain states provided by the user.
+During online execution,
+if the current terrain state $\inpstateterrain \not\in \inpstateterrainposs$,
+the monitor detects that $\inpstateterrain$
+violates the assumption $\envterrain$.
+We then relax the violated assumption $\envterrain$ to admit the new terrain state $\inpstateterrain$,
+replacing $\envterrain$ with 
+$\square (
+    \bigvee_{\statevar\in\inpstateterrainposs\cup\{\inpstateterrain\}}
+    \form{\inpterrain}{\statevar})$.
+After assumption relaxation,
+the revised specification becomes unrealizable
+as the robot lacks the required skills to handle the new terrain state $\inpstateterrain$.
+We utilize symbolic repair 
+(Sec.~\ref{sec:symbolic_repair})
+to find a set of necessary skills for the new terrain state.
+
+
+
+
+
+
+% the prior knowledge of the workspace structure does not take into account.
+% \begin{enumerate}
+%     \item Encounter unexpected terrain states during execution
+%     \item Generate a monitor to check assumption violations
+%     \item The monitor detects that the new terrain state violates the environment assumption which states that the current terrain state must belong to the set of possible terrain states.
+%     \item we relax the assumption to include the new terrain state
+%     \item we perform repair obtain new skills that can handle the new terrain state, and resume the execution
+% \end{enumerate}
+
+\subsection{Strategy Execution}\label{sec:automaton_online_evaluation}
+The red path in Fig.~\ref{fig:combined_offline_online}(c) represents the automaton online evaluation process. Before transitioning to the new symbolic state, an online MICP is solved. The automaton advances only if the MICP successfully finds a solution.
+% Algorithm \ref{code:online_automaton} shows the complete steps of performing online evaluation. More specifically, we consider multiple.
+% \subsubsection{Online MICP}
+Slightly different from the MICP formulation in Eq.~\ref{ocp:mip_general} during the offline phase, the online MICP is executed given accurate terrain information  from a terrain segmentation module. Since a strategy is already generated offline, the online MICP explicitly knows the chosen gait and the ideal initial and final robot states given by the robot and terrain abstraction.
+
+% \subsubsection{Robot Pose Re-Targeting}
+% Before running TO, the final state will be re-evaluated by solving a kinematic feasibility problem similar to Eq.~(1). The dynamics equation (\ref{eq:dynamics}) is replaced by enforcing the center of mass (CoM) to lie inside a convex support polygon to ensure static stability. In addition, a hard constraint is added to ensure that the modified robot pose stays within a certain threshold compared with the original desired pose. The cost function is simplified to stay as close as possible to the original desired pose. The higher-order terms of body position, orientation, and end-effectors are excluded from the decision variables. All the other constraints remain the same. 
+
+% \subsubsection{Failure Handling}
+% Replan process.
+
+\subsection{Tracking Control}\label{sec:tracking_control}
+\subsubsection{Nonlinear Model Predictive Control}\label{subsec:nmpc}
+The nonlinear model predictive controller (NMPC) operates independently from the symbolic planning module to track the reference trajectory generated by the online MICP, utilizing a more accurate dynamics model. In this work, we use a NMPC considering the centroidal dynamics and kinematics of the robot similar to \cite{dai2014whole,chignoli2021humanoid,sleiman2021unified}. The optimization problem is formulated as a Sequential Quadratic Program (SQP) and solve through
+%by linearizing the nonlinear constraints present in the formulation such as the dynamics. 
+the OCS2 library \cite{OCS2}. We employ a time horizon of 1 second with 100 timesteps.
+
+% \subsection{Coordination between Automaton and NMPC }
+% \begin{figure}
+%     \centering \includegraphics[width=\linewidth]{multi_threading_v2.pdf}
+%     \caption{MPC and Automaton Coordination: The trajectory windows are color-coded as follows: green represents trajectories generated by NMPC with a shorter time horizon but faster frequency; grey indicates trajectories generated by MICP with a longer time horizon, spanning from one symbolic node to another under ideal initial conditions; red denotes trajectories generated by MICP after replanning, triggered when the predicted state from MPC deviates from the expected goal condition.}
+%     \label{fig:micp_mpc_automaton}
+% \end{figure}
+% Since a tracking error is hard to avoid, a harmonic coordination between these two threads is necessary. The NMPC is running along with the automaton feasibility checker as shown in Fig.~\ref{fig:micp_mpc_automaton}. The overall process can be summarized in the following steps:
+
+% \subsubsection{Automaton Execution} The automaton thread initiates the process by solving MICP and generating reference trajectories as decribed in \ref{subsec: automaton_online_evaluation}.
+
+% \subsubsection{MPC Tracking}
+% Once the initial reference trajectory is generated, the MPC thread begins tracking it using a more accurate dynamics model as described in \ref{subsec:nmpc}.
+
+% \subsubsection{Error Handling and Replanning}
+% If the MPC thread predicts a state that reaches the final state but deviates beyond the specified tolerance, the automaton thread resets to this new initial state and reruns the MICP to adjust the plan. If no significant deviation occurs, the automaton thread continues rolling out, using the desired state until the final waypoint is reached.
+
+\subsubsection{Whole-Body Control}
+A whole-body controller (WBC) is deployed to track the NMPC trajectory plan by solving a hierarchical quadratic program (QP) \cite{herzog2016momentum} at 500 Hz. The state estimator fuses IMU data, joint encoders, and motion capture inputs to provide accurate body position information.
+% \subsection{Integration to Higher-Level Command}
+% Reset process.
+
+\section{Results}\label{sec:experiments}
+We present two case studies to demonstrate the synthesis and repair processes in both offline and online phases. Examples of maneuvering over stepping stones and rebar environments highlight the framework's efficacy and generalizability.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{offline_terrains.pdf}
+    \caption{Four terrain cases used for offline repair in our case study.}
+    \label{fig:offline_terrains}
+\end{figure}
+
+\subsection{Offline Synthesis and Repair Case Study}
+Similar to Example~\ref{example:1}, we define additional terrain combinations for the purpose of evaluating offline synthesis and repair process. 
+Fig.~\ref{fig:offline_terrains} shows four 9-grid terrain combinations with varying stepping stone sparsities. The first row presents the real-world terrain polygons, while the second row displays the corresponding symbolic-level maps. The grid size is chosen based on factors such as robot size and terrain dimensions. In all examples, we use a 0.6 m cell size, but this can be adjusted for practical applications. 
+We use a 1.5-second trotting gait as the motion primitive given ahead of time, and the MICP planner has a 0.02s timestep, resulting in $N=75$ knot points, and $R=8$ terrain polygons per transition. In Fig.~\ref{fig:offline_repair}, the pink arrows indicate the original feasible transitions. The robot successfully navigates upward and downward across all terrains; terrain case (a) achieves all transitions and is not shown in the figure due to space limit. 
+The infeasible transition arises when moving sideways on sparse stepping stones, restricted by the leg kinematics constraint in Eq.~\ref{eq:rom}. However, specifications for terrain case (b) and (c) remain realizable as the robot avoids sideways movement by taking detour steps, indicating that not all skills are required for these types of  terrains. Such a coincidence does not apply to terrain case (d), where the specification becomes unrealizable due to physically unreachable $(x_1,y_0)$ and $(x_1,y_2)$. This unrealizability triggers a symbolic repair to identify a symbolic suggestion in \todo seconds, adding two additional transitions (blue arrows). By reconfiguring to a bounding gait with short aerial phases, the robot restores transition feasibility, making terrain case (d)'s specification realizable.
+
+% we the offline terrains for specification generation. We use the above case for demonstrating the offline repair. We can emphasize that not all the transitions are needed for navigating to a desired waypoint considering the robot physical feasibility. The robot does not necessarily need to move sideways. It becomes more urgently needed when the state space increases. This also allows us to incorporate strategy in terms of specific terrain combinations. Only exception case is the one with all sparse terrains.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{offline_repair.pdf}
+    \caption{Offline repair results for terrain cases (b), (c), and (d) in Fig.~\ref{fig:offline_terrains}. We also illustrate the original trotting and repaired bounding gait.}
+    \label{fig:offline_repair}
+\end{figure}
+
+\subsection{Online Repair Case Study}
+As a case study to demonstrate the capability of handling unforeseen terrains, we preclude the evaluation for terrain (d). An online scenario is then created as shown in Fig.~\ref{fig:online_repair} with randomized sparsities ranging from 0 to 0.15 m. In Fig.~\ref{fig:online_repair}, the robot is tasked with reaching a global waypoint using a naive global planner to find the shortest path.
+%selecting the closest grid in the 9-grid map as the local waypoint. 
+Then the local waypoint in the 9-grid map is selected by choosing the closest grid. 
+The robot starts to navigate until it encounters an unforeseen terrain case (e) after abstracting the perceived local terrain shapes. Grids $(x0,y0)$ and $(x2,y0)$ are unreachable as shown in Fig.~\ref{fig:online_repair}(e1) since the sideway walking capability between sparse terrains was not captured. Upon detecting such a violation of the environment specification, the online repair is triggered, generating a new dynamically feasible skill for transitions $(x1,y0) \rightarrow (x0,y0)$ and $(x2,y1) \rightarrow (x2,y0)$ in \todo seconds shown in Fig.~\ref{fig:online_repair}(e2). The robot then successfully traverses terrain case (e) and can handle this terrain when encountering it again.
+
+% (Done) Show the online repair result for a certain type of terrain. (Online terrain snapshot $\rightarrow$ polygons considered in the 9-grid $\rightarrow$ abstraction $\rightarrow$ existing skills $\rightarrow$ repaired skills)
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{online_repair.pdf}
+    \caption{Online repair results after witnessing unforeseen terrains.}
+    \label{fig:online_repair}
+\end{figure}
+
+\subsection{Maneuvering Showcase}
+To demonstrate the generalizability of the proposed framework, we examine two scenarios with varying complexities and numbers of potential safe stepping regions.
+\subsubsection{Stepping Stone}
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{online_terrains.pdf}
+    \caption{(Will be updated to have rebar scenario.) Online scenarios with random sparsity of stepping stone and obstacles.}
+    \label{fig:online_terrains}
+\end{figure}
+Unlike the case studies, we abstract three terrain types: \textit{dense stone}, \textit{sparse stone}, and \textit{obstacle}. To avoid transitioning to an obstacle grid, we add specifications for obstacle avoidance as hard constraints, assuming the requested waypoint is not an obstacle grid.
+
+\subsubsection{Rebar}
+Inspired by the labor-intensive rebar tying task on construction sites that has been studied in previous work \cite{asselmeier2024hierarchical}, we explore a second application where the quadrupedal robot navigates a rebar mat. Each rebar is modeled as a rectangular polygon with a 3 cm width, with spacing ranging from 0.15 to 0.3 m. Unlike the stepping stone scenario, this setup offers more potential stepping regions due to the higher rebar density. The terrain is abstracted into \textit{dense rebar}, \textit{sparse rebar}, and \textit{obstacle}.
+
+\todo Fig.~\ref{fig:online_terrains} illustrates those two scenarios, along with snapshots of the robot traversing these terrains.
+
+\todo Show the computation speed for each case.
+
+% \subsection{Ablation Stuides}
+% To showcase the benefits of deploying each module, multiple case studies are performed in both the stepping stone and rebar scenarios with extensive simulation tests.
+
+% (TODO) Table that shows the successful rate for multiple trials on random environments. (1) With and without the feasibility check during synthesis. (2) With and without the goal-retargeting. 
+
+% \subsection{Hardware Experiments}
+
+
+% Evaluation metic:
+
+% 1) Solver run-time/convergence/success rate
+
+% 2) Solution quality
+
+% 3) Versatile motions (corresponding to specific constraints)
+
+% Benchmark with:
+% \begin{itemize}
+%     \item RG-RRT / RG-A* with MICP.
+%     \item Self-diagnosis in terms of enabling/disabling certain modules such as w/wo online replanning, target state replanning, and offline feasibility checking. Show the success rate.
+%     \item Running MICP + NLP in a hierarchical way. Analyze the generated motion compared with the proposed pipeline.
+%     \item ``Perceptive MPC" work which searches for the nearest convex region.
+%     \item Report the computational profile when assigning a binary variable at every single timestep.
+%     \item Show different scenarios with simple and complicated propositions.
+% \end{itemize}
+
+
+
+% \section{Discussions}
+% \subsection{Assumptions on the Environment}
+
+% \subsection{Extension to Motion Libraries}
+% This work only considered some basic motions such as walking and jumping. When it comes to more complicated scenarios and different robot morphology such as humanoid robots, the idea of motion libraries can be seamlessly applied into our proposed framework. 
+
+\section{Conclusion}
+In this work, we presented an integrated planning framework for terrain-adaptive locomotion that combines reactive synthesis with MICP, enabling safe and reactive responses in dynamically changing environments. 
+% To address unrealizable specifications arising from limited motion primitives, we introduced a symbolic repair approach that incorporates dynamic feasibility checks, automatically identifying missing transitions necessary for navigating adversarial terrains. In the online execution phase, we tackled the disparity between offline synthesis and real-world conditions by using an online MICP solver and an online symbolic repair process based on real-world terrain data. New terrain conditions encountered during execution. 
+Our approach not only enhances motion feasibility and safety but also provides a scalable solution for legged robots maneuvering in complex and safety-critical environments. Future work will involve extensive hardware testing to validate the proposed framework in real-world scenarios. Additionally, we plan to explore specifications of greater complexity to further test the algorithmic scalability.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

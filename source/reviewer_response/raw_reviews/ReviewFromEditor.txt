@@ -1,0 +1,53 @@
+Dear Author
+
+Your paper 
+
+25-1489 
+"Physically-Feasible Reactive Synthesis for Terrain-Adaptive
+Locomotion"
+Regular Paper
+
+submitted to the IEEE Transactions on Robotics (T-RO) has been reviewed
+by the Associate Editor and selected Reviewers. The reviews of the
+paper are attached.
+
+On the basis of the reviewers' ratings and comments, I regret to inform
+you that your paper is not suitable for publication in T-RO.
+
+=== Begin Editorial Board Comments === 
+
+Three experts in the domain provided insightful feedback on the
+manuscript.
+All reviewers raise a major concern that the current manuscript is a
+direct extension of [24], published in 2025 in the IROS proceedings.
+While this submission essentially presents additional hardware
+experiments, it reuses the very same materials and approaches.
+
+As mentioned in the guidelines T-RO Information for Authors
+(https://www.ieee-ras.org/publications/t-ro/t-ro-information-for-author
+s/):
+"If your submission is based on previously published papers, your
+manuscript must not be just a mere extension of the previous
+version(s),
+filling in, e.g., details of proofs or additional corollaries,
+additional
+experiments, or a more detailed background and narrative. Rather, the
+new submission must contain new results of substantive research
+significance and impact beyond the previous papers."
+
+Unfortunately, in the current state, the submission does not provide
+new results of substantive research significance and impact beyond the
+previous papers. The editors have assessed that the potential impact of
+this work needs to be more significant for a successful review process
+at T-RO. 
+
+=== End Editorial Board Comments ===
+
+We thank you for your interest in the IEEE Transactions on Robotics,
+and hope that you will consider publishing future papers here.
+
+Sincerely,
+
+Claudio Semini
+Editor
+IEEE Transactions on Robotics 

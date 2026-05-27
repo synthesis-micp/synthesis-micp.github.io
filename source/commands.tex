@@ -1,0 +1,187 @@
+\newcommand{\qm}[1]{{\textcolor{cyan}{\textbf{[Qian]} #1}}}
+\newcommand{\hkc}[1]{{\textcolor{blue}{[HKG]\emph{\bf#1 }}}}
+\newcommand{\todo}{\textcolor{red}{TODO }}
+\long\def\revised#1{{\color{blue}#1}}
+
+% Caligraphic
+
+\newcommand{\call}{\mathcal}
+
+\def\cA{{\call A}}
+\def\cB{{\call B}}
+\def\cC{{\call C}}
+\def\cD{{\call D}}
+\def\cE{{\call E}}
+\def\cF{{\call F}}
+\def\cH{{\call H}}
+\def\cI{{\call I}}
+\def\cJ{{\call J}}
+\def\cK{{\call K}}
+\def\cL{{\call L}}
+\def\cM{{\call M}}
+\def\cN{{\call N}}
+\def\cO{{\call O}}
+\def\cP{{\call P}}
+\def\cQ{{\call Q}}
+\def\cR{{\call R}}
+\def\cS{{\call S}}
+\def\cT{{\call T}}
+\def\cU{{\call U}}
+\def\cV{{\call V}}
+\def\cW{{\call W}}
+\def\cX{{\call X}}
+\def\cY{{\call Y}}
+\def\cZ{{\call Z}}
+
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\naturals}{\mathbb{N}}
+
+\newcommand{\ap}{AP}
+\newcommand{\true}{{\tt{True}}}
+\newcommand{\false}{{\tt{False}}}
+\newcommand{\var}{\pi}
+\newcommand{\inp}{\cI}
+\newcommand{\inpsyms}{\inp_\textrm{c}}
+\newcommand{\inpuser}{\inp_\textrm{u}}
+\newcommand{\inpuserprov}{\inp_\textrm{user}}
+\newcommand{\inpcen}{\inp_{\textrm{robot}}}
+\newcommand{\inpcentrans}{\inp_{\textrm{robot}}^{\textrm{trans}}}
+\newcommand{\inpcenorien}{\inp_{\textrm{robot}}^{\textrm{orien}}}
+\newcommand{\inpterrain}{\inp_{\textrm{terrain}}}
+\newcommand{\inpterrainbool}{\inp_{\textrm{terrain}}^{\cB}}
+\newcommand{\inpterrainint}{\cE_\naturals}
+\newcommand{\terrainexprs}{E}
+\newcommand{\inpstatesterrainexpr}{2^{\inpterrain}}
+\newcommand{\inpstatesterrainexprposs}{\dom_{\textrm{terrain}}^{\textrm{poss}}}
+
+\newcommand{\inpstateterrainexpr}{\inpstatesterrain}
+\newcommand{\inprequest}{\inp_{\textrm{req}}}
+\newcommand{\inprequesttrans}{\inp_{\textrm{req}}^{\textrm{trans}}}
+\newcommand{\inprequestorien}{\inp_{\textrm{req}}^{\textrm{orien}}}
+\newcommand{\tvar}[2]{n_{#1}^{#2}}
+\newcommand{\cells}{\cC}
+\newcommand{\xcells}{\cX}
+\newcommand{\ycells}{\cY}
+\newcommand{\out}{\cO}
+\newcommand{\skillcustom}[1]{\skill_{#1}}
+\newcommand{\skillprecustom}[1]{\Sigma_{#1}^{\textrm{pre}}}
+\newcommand{\skillpostcustom}[1]{\Sigma_{#1}^{\textrm{post}}}
+\newcommand{\skill}{o}
+\newcommand{\skillpre}{\skillprecustom{\skill}}
+\newcommand{\skillpost}{\skillpostcustom{\skill}}
+\newcommand{\skillpretrans}{\skillprecustom{\skill_{\textrm{trans}}}}
+\newcommand{\skillposttrans}{\skillpostcustom{\skill_{\textrm{trans}}}}
+\newcommand{\skillpreorien}{\skillprecustom{\skill_{\textrm{orien}}}}
+\newcommand{\skillpostorien}{\skillpostcustom{\skill_{\textrm{orien}}}}
+
+\newcommand{\dom}{\Sigma}
+\newcommand{\statevar}{\sigma}
+\newcommand{\inpstate}{\statevar_\inp}
+\newcommand{\inpstates}{\dom_\inp}
+\newcommand{\inpstateterrain}{\statevar_{\textrm{terrain}}}
+\newcommand{\inpstateterrainbool}{\statevar_{\textrm{terrain}}^{\cB}}
+
+\newcommand{\inpstateterrainint}{\statevar_{\inpterrainint}}
+\newcommand{\inpstatesterrain}{\dom_{\textrm{terrain}}}
+\newcommand{\inpstatesterrainint}{\dom_{\inpterrainint}}
+\newcommand{\inpstatecen}{\statevar_{\textrm{robot}}}
+\newcommand{\inpstatescen}{\dom_{\textrm{robot}}}
+\newcommand{\inpstaterequest}{\statevar_{\textrm{req}}}
+\newcommand{\inpstatesrequest}{\dom_{\textrm{req}}}
+\newcommand{\inpstatesrequestposs}{\dom_{\textrm{req}}^{\textrm{poss}}}
+\newcommand{\inpstateterrainposs} {\Sigma_{\inpterrain}^{\textrm{poss}}}
+
+%%%% Ref %%%%
+\newcounter{examplecounter}
+\setcounter{examplecounter}{0}
+
+\newcommand{\examplelabel}[1]{%
+  \refstepcounter{examplecounter}%
+  \label{#1}%
+  \theexamplecounter%
+}
+
+\newcounter{problemcounter}
+\setcounter{problemcounter}{0}
+
+\newcommand{\problemlabel}[1]{%
+  \refstepcounter{problemcounter}%
+  \label{#1}%
+  \theproblemcounter%
+}
+
+\newcounter{defcounter}
+\setcounter{defcounter}{0}
+
+\newcommand{\deflabel}[1]{
+    \refstepcounter{defcounter}%
+    \label{#1}%
+    \thedefcounter%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Spec related %%%%
+\newcommand{\envspec}{\varphi_\textrm{e}}
+\newcommand{\boolspec}{\varphi_{b}}
+\newcommand{\sysspec}{\varphi_\textrm{s}}
+\newcommand{\envinit}{\varphi_\textrm{e}^\textrm{i}}
+\newcommand{\sysinit}{\varphi_\textrm{s}^\textrm{i}}
+\newcommand{\alphainit}{\varphi_\alpha^\textrm{i}}
+\newcommand{\envsafety}{\varphi_\textrm{e}^\textrm{t}}
+\newcommand{\envterrain}{\varphi_\textrm{e}^\textrm{terrain}}
+\newcommand{\alphasafety}{\varphi_\alpha^\textrm{t}}
+\newcommand{\envsafetyvio}{\varphi_\textrm{violated}}
+\newcommand{\envsafetynothard}{\varphi_\textrm{e}^\textrm{t,skill}}
+\newcommand{\envsafetyhard}{\varphi_\textrm{e}^\textrm{t,hard}}
+\newcommand{\alphasafetynothard}{\varphi_\alpha^\textrm{t,skill}}
+\newcommand{\alphasafetyhard}{\varphi_\alpha^\textrm{t,hard}}
+\newcommand{\envsafetyharduser}{\varphi_\textrm{e}^\textrm{t,user}}
+\newcommand{\syssafety}{\varphi_\textrm{s}^\textrm{t}}
+\newcommand{\syssafetynothard}{\varphi_\textrm{s}^\textrm{t,skill}}
+\newcommand{\syssafetyhard}{\varphi_\textrm{s}^\textrm{t,hard}}
+\newcommand{\syssafetyuser}{\varphi_\textrm{s}^\textrm{t,user}}
+\newcommand{\syssafetycontinue}{\varphi_\textrm{s}^\textrm{t,continue}}
+\newcommand{\syssafetychoose}{\varphi_\textrm{s}^\textrm{t,choose}}
+\newcommand{\envlive}{\varphi_\textrm{e}^\textrm{g}}
+\newcommand{\syslive}{\varphi_\textrm{s}^\textrm{g}}
+\newcommand{\alphalive}{\varphi_\alpha^\textrm{g}}
+\newcommand{\changecons}{\varphi_\textrm{poss-changes}}
+\newcommand{\notallowedrepair}{\varphi_\textrm{disallow}}
+\newcommand{\disallowedtrans}{\notallowedrepair}
+\newcommand{\specsafe}{\spec^\textrm{t}}
+\newcommand{\speclive}{\spec^\textrm{g}}
+\newcommand{\alphasafetybool}[1]{\specsafe_{\textrm{a}, #1}}
+\newcommand{\alphalivebool}[1]{\speclive_{\textrm{a}, #1}}
+
+\newcommand{\spec}{\varphi}
+\newcommand{\spectask}{\spec_{\textrm{task}}}
+\newcommand{\specrelax}{\spec_{\textrm{relax}}}
+\newcommand{\specrepair}{\spec_{\textrm{repair}}}
+\newcommand{\oldspec}{\varphi_{\textrm{old}}}
+\newcommand{\newspec}{\varphi_{\textrm{new}}}
+\newcommand{\psicheck}{\psi_i^{\textrm{check}}}
+\newcommand{\envrelaxhard}{\psi_{\textrm{r}}^{\textrm{hard}}}
+\newcommand{\envrelaxnothard}{\psi_{\textrm{r}}^{\textrm{skill}}}
+\newcommand{\trace}{\tau}
+\newcommand{\traceinf}{\tau_{\textrm{inf}}}
+\newcommand{\tracefin}{\tau_{\textrm{fin}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Functions %%%%
+\newcommand{\downright}[3]{\textit{#1}_{#2}(#3)}
+\newcommand{\form}[2]{\downright{form}{#1}{#2}}
+\newcommand{\formplain}{\textit{form}}
+\newcommand{\range}[1]{[#1]}
+
+%%%% Repair %%%%
+\newcommand{\winning}{Z}
+\newcommand{\strategy}{\cA}
+
+\newcommand{\grounding}{\textrm{G}}
+% \newcommand{\groundingreg}{\textrm{G}_\reg}
+\newcommand{\inversegrounding}{\grounding^{-1}}
+\newcommand{\ps}{\cZ}
+\newcommand{\physicalstate}{z}
+\newcommand{\reals}{\mathbb{R}}

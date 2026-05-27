@@ -1,0 +1,43 @@
+Summary of revisions:
+
+Editor response:
+
+Reviewer 4:
+[ ] Overall comment
+[x] Comment 1: Angular Momentum
+[x] Comment 2: Terrain Segmentation Module
+[x] Comment 3: Collision-Free Regions Section
+[x] Comment 4: Perception Capabilities Overstated
+[x] Comment 5: Yaw Orientation Section
+[x] Comment 6: MIP Solver
+[x] Comment 7: Per-Module Timing Decomposition
+[x] Comment 8: Quantitative Repair Data + Short-Horizon MPC Comparison (double check)
+[x] Minor: Symbolic Repair Introduced Too Late + Eq. 1 Notation
+
+Reviewer 5:
+[x] Overall comment
+[x] Comment 1
+[x] Comment 2: related work (double check)
+[x] Comment 3
+[x] Comment 4
+[x] Comment 5: More sophisticated baseline
+[x] Minor: Bipedal Extension
+[x] Minor: Section merging
+[ ] Minor: more data reporting on the std
+[x] Minor: Typos
+
+Reviewer 7:
+[ ] Overall comment
+[ ] Comment 1: Contribution clarification
+[x] Comment 2
+[x] Comment 3
+[x] Comment 4
+[x] Comment 5
+[x] Minor1
+[x] Minor2
+[x] Minor3
+
+Experiments todos:
+1. Re-organize the codebase and make it up and running on the current machine
+2. Regenerate the plot and result for Figure 11 of the MIP solve time benchmark. 
+3. Benchmark with a stronger baseline: solve a graph search + MICP

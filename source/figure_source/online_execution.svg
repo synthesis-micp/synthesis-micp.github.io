@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="320.50488mm"
+   height="175.82831mm"
+   viewBox="0 0 320.50488 175.82831"
+   version="1.1"
+   id="svg19687"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="online_execution.svg"
+   inkscape:export-filename="/home/ziyi/Pictures/research/TRO_perceptive_locomotion/online_execution.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs19681">
+    <marker
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker27961"
+       style="overflow:visible">
+      <path
+         id="path27959"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#f50004;fill-opacity:1;fill-rule:evenodd;stroke:#f50004;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker27017"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#070004;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path27015" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker21371"
+       style="overflow:visible"
+       inkscape:collect="always">
+      <path
+         id="path21369"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#070004;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1-0">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4-4" />
+    </filter>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect6067"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-5">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-1" />
+    </filter>
+    <marker
+       style="overflow:visible"
+       id="marker8059-4"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000004;fill-opacity:1;fill-rule:evenodd;stroke:#000004;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-9" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-9"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker8059-6-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-2-0" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-0-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-5-0">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-1-4" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-8">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-9" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-2">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-5" />
+    </filter>
+    <marker
+       style="overflow:visible"
+       id="marker8059-4-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-9-1" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-9-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1-7">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4-7" />
+    </filter>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12531"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker13007"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13005" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12535"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker13939"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path13937" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12539"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect12543"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1-0-1">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4-4-1" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1-0-1-3">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4-4-1-8" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-3">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-52" />
+    </filter>
+    <marker
+       style="overflow:visible"
+       id="marker8059-6-5-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-2-0-6" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-0-3-8"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-1-0-1-2">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-4-4-1-2" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-01">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-8" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11" />
+    </filter>
+    <marker
+       style="overflow:visible"
+       id="marker8059"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker8059-6-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-2-3" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-0-4"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-1">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-8" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-4">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-3" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-5">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-1" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-9">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-0" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-7">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-3" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-7-1">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-3-3" />
+    </filter>
+    <marker
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker21371-3"
+       style="overflow:visible">
+      <path
+         id="path21369-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#fe0004;fill-opacity:1;fill-rule:evenodd;stroke:#fe0004;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker21371-9"
+       style="overflow:visible">
+      <path
+         id="path21369-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#ff0004;fill-opacity:1;fill-rule:evenodd;stroke:#ff0004;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker21371-9-8"
+       style="overflow:visible">
+      <path
+         id="path21369-5-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000004;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-5-5">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-1-3" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-5-5-7">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-1-3-7" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-5-5-7-6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-1-3-7-5" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-8">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-9" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-8-6">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-9-6" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-8-6-5">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-9-6-0" />
+    </filter>
+    <marker
+       style="overflow:visible"
+       id="marker8059-6-9-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8057-2-3-8" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect7517-0-4-1"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       style="overflow:visible"
+       id="marker27017-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#070004;stroke-width:1.00000003pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path27015-2" />
+    </marker>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-3-1-3">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-0-8-7" />
+    </filter>
+    <filter
+       inkscape:label="Pixellize"
+       inkscape:menu="Pixel Tools"
+       inkscape:menu-tooltip="Reduce or remove antialiasing around shapes"
+       style="color-interpolation-filters:sRGB"
+       id="filter5018-0-0-7-1-5">
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1000 -500 "
+         id="feColorMatrix5016-6-11-3-3-1" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="610.14807"
+     inkscape:cy="455.06656"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="2560"
+     inkscape:window-height="1412"
+     inkscape:window-x="3440"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid19929"
+       originx="3.2911491e-06"
+       originy="-2.2208276" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata19684">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(189.48298,7.2518973)">
+    <text
+       xml:space="preserve"
+       style="font-size:3.52777004px;line-height:1.25;font-family:sans-serif;stroke-width:0.26458299"
+       x="-707.1178"
+       y="66.963135"
+       id="text5619"><tspan
+         sodipodi:role="line"
+         id="tspan5617"
+         x="-707.1178"
+         y="70.084381"
+         style="stroke-width:0.26458299" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52777004px;line-height:1.25;font-family:sans-serif;stroke-width:0.26458299"
+       x="-577.47198"
+       y="125.17146"
+       id="text9427"><tspan
+         sodipodi:role="line"
+         id="tspan9425"
+         x="-577.47198"
+         y="128.29271"
+         style="stroke-width:0.26458299" /></text>
+    <text
+       y="48.442303"
+       x="-797.07611"
+       xml:space="preserve"
+       id="text10499"
+       style="font-size:3.52778029px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect10501);stroke-width:1" />
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.85000002;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79-2-9"
+       width="237.17656"
+       height="119.48177"
+       x="-188.53455"
+       y="48.669643" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-5)"
+       x="-155.79295"
+       y="62.995941"
+       id="text5445-7-2-28-2-6-0"><tspan
+         sodipodi:role="line"
+         x="-155.79295"
+         y="62.995941"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-0">Automaton</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.28888893px;line-height:1.25;text-align:start;text-anchor:start;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.38600016;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="-90.638664"
+       y="106.87798"
+       id="text11375"><tspan
+         sodipodi:role="line"
+         id="tspan11373"
+         x="-90.638664"
+         y="116.866"
+         style="stroke-width:2.38600016" /></text>
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.66731709;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79-2-0"
+       width="50.270832"
+       height="26.458334"
+       x="80.392021"
+       y="96.294647" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-8)"
+       x="106.08369"
+       y="107.17886"
+       id="text5445-7-2-28-2-6-08"><tspan
+         sodipodi:role="line"
+         x="106.08369"
+         y="107.17886"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan12498">Solve</tspan><tspan
+         sodipodi:role="line"
+         x="106.08369"
+         y="117.7622"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan20887">MICP</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.71806997;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79-2-6"
+       width="58.208336"
+       height="26.458334"
+       x="72.454521"
+       y="-6.8928623" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-2)"
+       x="102.87652"
+       y="3.7241039"
+       id="text5445-7-2-28-2-6-2"><tspan
+         sodipodi:role="line"
+         x="102.87652"
+         y="3.7241039"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan12500">Perception</tspan><tspan
+         sodipodi:role="line"
+         x="102.87652"
+         y="14.307442"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan20057">Module</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.26085424;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker13007)"
+       d="m 104.20452,19.984739 c 0,23.67299 0,47.345734 0,71.018231"
+       id="path12533"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect12535"
+       inkscape:original-d="m 104.20452,19.984739 c 2.4e-4,23.67299 2.4e-4,47.345734 0,71.018231" />
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.83852518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79"
+       width="79.375023"
+       height="26.458334"
+       x="-101.75121"
+       y="-5.8345242" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-01)"
+       x="-91.444435"
+       y="4.7578783"
+       id="text5445-7-2-28-2"><tspan
+         sodipodi:role="line"
+         x="-91.444435"
+         y="4.7578783"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;text-anchor:start;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020">User Input / </tspan><tspan
+         sodipodi:role="line"
+         x="-91.444435"
+         y="15.341216"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:start;text-anchor:start;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan19933">Global Planner </tspan></text>
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.83852518;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79-2"
+       width="79.375023"
+       height="26.458334"
+       x="-189.06372"
+       y="-5.8345242" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0)"
+       x="-149.5415"
+       y="9.8605518"
+       id="text5445-7-2-28-2-6"><tspan
+         sodipodi:role="line"
+         x="-149.5415"
+         y="9.8605518"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2">Strategy</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.38600039;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8059)"
+       d="m -149.26639,21.043076 c 0,7.937241 0,15.874741 0,23.812514"
+       id="path7515"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect7517-7"
+       inkscape:original-d="m -149.26639,21.043076 c 2.7e-4,7.937241 2.7e-4,15.874741 0,23.812514" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.38600039;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8059-6-9)"
+       d="m -61.95388,21.043076 c 0,7.937241 0,15.874741 0,23.812504"
+       id="path7515-2"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect7517-0-4"
+       inkscape:original-d="m -61.95388,21.043076 c 2.7e-4,7.937241 2.7e-4,15.874741 0,23.812504" />
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.22340119;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5137-5"
+       cx="-135.5173"
+       cy="105.71595"
+       rx="23.418823"
+       ry="10.590561" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3)"
+       x="-135.80467"
+       y="108.5891"
+       id="text5445-7-2-28-2-6-6"><tspan
+         sodipodi:role="line"
+         x="-135.80467"
+         y="108.5891"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6">Node 0</tspan></text>
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.22340119;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5137-5-2"
+       cx="-74.073524"
+       cy="80.056725"
+       rx="23.418825"
+       ry="10.590561" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-1)"
+       x="-74.360893"
+       y="82.929878"
+       id="text5445-7-2-28-2-6-6-8"><tspan
+         sodipodi:role="line"
+         x="-74.360893"
+         y="82.929878"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-5">Node 1</tspan></text>
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.22340119;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5137-5-9"
+       cx="-72.445747"
+       cy="121.37741"
+       rx="23.418825"
+       ry="10.590561" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-4)"
+       x="-72.733116"
+       y="124.25056"
+       id="text5445-7-2-28-2-6-6-6"><tspan
+         sodipodi:role="line"
+         x="-72.733116"
+         y="124.25056"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-8">Node 2</tspan></text>
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.22340119;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5137-5-8"
+       cx="-1.407124"
+       cy="92.779572"
+       rx="23.418825"
+       ry="10.590561" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-5)"
+       x="-1.6944928"
+       y="95.652718"
+       id="text5445-7-2-28-2-6-6-5"><tspan
+         sodipodi:role="line"
+         x="-1.6944922"
+         y="95.652718"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-2">Node 3</tspan></text>
+    <ellipse
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.22340119;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path5137-5-7"
+       cx="0.11455894"
+       cy="129.76886"
+       rx="23.418825"
+       ry="10.590561" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-9)"
+       x="-0.17281079"
+       y="132.64201"
+       id="text5445-7-2-28-2-6-6-60"><tspan
+         sodipodi:role="line"
+         x="-0.17281026"
+         y="132.64201"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-0">Node 4</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000004;stroke-width:1.18799996;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker21371)"
+       d="M -120.69131,96.713905 -96.878813,86.130572"
+       id="path20043"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:#0000f8;stroke-width:1.18799996;stroke-miterlimit:4;stroke-dasharray:1.18799991, 1.18799991;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -107.46215,59.672237 V 152.2764"
+       id="path20051"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#0000ff;fill-opacity:1;stroke:#0000f8;stroke-width:1.20586562;stroke-miterlimit:4;stroke-dasharray:1.20586556, 1.20586556;stroke-dashoffset:0;stroke-opacity:1"
+       d="M -36.024649,59.672239 V 149.63057"
+       id="path20053"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000004;stroke-width:2.47711754;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker8059-4)"
+       d="M 72.45452,6.7555709 H 6.3086842 V 43.797239"
+       id="path20059"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-7)"
+       x="35.564781"
+       y="19.107538"
+       id="text5445-7-2-28-2-6-27"><tspan
+         sodipodi:role="line"
+         x="35.564781"
+         y="19.107538"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-07">Abstracted</tspan><tspan
+         sodipodi:role="line"
+         x="35.564781"
+         y="29.690876"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan20856">Planes</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-7-1)"
+       x="83.48391"
+       y="49.307648"
+       id="text5445-7-2-28-2-6-27-3"><tspan
+         sodipodi:role="line"
+         x="83.48391"
+         y="49.307648"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-07-7">Exact</tspan><tspan
+         sodipodi:role="line"
+         x="83.48391"
+         y="59.890984"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan20856-6">Planes</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#fe0004;stroke-width:1.46840775;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker21371-3)"
+       d="M -51.899647,115.23474 -22.79548,102.00557"
+       id="path20043-6"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ff0004;stroke-width:1.14999998;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker21371-9)"
+       d="m -118.04547,112.5889 21.166657,7.93751"
+       id="path20043-9"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000004;stroke-width:1.20000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker21371-9-8)"
+       d="m -51.899628,125.81806 26.458315,5.29168"
+       id="path20043-9-7"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-5-5)"
+       x="32.765026"
+       y="92.635994"
+       id="text5445-7-2-28-2-6-0-8"><tspan
+         sodipodi:role="line"
+         x="32.765026"
+         y="92.635994"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-0-0">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-5-5-7)"
+       x="32.470894"
+       y="130.8018"
+       id="text5445-7-2-28-2-6-0-8-3"><tspan
+         sodipodi:role="line"
+         x="32.470894"
+         y="130.8018"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-0-0-4">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-5-5-7-6)"
+       x="-43.727783"
+       y="77.882439"
+       id="text5445-7-2-28-2-6-0-8-3-5"><tspan
+         sodipodi:role="line"
+         x="-43.727783"
+         y="77.882439"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.28888893px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-0-0-4-5">...</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-8)"
+       x="-135.69858"
+       y="156.00191"
+       id="text5445-7-2-28-2-6-6-3"><tspan
+         sodipodi:role="line"
+         x="-135.69858"
+         y="156.00191"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-9">Step 0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-8-6)"
+       x="-72.757278"
+       y="155.70776"
+       id="text5445-7-2-28-2-6-6-3-4"><tspan
+         sodipodi:role="line"
+         x="-72.757278"
+         y="155.70776"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-9-1">Step 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-3-8-6-5)"
+       x="2.0244629"
+       y="154.90596"
+       id="text5445-7-2-28-2-6-6-3-4-7"><tspan
+         sodipodi:role="line"
+         x="2.0244632"
+         y="154.90596"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan5020-2-6-9-1-6">Step 2</tspan></text>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#070004;stroke-width:2.29327965;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27017)"
+       d="M 79.862855,105.97432 H 52.081602"
+       id="path27007"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#070004;stroke-width:2.29327965;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27017-8)"
+       d="m 48.64202,113.91184 27.78125,-2e-5"
+       id="path27007-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#f50004;stroke-width:1.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker27961)"
+       d="M -9.566313,62.318072 H 6.3086867"
+       id="path27951"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;line-height:1.25;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#filter5018-0-0-7-1-5)"
+       x="27.184456"
+       y="59.135025"
+       id="text5445-7-2-28-2-6-27-3-8"
+       transform="matrix(0.76138139,0,0,0.76138139,5.0871034,14.918575)"><tspan
+         sodipodi:role="line"
+         x="27.184454"
+         y="59.135025"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan20856-6-7">Selected</tspan><tspan
+         sodipodi:role="line"
+         x="27.184456"
+         y="69.718361"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667004px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;text-anchor:middle;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none"
+         id="tspan28516">Path</tspan></text>
+    <rect
+       style="fill:none;fill-opacity:0.98355503;stroke:#010101;stroke-width:0.64226133;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:1.74614;stroke-opacity:0.98525498;paint-order:normal"
+       id="rect2120-12-6-85-79-2-0-6"
+       width="58.208328"
+       height="21.166668"
+       x="-12.212144"
+       y="51.734737" />
+  </g>
+</svg>

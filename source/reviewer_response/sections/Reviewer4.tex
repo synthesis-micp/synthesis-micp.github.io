@@ -1,0 +1,170 @@
+\section{Response to Reviewer \#4}
+\subsection*{Overall Comments}
+\begin{mdframed}
+\begin{quote}
+The paper proposes to reduce the combinatorial complexity of Mixed Integer approaches for locomotion planning by adding a layer of abstractions in the planning to limit the planning horizon while considering long-term objectives \ldots\ The approach is interesting, and the results qualitatively strong. However, the novelty of the paper (wrt to [zhou2025physically]) focuses on hardware experiments and reactivity, but there are insufficient details on this aspect to get a clear idea of what is implemented by the authors. The quantitative analysis does not really allow comparing methods with each other either, and would benefit from rewriting.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We thank the reviewer for the thoughtful review and for engaging with the technical content. The IJRR submission addresses the contribution-framing concern by restating the conference contributions (the integrated framework, the manager, and symbolic repair) as bullets~1 and 2 of the contribution list and presenting the journal extensions (re-targeting, delay-aware coordination, collision-region selection, hardware, baselines, yaw study) as additions on top. The technical-clarity and quantitative-presentation concerns are addressed item by item below.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 1: Angular momentum}
+\begin{mdframed}
+\begin{quote}
+While the authors claim that the solutions are dynamically consistent, it is essential to be clear about the fact that angular momentum is completely neglected by the approach. This is a well-known limitation of MIP solvers, making their use tricky for any form of truly dynamic motions, or for applications to humanoid robots. This is not clearly stated, and the claims of feasibility should be toned down.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We agree and have added an explicit disclosure in Sec.~\ref{sec:reactive_gait_synthesis} immediately after Eq.~(\ref{eq:dynamics}):
+
+\textit{\revised{We note that the rotational dynamics adopted in Eq.~(\ref{eq:dynamics}) are intentionally simplified: the rotational equation of motion is replaced by a double integrator on the Euler angles, which keeps the constraint convex but \textit{neglects the true angular-momentum dynamics.} This makes the formulation tractable for online deployment, but it limits applicability to highly dynamic motions such as flips, aggressive yaw maneuvers at high speed, or platforms where angular-momentum management is critical (e.g., humanoids). Future work will explore convex relaxations of the full angular-momentum dynamics to expand the range of feasible motions while maintaining online tractability.}}
+
+We also tone down ``dynamic locomotion'' / ``dynamically consistent'' framings throughout the abstract, introduction, and hardware sections, and explicitly link the angular-momentum limitation to the yaw extension caveats (Sec.~\ref{sec:extension}) and the bipedal-extension discussion (Sec.~\ref{sec:discussion}).
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 2: Terrain segmentation module}
+\begin{mdframed}
+\begin{quote}
+``the online gait-fixed MICP is executed given accurate terrain information from a terrain segmentation module''. We definitely need more information on that module!
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We have added an explicit perception-scope statement in Sec.~\ref{sec:online_execution}:
+
+\textit{\revised{We emphasize that perception is intentionally treated as out of scope in this paper. We assume an upstream segmentation pipeline (e.g., elevation-mapping with plane segmentation~\citep{miki2022elevation,fankhauser2018robust}) provides labeled convex polygons; in our hardware experiments we use motion-capture-aided manual labeling of polygons, which is sufficient to validate the planning and control framework but does not represent a fully autonomous perception stack.}}
+
+We further added a paragraph in the discussion (Sec.~\ref{sec:discussion}) on how perception uncertainty would propagate through the framework and the partial fallback that runtime symbolic repair provides.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 3: Collision-free regions section}
+\begin{mdframed}
+\begin{quote}
+The section introduces collision-free regions for obstacle avoidance, but the paper does not specify how obstacles are detected or how these regions are constructed from sensor or terrain data. It is also unclear which parts of the robot are considered for collision checking. \ldots\ The description suggests that collision-free regions are selected rather than explicit collision avoidance being enforced, yet the section then discusses swing-foot height parametrization, which implies stepping over obstacles---something that is not demonstrated in the results. Overall, this section is confusing and would benefit from substantial clarification.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We rewrote the collision-avoidance subsection to make explicit that obstacle handling in our framework happens at \emph{two distinct levels}, and to clarify which scenarios exercise which mechanism. Large obstacles that occupy entire abstracted cells are handled at the symbolic level---the affected cell is classified as the \textit{obstacle} terrain class, and an obstacle that appears at runtime triggers symbolic re-synthesis to find a detour. Smaller obstacles that the swing foot must clear within a single transition are handled at the MICP level via the binary collision-region variables $\v H_{s,w,j}$ together with a swing-foot height threshold $h_{\text{swing}}$. We also state which robot parts are checked, clarify how obstacles are labeled (manually annotated via mocap in the hardware experiment), and we no longer claim full-body mesh-level collision checking. The revised text reads:
+
+\textit{\revised{Symbolic-level obstacle avoidance: when an obstacle is large enough that an entire abstracted cell becomes unsteppable, it is classified as the \textit{obstacle} terrain class. The symbolic specification rules out transitions into such cells, and if an obstacle appears at runtime---as in the rebar-with-obstacle hardware experiment, where the obstacle is detected via motion capture and added to the local abstraction online---runtime symbolic re-synthesis finds a detour around it. No collision-region variables are added to the online MICP in this case.}}
+
+\textit{\revised{MICP-level collision-free region selection: for smaller obstacles that the swing foot must clear within a single symbolic transition, we encode collision avoidance directly in the online MICP. Binary variables $\v H_{s,w,j}$ constrain the swing-foot trajectory of foot $j$ to lie inside one of $S$ pre-labeled collision-free convex polytopes at each time step. These polytopes come from the same labeled-polygon segmentation pipeline as the steppable terrain, with a separate label set distinguishing free-space polytopes from steppable polygons. In simulation, this mechanism is exercised in the \textit{Unstructured--8} case with collision avoidance enabled (Table~\ref{tab:micp_speed}), where the binary-variable count rises to 256.}}
+
+\textit{\revised{The collision-free region selection in Eq.~(\ref{eq:collision_avoidance}) and the steppable-region selection in Eq.~(\ref{eq:safe_region}) handle different geometric primitives: the steppable-region constraint forces stance-foot placement onto a labeled steppable terrain polygon at the first stance time step, while the collision-free region constraint keeps the swing-foot trajectory inside a free-space polytope across all time steps within a swing phase. The two are complementary, not redundant.}}
+
+\textit{\revised{A separate user-tunable swing-foot height threshold $h_{\text{swing}}$ enforces clearance margins for cases such as jumping onto a higher platform, where the collision-free region selection alone would require fine time-step discretization of the binary variables and would tend to yield trajectories that only marginally clear the terrain.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 4: Perception capabilities overstated}
+\begin{mdframed}
+\begin{quote}
+\ldots\ the presentation implicitly suggests that identifying convex collision-free regions online is straightforward. In general, when terrain surfaces do not exhibit such regular structure, this is not the case. \ldots\ The authors should either clarify the perception tools and assumptions used to obtain these regions or tone down the emphasis on online perception capabilities.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We took the second option: we explicitly tone down the perception claims and label perception as out-of-scope. The added text (quoted in the response to Comment~2 above) makes clear that obtaining convex collision-free regions in unstructured environments is non-trivial, that we make no claim of solving this problem, and that our hardware uses motion-capture-aided manual labeling. The discussion section now also explicitly lists robust perception integration as future work.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 5: Yaw orientation section}
+\begin{mdframed}
+\begin{quote}
+The orientation change is not demonstrated in the companion video, only in Figure 10. \ldots\ The authors claim in the title of the section that they demonstrate generalizability, but the work is very preliminary and nothing is really demonstrated. I would suggest removing this section entirely, or being clearer on the results obtained.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We took the second of the reviewer's two suggestions (``be clearer''). The section is now titled \textit{Preliminary Study: Yaw Command Extension} (Sec.~\ref{sec:extension}) and opens with explicit caveats:
+
+\textit{\revised{This subsection demonstrates that the proposed framework can be extended to non-zero yaw waypoints in principle, but we report the result as a preliminary feasibility study only. We do not claim a full demonstration of generalizability. Specifically: (i) the symbolic abstraction grows combinatorially when yaw is added as a discretized input \ldots; (ii) the angular-momentum coupling neglected by the convex-dynamics simplification becomes more relevant once yaw is treated as a planned variable, especially for fast turns; (iii) we report simulation results only---no hardware deployment of the yaw extension.}}
+
+We retained the section because it shows the symbolic-decomposition machinery (preconditions/postconditions, manager, repair) generalizes to additional state dimensions, which is informative for readers considering the framework for other platforms or motion modes.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 6: MIP solver}
+\begin{mdframed}
+\begin{quote}
+How is the MIP implemented? With which solver?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We added a new \textit{Implementation Details} subsection at the start of the results section:
+
+\textit{\revised{All MICP problems---including the offline gait-free MICP, the online gait-fixed MICP, the kinematic-feasibility re-targeting MICP, and the pure-MIP benchmark---are solved using Gurobi~9. Experiments are run on a desktop workstation equipped with an Intel Core i9-13900K (24 cores) and 64\,GB of RAM.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 7: Per-module timing decomposition}
+\begin{mdframed}
+\begin{quote}
+Table III and Fig.~9 are the only quantitative results regarding the comparisons of the MIP and the proposed framework, but they do not compare the same scenarios nor the same thing. \ldots\ It would clarify things to compare the global running time of the proposed on each scenario, with a proper decomposition of the time spent in each module. Obtaining the actual computation times upon reading the paper proves challenging because the information is disseminated.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We agree that timing data was scattered. The biggest change in this revision is the new \textbf{end-to-end benchmark} on the dense-rebar scenario (Sec.~\ref{sec:experiments}, Table~\ref{tab:pure_mip_benchmark}), which consolidates all the relevant quantities into one table: \emph{success rate}, \emph{mean traversal time}, and \emph{mean per-module active computation per trial}---broken down into MIP transition solving, the pre-flight MIP feasibility check, reactive synthesis (strategy query plus reload), and runtime repair. Each method is dispatched against $10$ identically seeded random waypoints, with random rebar removals between trials, so any difference reflects the planner alone.
+
+\noindent The proposed planner attains $90\%$ success at $18.5$\,s mean traversal time and a per-trial decomposition of $5.26$\,s MIP transition solving, $0.19$\,s MIP feasibility check, $0.29$\,s reactive synthesis, and $0.03$\,s runtime repair. The pure-MIP $H{=}3$\,s baseline matches the $90\%$ success rate but at $24.7$\,s traversal and $11.54$\,s MIP transition cost---roughly $2\times$ the MIP cost for $\sim 33\%$ longer traversal---and the $H{=}2$\,s pure-MIP baseline drops to $60\%$. The pure-MIP definition (now precisely stated in Sec.~\ref{sec:experiments}) is shared with our online gait-fixed MICP except for the absence of symbolic decomposition and the horizon-induced expansion of the local planning region:
+
+\textit{\revised{The pure-MIP baseline uses the same convex relaxations of the dynamics, the same linearized friction-cone and fixed-Jacobian kinematic constraints, and the same cost weights as our online gait-fixed MICP. The only differences are (i) the planner solves a single long-horizon gait-fixed MICP without symbolic-level decomposition, and (ii) the local planning region is expanded to encompass all terrain polygons within the horizon-induced reachable distance.}}
+
+To make the per-MIP comparison directly readable: the $H{=}2$\,s horizon in Fig.~\ref{fig:pure_mip_benchmark} is configured with a planning region of two cells (i.e., two consecutive symbolic transitions in our framework), with each additional second of horizon adding half a cell. We also augmented the hardware MICP-solve-time table with a std-dev column for variability. Offline-synthesis and repair statistics are reported in Table~\ref{tab:offline_synthesis_time}; the new \textit{Runtime Repair Case Study} subsection (Sec.~\ref{sec:runtime_repair_case_study}) covers the runtime side. Together these address both the per-module-timing breakdown and the apples-to-apples comparison the reviewer asked for.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 8: Quantitative repair data + short-horizon MPC comparison}
+\begin{mdframed}
+\begin{quote}
+There are no quantitative data on the amount of repair necessary, etc.\ \ldots\ What if a short-horizon MPC was used to repeatedly solve the proposed scenarios in a receding-horizon fashion, with a fixed gait for the rebar scenario? \ldots\ Without such comparisons, the interest of using a long-term planner is not demonstrated.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We have added quantitative repair data at two levels.
+
+\noindent \textbf{Offline repair statistics.} Table~\ref{tab:offline_synthesis_time} (\textit{Offline Synthesis and Repair Time}) reports, for each scenario--grid-size combination, the number of successful versus total terrain/request state pairs, the original/new/total skill counts, the symbolic-repair wall-clock time, and the gait-fixed/gait-free MICP feasibility-check times. Across the four scenarios, repair successfully resolves $93.4\%$ of the terrain--request state pairs, and the number of newly discovered skills is reduced by $71.6$--$97.6\%$ relative to exhaustive enumeration over all possible skills---directly answering the reviewer's request for quantitative ``amount of repair necessary'' data.
+
+\noindent \textbf{Runtime repair case studies.} A new \textit{Runtime Repair Case Study} subsection (Sec.~\ref{sec:runtime_repair_case_study}) covers two run-time scenarios with concrete timing numbers:
+
+\textit{\revised{(Unforeseen Terrain States) When the robot reaches a new terrain state that contains a \textit{gap} excluded from offline synthesis, runtime repair is triggered. The runtime repair takes $12.36$\,s in total, of which the symbolic-repair stage accounts for $0.18$\,s and the gait-free MICP for the new leaping gait accounts for $12.18$\,s.}}
+
+\textit{\revised{(Solving Failure) Re-synthesis triggered by online MICP solving failures takes $0.11$\,s and $0.07$\,s in the 7-type and 14-type rebar cases, respectively, without invoking full runtime repair because the existing skill set already suffices.}}
+
+\noindent \textbf{Receding-horizon MPC comparison.} The new end-to-end benchmark on the dense-rebar scenario (Sec.~\ref{sec:experiments}, Table~\ref{tab:pure_mip_benchmark}) directly addresses this question. With a fixed gait and convex relaxations identical to ours, repeatedly solving a short-horizon MIP in a receding-horizon fashion is exactly our pure-MIP $H{=}2$\,s and $H{=}3$\,s configurations. The data show that:
+\begin{itemize}
+    \item \textit{Short horizon is insufficient.} The pure-MIP $H{=}2$\,s baseline (planning footprint matched to one of our symbolic transitions) attains only $60\%$ success vs.\ $90\%$ for the proposed planner.
+    \item \textit{Longer horizon recovers success but is expensive.} The pure-MIP $H{=}3$\,s baseline matches our $90\%$ success rate but at $24.7$\,s mean traversal time vs.\ our $18.5$\,s, and at $11.54$\,s MIP transition cost per trial vs.\ our $5.26$\,s.
+\end{itemize}
+The qualitative failure mode is illustrated in Fig.~\ref{fig:dense_rebar_comparison}: when the short-horizon pure-MIP planner cannot find a feasible foothold pattern inside its local window, it has no mechanism to deliberate at the symbolic level about which neighboring cell to attempt next, so it stalls; the proposed planner instead routes through a different sequence of cells via the symbolic strategy. The related question of how the proposed framework would scale to higher-frequency MICP updates is addressed in the new \textit{Reactivity and Update Frequencies} subsection of the discussion (Sec.~\ref{sec:discussion}), which notes that more frequent MICP updates are easily adaptable in our framework via the delay-aware coordination scheme.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 9: Symbolic repair introduced too late + Eq.~1 notation}
+\begin{mdframed}
+\begin{quote}
+Symbolic repairing is repeatedly referenced to but only introduced in Section VI. \ldots\ Eq.~1 does not specify that $\mathcal{D}$ is the system dynamics.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+For symbolic repair, we added an informal forward-definition at the point where the term first appears in the \textit{Specifications} subsection of Sec.~\ref{sec:preliminaries_abstraction}, so the reader has a working notion of the procedure before seeing it referenced in subsequent definitions:
+
+\textit{\revised{We refer below and throughout the rest of this article to symbolic repair, the process of augmenting the symbolic transition set with new, dynamically feasible skills whenever the current specification becomes unrealizable. The full procedure is formalized in Sec.~\ref{sec:manager_and_repair}; for the purpose of the upcoming definitions, it suffices to treat symbolic repair as a black box that proposes candidate symbolic transitions whose physical feasibility is then verified by MICP.}}
+
+For the Eq.~(\ref{ocp:mip_general}) notation, we added an inline clarification just below the equation:
+
+\textit{\revised{The function $\mathcal{D}(\cdot)$ encodes the discrete-time system dynamics that propagate the continuous state $\vg \phi[i]$ to $\vg \phi[i+1]$; the specific dynamics used in this work are detailed in Eq.~(\ref{eq:dynamics}).}}
+
+\noindent\rule{17cm}{6.0pt}
+\newpage

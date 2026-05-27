@@ -1,0 +1,173 @@
+\section{Response to Reviewer \#7}
+\subsection*{Overall Comments}
+\begin{mdframed}
+\begin{quote}
+The paper presents a hierarchical planning and control framework for legged locomotion on uneven terrain, extending the previously existing work [zhou2025physically]. \ldots\ The key contributions beyond [zhou2025physically] are: (1) a coordination mechanism between the symbolic planner and tracking controller \ldots, (2) online pose retargeting to ensure feasibility under actual terrain, and (3) comprehensive hardware validation with systematic benchmarking against both heuristic-based and pure MIP approaches.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We thank the reviewer for the careful summary of the prior submission and for the detailed concerns raised. We address each below. The single most important change in this IJRR submission is that we have rebalanced the contribution list to give proper credit to the conference-introduced contributions (the integrated framework, the manager, and symbolic repair with dynamic feasibility checks), rather than leaning entirely on the journal extensions identified in the reviewer's summary.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 1: Incremental contributions and scientific novelty}
+\begin{mdframed}
+\begin{quote}
+The incremental contributions relative to [zhou2025physically] requires stronger justification. Hardware deployment and delay handling appear to be practical achievements with limited scientific contribution. The proposed coordination mechanism (waiting for MICP or appending trajectories) are straightforward implementation choices and do not appear to be innovative. The paper will benefit from a clearer identification and articulation of technical and scientific challenges that were overcome during hardware deployment.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We thank the reviewer for raising this directly, and we have substantially revised the manuscript to make the journal contribution case clearer. We see the journal extensions as more than implementation choices. The delay-aware coordination scheme and the kinematic-feasibility re-targeting are the mechanisms that make the closed loop between the discrete strategy automaton and the continuous tracking controller well-defined under bounded MICP solve time and under terrain--pose mismatch at runtime---two issues that any deployable synthesis-with-MICP planner must resolve, and that no prior synthesis-MICP work had to address because no prior such work had been deployed end-to-end on real hardware. The collision-region selection with binary $\v H_{s,w,j}$ variables is, similarly, a substantive change to the online MICP formulation rather than a re-implementation of the conference version. The introduction now contains a dedicated paragraph that motivates each of these mechanisms with explicit discussion of the concrete deployment gap it closes, presented alongside (and at the same level of detail as) the conference-introduced scalability machinery---the high-level manager and symbolic repair with dynamic feasibility checks---so that the framework's complete technical scope is visible end-to-end. The contribution list now reads (paraphrased from the introduction):
+
+\textit{\revised{(1) Integrated reactive-synthesis-and-MICP framework for terrain-adaptive locomotion. (2) Scalable offline synthesis via a high-level manager and symbolic repair with dynamic feasibility checks ($80.9$--$90.1\%$ state-space reduction; $71.6$--$97.6\%$ MICP-solve reduction). (3) Online execution module that bridges offline synthesis and real-world deployment, with new mechanisms introduced in this article: kinematic-feasibility re-targeting, delay-aware coordination between the strategy automaton and the tracking controller, and collision-region selection in the online MICP. (4) Comprehensive empirical validation across simulation and hardware with two baselines.}}
+
+\noindent Beyond the contribution restructuring, we have also strengthened the \emph{technical soundness} of the newly proposed mechanisms with new quantitative evidence. The Pure-MIP benchmark subsection (Sec.~\ref{sec:experiments}) now reports both (i) a per-MIP solve-time scaling study over $10$ seeded waypoints per scenario and five planning horizons (Fig.~\ref{fig:pure_mip_benchmark}) and (ii) a new end-to-end benchmark on the dense-rebar scenario (Table~\ref{tab:pure_mip_benchmark}) with success rate, traversal time, and per-module computational cost. The same benchmark contains explicit \emph{ablation rows} for the two newly proposed mechanisms---disabling the MIP feasibility check (FC) drops the proposed planner's success rate from $90\%$ to $60\%$, and disabling delay-aware coordination (DAC) inflates the mean traversal time from $18.5$\,s to $23.4$\,s---confirming that each mechanism is necessary for the reported performance. The per-reviewer responses on the following pages detail each change.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 2: LTL spec construction details}
+\begin{mdframed}
+\begin{quote}
+Symbolic synthesis step: How are LTL specifications ($\phi$) constructed from MICP solutions? Are preconditions and postconditions manually encoded or learned? Section VI-B states skills execute ``when at least one of its preconditions is satisfied'' -- please clarify whether this refers to one precondition set ($\sigma_{\rm robot}, \sigma_{\rm terrain}$ pair) from $\Sigma^{\rm pre}_o$, or individual propositions within a precondition.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+The two parts of the question are addressed in two places in the manuscript. First, at the start of the Task Specification Encoding subsection (Sec.~\ref{sec:spec_gen}), we now state explicitly that the precondition and postcondition sets of each skill are user-defined and that the GR(1) encoding is a deterministic function of those user-defined sets:
+
+\textit{\revised{Each skill is associated with a user-defined precondition set $\skillpre \subseteq 2^{\inpcen \cup \inpterrain}$ and postcondition set $\skillpost \subseteq 2^{\inpcen}$, expressed over the robot and terrain inputs introduced in Sec.~\ref{sec:preliminaries_abstraction}. The encoding rules below map these sets into the GR(1) components $\envsafetynothard$ and $\syssafetynothard$ deterministically.}}
+
+This clarifies that preconditions/postconditions are manually authored rather than learned, and that the LTL specification $\phi$ is constructed deterministically from them via the encoding rules in the same subsection. Second, the more specific question about the meaning of ``a skill executes when at least one of its preconditions is satisfied'' is addressed in place, immediately after the precondition equation defining $\syssafetynothard$:
+
+\textit{\revised{The disjunction $\bigvee_{\statevar \in \skillpre}$ in the equation above is taken over precondition pairs in $\skillpre$: a skill becomes eligible to execute when the conjunction of input assignments specified by at least one full pair $(\inpstatecen, \inpstateterrain) \in \skillpre$ holds, rather than when only some individual atomic propositions within a pair hold.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 3: Calibrating claims}
+\begin{mdframed}
+\begin{quote}
+\textbf{Dynamically changing environments:} All experiments use static, pre-mapped terrains. \textbf{Dynamic locomotion:} The hardware experiments primarily use conservative gaits (3s trotting, 2.25s static walking). \textbf{Safety guarantees:} The convex relaxations of dynamics \ldots and lack of verification between MICP and NMPC layers limits formal safety assurances.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We agree on all three points and have toned down the language throughout the paper:
+
+\textbf{(a) ``Dynamically changing environments''} is replaced with ``unforeseen terrain configurations revealed at runtime'' in the abstract and introduction. Runtime symbolic repair handles unexpected terrains revealed during execution; we do not claim continuous environmental change.
+
+\textbf{(b) ``Dynamic locomotion''} is replaced with ``agile, variable-gait locomotion'' or ``terrain-adaptive locomotion'' depending on context. We added a sentence in the hardware section calibrating the gait-timing claim:
+
+\textit{\revised{The gait timings adopted on hardware---$3$\,s trotting, $1.5$\,s leaping, $2.25$\,s static walking---are conservative compared to the most agile motions reported in the legged-locomotion literature; however, they exercise the framework's gait-switching, online MICP, and runtime-repair mechanisms, which is the validation target of this article. Aggressive, high-speed gaits would require revisiting the convex-dynamics simplification.}}
+
+\textbf{(c) ``Safety guarantees''} is qualified as ``symbolic-level realizability guarantees and physical-feasibility certificates from MICP.'' We further added an explicit angular-momentum disclosure paragraph after the dynamics equation in the offline synthesis section, and the discussion section now flags the lack of formal MICP/NMPC verification as future work.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 4: Limited reactivity / classical sense-plan-act}
+\begin{mdframed}
+\begin{quote}
+The symbolic-MICP level interaction operates at a low frequency (once per MICP solve, $\sim$0.37--9.13s), with no symbolic/MICP level involvement during NMPC tracking. \ldots\ This resembles a classical sense-plan-act cycle more than reactive synthesis. How does this differ from a single MICP controller \ldots ? Could you demonstrate scenarios where symbolic-level reasoning provides qualitative advantages \ldots ? What prevents more frequent symbolic-continuous interaction \ldots ?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We address the three sub-questions in turn.
+
+\noindent \textbf{What prevents more frequent symbolic--continuous interaction?} Two computational bottlenecks. (i) On the symbolic side, reactive synthesis has exponential time complexity in the number of variables in the specification~\citep{bloem2012synthesis}; running the symbolic layer at higher frequency would generally require a finer abstraction (more atomic propositions per cell, finer state granularity, a larger skill repertoire), which inflates the synthesis cost rapidly. (ii) On the MICP side, each per-transition online gait-fixed MICP itself takes hundreds of milliseconds to several seconds (Tables~\ref{tab:micp_speed} and~\ref{tab:micp_speed_hardware}), which precludes running it in a true predictive fashion at the NMPC tick rate. Crucially, neither limit is architectural in the proposed framework: the delay-aware coordination scheme already supports asynchronous MICP solves of arbitrary duration, so any solver speed-up or any careful refinement of the abstraction translates directly into higher update rates. We have added a new \textit{Reactivity and Update Frequencies} subsection in the discussion (Sec.~\ref{sec:discussion}) that lays out both bottlenecks and the available paths to higher reactivity:
+
+\textit{\revised{More frequent MICP updates are easily adaptable in the proposed framework: the delay-aware coordination scheme already supports asynchronous MICP solves of arbitrary duration, so any speed-up of the underlying solver translates directly into a higher MICP update rate. \ldots\ More frequent symbolic-level planning is also achievable but requires careful design of the symbolic abstraction. Higher-frequency symbolic decisions would generally call for a finer abstraction \ldots\ Reactive synthesis, however, scales exponentially in the number of variables in the specification, so any finer abstraction must be balanced against synthesis cost.}}
+
+\noindent \textbf{Where does our framework's complexity sit relative to a single MICP controller, and where does symbolic reasoning provide qualitative advantage?} The pure-MIP benchmark in Fig.~\ref{fig:pure_mip_benchmark} is the natural baseline---it is exactly a single MICP controller without symbolic decomposition. To anchor the comparison: the $2$\,s pure-MIP horizon is configured with a planning region of two cells (i.e., two consecutive symbolic transitions in our framework), with each additional second of horizon adding half a cell. The $2$\,s column therefore reads as a like-for-like comparison for an equivalent two-transition footprint, with the longer-horizon columns quantifying the cost of folding a larger region into a single MICP solve. Compared with the per-transition online gait-fixed MICP solve times in Table~\ref{tab:micp_speed}, our framework sits at the cheap end of the same complexity continuum, with the symbolic layer adding long-horizon reasoning at negligible per-transition overhead.
+
+The qualitative advantage of the symbolic layer is now also confirmed quantitatively by the new end-to-end benchmark on the dense-rebar scenario (Table~\ref{tab:pure_mip_benchmark}). Against $10$ identically seeded random waypoints, the proposed planner attains $90\%$ success at $18.5$\,s mean traversal time and $5.26$\,s mean MIP transition cost per trial; the pure-MIP $H{=}3$\,s baseline (the natural single-MICP-controller comparison) matches the $90\%$ success rate but at $24.7$\,s traversal and $11.54$\,s MIP cost, and the shorter $H{=}2$\,s pure-MIP horizon drops to $60\%$. Fig.~\ref{fig:dense_rebar_comparison} shows a representative trial in which the short-horizon pure-MIP planner stalls in a local minimum---it has no mechanism to deliberate at the symbolic level about which neighboring cell to attempt next---whereas the proposed planner routes through a different sequence of cells. The same qualitative argument carries over to short-horizon receding-horizon MIP baselines regardless of solve speed (see also Reviewer~4's Comment~8).
+
+\noindent \textbf{How does this differ from a single MICP controller with gait-sequencing heuristics and a gait-free fallback?} We read this as referring to a baseline that, at every step, iterates over a candidate set of gaits, solves a gait-fixed MICP for each candidate, and falls back to a gait-free MICP whenever the candidate gaits all fail. We see two key differences from such a baseline.
+
+First, designing a gait-sequencing heuristic that generalizes is itself non-trivial. The set of feasible gait choices depends on the local terrain in ways that are not captured by simple rules---e.g., a $1$-second trotting gait is feasible on a flat region but not on a wide gap; a $1.5$-second leaping gait is feasible across a gap but unnecessarily aggressive on a flat-and-dense region; \textit{extreme sparse} rebar configurations admit only specific footstep patterns. The hand-tuning required to enumerate which gait to try first across these mixed-terrain scenarios---and to define the iteration order for fallbacks---is precisely the engineering burden that hierarchical formal-methods planners are designed to remove.
+
+Second, our offline synthesis already encodes per-skill feasibility (verified by gait-fixed MICP, with gait-free MICP only invoked during repair), and the synthesized strategy automaton uses this information to select a gait whose feasibility on the current symbolic abstraction is already certified. At runtime, this typically saves multiple online MICP solves per step that an iterate-and-test heuristic would incur: in the iterate-and-test setting, a wrong-gait guess pays the full online MICP cost before being detected; if all candidate gaits fail, an additional gait-free MICP must be solved (which is the most expensive call in our pipeline---averaging $27.23$\,s in our experiments). Our framework collapses this iteration into a single online gait-fixed MICP per transition under nominal conditions, with online repair (and only then a gait-free MICP) reserved for genuinely unforeseen terrains.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 5: Heuristic baseline + pure MIP definition + ablation}
+\begin{mdframed}
+\begin{quote}
+\textbf{(a) Heuristic baseline:} \ldots overly simplistic. Consider comparing against recent perceptive locomotion methods such as Winkler 2018 \ldots \textbf{(b) Pure MIP baseline:} requires major clarifications. \textbf{(c) Ablation studies:} Analyze contributions of (1) online retargeting, (2) delay coordination, (3) symbolic vs.\ direct MICP replanning.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+\textbf{(a) Heuristic baseline.} We appreciate the suggestion. While we did not have the bandwidth to implement a more sophisticated baseline within the scope of this revision, we have strengthened the rationale for the nearest-feasible-foothold heuristic in the hardware section, and added an explicit future-work commitment to concrete stronger baselines in the discussion. The strengthened rationale reads:
+
+\textit{\revised{We chose this nearest-feasible-foothold heuristic because it isolates the value of feasibility-aware, longer-horizon planning over a single-step heuristic, and because such heuristics remain widely used in deployed perceptive-locomotion stacks. Comparisons against more sophisticated baselines are discussed as future work in Sec.~\ref{sec:discussion}.}}
+
+The new \textit{Stronger Baseline Comparisons as Future Work} subsection of the discussion section lists Winkler 2018~\citep{winkler2018gait} and parkour-style RL controllers~\citep{zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie} as concrete future-baseline targets, and notes that a fair comparison would require either equipping these baselines with a comparable symbolic decomposition layer or restricting our framework to single-skill operation.
+
+\textbf{(b) Pure MIP baseline.} The benchmark subsection now precisely defines the pure-MIP baseline:
+
+\textit{\revised{The pure-MIP baseline uses the same convex relaxations of the dynamics, the same linearized friction-cone and fixed-Jacobian kinematic constraints, and the same cost weights as our online gait-fixed MICP. The only differences are (i) the planner solves a single long-horizon gait-fixed MICP without symbolic-level decomposition, and (ii) the local planning region is expanded to encompass all terrain polygons within the horizon-induced reachable distance. The same Gurobi solver and settings are used in both cases.}}
+
+\textbf{(c) Ablation studies.} We have added explicit ablation experiments for the two newly proposed online-execution mechanisms---the \textbf{MIP feasibility check (FC)}, which corresponds to the kinematic-feasibility re-targeting step, and the \textbf{delay-aware coordination (DAC)} scheme---as part of a new end-to-end benchmark on the dense-rebar scenario (Sec.~\ref{sec:experiments}, Table~\ref{tab:pure_mip_benchmark}). Each method is dispatched against $10$ identically seeded random waypoints, with rebars randomly removed per trial to add difficulty. The condensed headline numbers are:
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\hline
+\textbf{Method} & \textbf{Success} & \textbf{Traversal (s)} & \textbf{MIP trans.\ (s)} \\
+\hline
+Proposed                       & \textbf{90\%} & \textbf{18.5} & \textbf{5.3} \\
+\quad no FC                    & 60\%          & 20.1          & 5.9 \\
+\quad no DAC                   & 90\%          & 23.4          & 5.1 \\
+Pure-MIP ($H{=}3$\,s)          & 90\%          & 24.7          & 11.5 \\
+Pure-MIP ($H{=}2$\,s)          & 60\%          & 14.8          & 3.0 \\
+Pure-MIP ($H{=}2$\,s), no FC   & 20\%          & 9.0           & 1.4 \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent The ablation rows confirm the value of both newly proposed mechanisms:
+\begin{itemize}
+    \item Disabling the FC drops the proposed planner from $90\%$ to $60\%$ success and the pure-MIP $H{=}2$\,s baseline from $60\%$ to $20\%$, because the planner can no longer prune symbolic transitions whose target poses are not physically reachable on the perceived terrain.
+    \item Disabling DAC preserves the $90\%$ success rate but inflates the mean traversal time from $18.5$\,s to $23.4$\,s, because each symbolic transition now waits for the previous trajectory to be fully tracked before the next MIP can start.
+\end{itemize}
+For the third question (symbolic vs.\ direct MICP replanning), the pure-MIP rows in the same table serve as a direct ablation of the symbolic decomposition: the proposed planner matches the pure-MIP $H{=}3$\,s success rate ($90\%$) at roughly three quarters of the traversal time and less than half of the MIP-transition cost per trial; the shorter $H{=}2$\,s pure-MIP horizon drops to $60\%$, so without symbolic guidance the horizon must be expanded (and the MIP cost incurred) for the planner to recover from the harder rebar gaps. Collision-region selection is separately exercised by the \textit{Unstructured-8} simulation scenario (Table~\ref{tab:micp_speed}), where activating it raises the binary-variable count from $69$ to $256$ and the solve time correspondingly by $440\%$; we did not run a standalone disable-collision-region ablation because the mechanism is not optional for that scenario.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 6: Section organization}
+\begin{mdframed}
+\begin{quote}
+Please consider reorganizing sections better. For example, Section IV is just seven lines long.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+The previously short Approach section has been merged into a single ``Problem Statement and Approach Overview'' section (Sec.~\ref{sec:problem_statement}), aligned with Reviewer 5's analogous suggestion.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 7: Perception validation / uncertainty}
+\begin{mdframed}
+\begin{quote}
+While focusing on planning/control is reasonable, the lack of online perception limits validation of safety claims. Consider discussing how terrain segmentation uncertainty or perception delays would affect the framework.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+The discussion section now includes a paragraph on perception uncertainty, segmentation noise, polygon misalignment, and the partial fallback that runtime symbolic repair provides. We also added an explicit out-of-scope statement on perception in the online execution section.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 8: Rationale for two-level discrete decisions}
+\begin{mdframed}
+\begin{quote}
+The rationale for making discrete decisions at both symbolic-level and MICP-level could be clarified. What does the symbolic level provide that a better-designed MICP level couldn't achieve? Or alternately, why can't your symbolic level decide which polygon to step on?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+Given that the MICP already makes binary decisions (contact mode, region selection), one may ask why a separate symbolic decomposition is needed. The short answer is the state-space blowup. Pushing region-selection decisions for an entire local environment into the symbolic layer would require enumerating all combinations of polygon assignments and gait choices over the synthesis state, which scales poorly in both polygon count and horizon. Conversely, expanding the MICP to cover multi-cell horizons gives back the long-horizon scaling we set out to avoid (Fig.~\ref{fig:pure_mip_benchmark}). The symbolic layer therefore reasons over a coarse abstraction (cell-level robot states, terrain-type categories, gait identifiers) that admits formal realizability guarantees, while the MICP handles fine-grained continuous and combinatorial decisions inside a single transition. The two layers together cover the long-horizon decision-making space at a tractable computational budget. We chose not to fold this rationale into the manuscript itself because it is essentially a defense of an existing design choice rather than new content.
+
+\noindent\rule{17cm}{6.0pt}

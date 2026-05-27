@@ -1,0 +1,75 @@
+Major T-RO Reviewer Comments:
+
+Note: Each comment is marked a difficulty level to address
+Easy: simply adding more clarifications
+Medium: would require some thinking, discussions, and clarifications
+Hard: would require some thinking or discussions and new experiments usually
+From the editor:
+(we need to make it clear about the contributions based on the new guidelines from IJRR) Three experts in the domain provided insightful feedback on the manuscript. All reviewers raise a major concern that the current manuscript is a direct extension of [24], published in 2025 in the IROS proceedings. While this submission essentially presents additional hardware experiments, it reuses the very same materials and approaches.
+
+As mentioned in the guidelines T-RO Information for Authors (https://www.ieee-ras.org/publications/t-ro/t-ro-information-for-authors/):
+"If your submission is based on previously published papers, your manuscript must not be just a mere extension of the previous version(s), filling in, e.g., details of proofs or additional corollaries, additional experiments, or a more detailed background and narrative. Rather, the new submission must contain new results of substantive research significance and impact beyond the previous papers."
+
+Unfortunately, in the current state, the submission does not provide new results of substantive research significance and impact beyond the previous papers. The editors have assessed that the potential impact of this work needs to be more significant for a successful review process at T-RO. 
+
+From reviewer 4:
+1. (easy) While the authors claim that the solutions are dynamically consistent, it is essential to be clear about the fact that angular momentum is completely neglected by the approach.
+
+2. (easy) "the online gait-fixed MICP is executed given accurate terrain information from a terrain segmentation module". We definitely need more information on that module!
+
+3. (easy) The section introduces collision-free regions for obstacle avoidance, but the paper does not specify how obstacles are detected or how these regions are constructed from sensor or terrain data. It is also unclear which parts of the robot are considered for collision checking.
+
+4. (easy) The authors should either clarify the perception tools and assumptions used to obtain these regions or tone down the emphasis on online perception capabilities. In the current stage, the reviewer has no idea how the convex polygons are actually accurately built, obstacles detected, and appropriate regions sorted.
+
+5.(medium? Need further investigations) Including orientation is definitely a significant challenge and interesting avenue of research, which brings a variety of questions, principally around the combinatorial and the limitations of the abstract representation of the map in terms of turn and repairs necessary. The authors claim in the title of the section that they demonstrate generalizability, but the work is very preliminary and nothing is really demonstrated. I would suggest removing this section entirely, or being clearer on the results obtained.
+
+6. (easy) How is the MIP implemented? With which solver?
+
+7. (medium; need to rerun some experiments in simulation) It would clarify things to compare the global running time of the proposed on each scenario, with a proper decomposition of the time spent in each module.
+
+8. (medium; we can add back some results from the conference paper?) There are no quantitative data on the amount of repair necessary, etc.
+
+
+
+From reviewer 5:
+1. (easy) Introduction: it doesn’t really, clearly define what the authors mean by “reactive synthesis” while employing it several times, along with “LTL”.
+
+2. (easy) Related work: the related work section still suffers from the problem of the introduction, using the term “synthesis” and “Linear Temporal Logic (LTL)” as if the reader already grappled with these concepts.
+
+3. (easy) Which solver is used to solve the mixed-integer (convex) program?
+
+4. (easy) What kind of hardware (outside of the robot – computer CPU, RAM) are the computations running on?
+
+5. (hard; maybe just add more clarifications) The authors compare with a heuristic on real hardware. What about another more sophisticated approach? Another hierarchical planner? A learning-based method?
+
+
+
+From reviewer 7:
+1. (medium; need to rethink the way of presenting what’s new compared to the conference) The incremental contributions relative to [24] requires stronger justification. Hardware deployment and delay handling appear to be practical achievements with limited scientific contribution.
+
+2. (medium; need some justifications) How does this approach differ from a single MICP controller that can try out several gait sequencing heuristics with a gait-free fallback?
+
+3. (medium; need some justifications) Could you demonstrate scenarios where symbolic-level reasoning provides qualitative advantages over purely optimization-based approaches?
+
+4. (easy) What prevents more frequent symbolic-continuous interaction during execution?
+
+5. (easy) Benchmark definition: The "pure MIP planner" (Sec. IX-E) needs precise definition. Does it use the same convex relaxations as MICP but without symbolic-level guidance? Or does it formulate a non-convex MIP without relaxations?
+
+6.  (hard; a direct ablation study might not be feasible; probably just through better justifications) Ablation studies: Analyze contributions of (1) online retargeting, (2) delay coordination, (3) symbolic vs. direct MICP replanning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

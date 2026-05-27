@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
+  <meta name="description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains, combining reactive synthesis with mixed-integer convex programming.">
   <meta property="og:title" content="Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion"/>
   <meta property="og:description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains."/>
   <meta property="og:url" content="URL OF THE WEBSITE"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta property="og:image" content="static/images/system_diagram.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
 
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
+  <meta name="twitter:title" content="Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion">
+  <meta name="twitter:description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains.">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:image" content="static/images/system_diagram.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="reactive synthesis, mixed-integer convex programming, MICP, quadrupedal locomotion, footstep planning, terrain-adaptive locomotion, legged robots, correct-by-construction control">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css?v=2">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -46,73 +46,80 @@
 </head>
 <body>
 
+  <!-- BeyondMimic-style hero: full-height video background with title overlaid -->
+  <section class="hero is-fullheight video" style="overflow: hidden; position: relative;">
+    <div class="hero-video" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 101%; height: 101%; z-index: 0;">
+      <video playsinline autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="static/videos/hero_video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="overlay"></div>
 
-  <section class="hero">
+    <div class="hero-head is-hidden-mobile">
+      <header class="navbar">
+        <div class="container is-size-5">
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item pl-4 pr-4" href="static/pdfs/main_ijrr.pdf" target="_blank" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); color: #fff;">
+                <span class="icon" style="margin-right: 5px;">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+              <span class="navbar-item pl-4 pr-4">
+                <a href="#" class="button is-inverted" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 publication-title is-size-1-mobile hero-title-on-video">
+          Physically-Feasible Reactive Synthesis<br>for Terrain-Adaptive Locomotion
+        </h1>
+        <h2 class="subtitle is-3 publication-title is-size-5-mobile hero-subtitle-on-video">
+          An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Title and links between teaser and scenario figure -->
+  <section class="hero is-small">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion</h1>
+            <h1 class="title is-2 publication-title">Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion</h1>
             <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a target="_blank">Anonymous Author(s)</a></span>
-                <!-- <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span> -->
-                <!-- <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span> -->
-                  </div>
-
-                  <!-- <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div> -->
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="static/pdfs/paper_anonymous.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (coming soon)</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <!-- <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span> -->
+              <span class="author-block">Ziyi Zhou<sup>1</sup>,</span>
+              <span class="author-block">Qian Meng<sup>2</sup>,</span>
+              <span class="author-block">Hadas Kress-Gazit<sup>2</sup>,</span>
+              <span class="author-block">Ye Zhao<sup>1</sup></span>
+            </div>
+            <div class="is-size-6 publication-authors" style="margin-top: 0.5rem;">
+              <span class="author-block"><sup>1</sup>Georgia Tech, Atlanta, GA, USA</span>&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup>Cornell University, Ithaca, NY, USA</span>
+            </div>
+            <div class="publication-links" style="margin-top: 1rem;">
+              <span class="link-block">
+                <a href="static/pdfs/main_ijrr.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (coming soon)</span>
                 </a>
               </span>
             </div>
@@ -120,36 +127,25 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/TRO-video-short.mp4"
-        type="video/mp4">
-      </video>
-      <!-- <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2> -->
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
+<!-- Paper abstract & video (BeyondMimic-style layout) -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+    <div class="columns">
+      <div class="column is-half">
+        <h2 class="title is-3">Video</h2>
+        <div class="video-abstract-card" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+          <video controls playsinline poster="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background: #000;">
+            <source src="static/videos/TRO-video-full.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column is-half">
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            We propose an integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains. Existing approaches either rely on heuristics for instantaneous foothold selection--compromising safety and versatility--or  solve expensive trajectory optimization problems with complex terrain features and long time horizons. In contrast, our framework leverages reactive synthesis to generate correct-by-construction controllers at the symbolic level, and mixed-integer convex programming (MICP) for dynamic and physically feasible footstep planning for each symbolic transition. We use a high-level manager to reduce the large state space in synthesis by incorporating local environment information, improving synthesis scalability. To handle specifications that cannot be met due to dynamic infeasibility, and to minimize costly MICP solves, we leverage a symbolic repair process to  generate only necessary symbolic transitions. During online execution, re-running the MICP with real-world terrain data, along with runtime symbolic repair, bridges the gap between offline synthesis and online execution. Through extensive simulation and hardware experiments, we demonstrate our framework's capabilities to discover missing locomotion skills and react promptly in safety-critical environments, such as scattered stepping stones and rebars.
+        <div class="content" style="font-size: 0.8rem; line-height: 1.45;">
+          <p class="has-text-justified" style="margin: 0;">
+            We present an integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime. Existing methods often depend on heuristics for real-time foothold selection&mdash;limiting robustness and adaptability&mdash;or rely on computationally intensive trajectory optimization across complex terrains and long horizons. In contrast, our approach combines reactive synthesis for generating correct-by-construction symbolic-level controllers with mixed-integer convex programming (MICP) for physically feasible footstep planning during each symbolic transition. To reduce the reliance on costly MICP solves and accommodate specifications that may be violated due to physical infeasibility, we adopt a symbolic repair mechanism that selectively generates only the required symbolic transitions. During execution, real-time MICP replanning based on actual terrain data, runtime symbolic repair, kinematic-feasibility re-targeting, and a delay-aware coordination scheme enable seamless bridging between offline synthesis and online operation. Through extensive simulation and hardware experiments, we validate the framework's ability to identify missing locomotion skills and respond effectively in safety-critical environments, including scattered stepping stones and rebar scenarios.
           </p>
         </div>
       </div>
@@ -159,32 +155,33 @@
 <!-- End paper abstract -->
 
 <!-- Paper method -->
-<section class="section hero is-light">
+<section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Approach Summary</h2>
-        <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 20px;">
-          <div style="text-align: center; width: 100%;">
-            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
-              <source src="static/videos/unstructured-2-vis.mp4" type="video/mp4">
-            </video>
-            <p class="subtitle is-5" style="margin-top: 10px;">Unstructured Terrain with a Gap</p>
-
-            <!-- Inserted image -->
-            <img src="static/images/system_diagram.png" alt="Example Image" style="margin-top: 20px; width: 100%; max-width: 600px;">
-            <p class="subtitle is-5" style="margin-top: 10px;">Fig.1 System Diagram</p>
-          </div>
+        <div class="video-container" style="margin-bottom: 24px;">
+          <img src="static/images/system_diagram_v4.png" alt="System architecture overview" style="width: 100%; max-width: 620px; border-radius: 8px;">
+          <p class="subtitle is-6" style="margin-top: 12px; color: #555;">Fig.&nbsp;1 System architecture overview. Solid lines indicate online communication; dashed lines represent offline processes. Request goals are user-defined in the offline phase and provided by a global planner in the online phase.</p>
         </div>
-
-
-
         <div class="content has-text-justified">
           <p>
-            We manage complexity at both symbolic and physical levels. At the symbolic level, we leverage reactive synthesis to decompose the local navigation problem into manageable subproblems whose solutions can be reused by synthesis for different scenarios. Each subproblem corresponds to finding controls for a short-horizon symbolic transition and is solved via a MICP to provide physical feasibility certificates of the transition. As shown in Fig.1, our framework consists of offline synthesis, online execution, and low-level tracking control.
-            
-            During the offline phase, we generate a set of potentially useful skills and corresponding locomotion gaits based on predefined terrain states and goals, while leveraging symbolic repair to  find missing yet necessary symbolic transitions. At runtime, we leverage runtime repair to identify new symbolic transitions necessary for unforeseen terrain configurations or intermediate request goals.
+            We manage complexity at both the symbolic and physical levels. At the <strong>symbolic level</strong>, reactive synthesis decomposes local navigation into manageable subproblems whose solutions are reusable across scenarios; each subproblem is a short-horizon symbolic transition. At the <strong>physical level</strong>, each transition is validated by a mixed-integer convex program (MICP) that certifies dynamic and kinematic feasibility. This symbolic guidance limits the planning horizon and the number of terrain features any single MICP must consider, mitigating the poor scaling of pure mixed-integer planning.
           </p>
+          <p>
+            <strong>Offline</strong>, gait-free MICP precomputes a diverse set of locomotion skills (e.g., trotting and leaping gaits) for predefined terrain states and goals. A high-level manager fixes the local terrain/goal context and retains only the skills relevant to the current environment, while symbolic repair&mdash;equipped with dynamic-feasibility checks&mdash;generates only the missing transitions that need to be verified.
+            <strong>Online</strong>, a lightweight gait-fixed MICP is re-solved against the actually perceived terrain at each transition. Runtime symbolic repair handles previously unseen terrain, kinematic-feasibility re-targeting adjusts the desired pose to match real geometry, and a delay-aware coordination scheme keeps the discrete strategy automaton and the continuous-time tracking controller consistent under variable MICP solve times.
+          </p>
+        </div>
+
+        <div class="content has-text-left" style="margin-top: 8px;">
+          <p class="subtitle is-5 has-text-centered" style="margin-bottom: 10px;">Key contributions</p>
+          <ul style="list-style: disc; padding-left: 1.4em;">
+            <li><strong>Integrated reactive-synthesis + MICP framework</strong> bridging high-level symbolic reasoning with low-level physical feasibility.</li>
+            <li><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic state space by <strong>80.9&ndash;90.1%</strong>; symbolic repair with gait-free MICP feasibility checks generates only necessary skills, cutting costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration.</li>
+            <li><strong>Online execution module</strong> with delay-aware coordination, kinematic-feasibility re-targeting, online collision-avoidance constraints, and runtime symbolic repair.</li>
+            <li><strong>Comprehensive validation</strong> across four simulated terrain scenarios, benchmarks against pure-MIP and heuristic planners, and hardware deployment on two robots (Unitree Go2 and SkyMul Chotu).</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -193,93 +190,271 @@
 <!-- End paper method -->
 
 
-<!-- Unstructured Terrain -->
+<!-- Simulation -->
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Unstructured Terrain</h2>
-          <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 20px">Scenario 1</h3>
-          <div class="video-container" style="display: flex; gap: 20px; justify-content: center; align-items: center;">
-            <div style="text-align: center; width: 100%;">
-              <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+          <h2 class="title is-3">Simulation</h2>
+          <div class="columns is-multiline" style="margin-top: 8px;">
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+                <source src="static/videos/unstructured_4_sim.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Unstructured terrain</strong> &mdash; 4 terrain types</p>
+            </div>
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+                <source src="static/videos/unstructured_8_sim.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Unstructured terrain</strong> &mdash; full 8-type abstraction</p>
+            </div>
+            <div class="column is-full">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px; margin-top: 12px;">
+                <source src="static/videos/rebar_sim.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Rebar terrain</strong> &mdash; navigation across rebar mats; green trajectories are detours from runtime re-synthesis after online MICP solving failures</p>
+            </div>
+          </div>
+          <div class="content has-text-justified" style="margin-top: 12px;">
+            <p>
+              We evaluate the framework across four scenarios spanning two terrain families and two robot platforms (Unitree Go2 and SkyMul Chotu): <strong>unstructured terrain</strong> abstracted with 4 and 8 terrain types (flat, high/low terrain, dense/sparse stone, gap, high/low gap), and <strong>rebar terrain</strong> abstracted with 7 and 14 types based on directional rebar sparsity. We test both 3&times;3 and 5&times;5 local grid abstractions; the 5&times;5 grid enables a longer planning horizon at the cost of higher decision complexity. All experiments run on an Intel Core i9-13900K with 64&nbsp;GB RAM, using Gurobi&nbsp;9 for the MICP and OCS2 for the NMPC tracker.
+            </p>
+          </div>
+
+          <div class="content has-text-left" style="margin-top: 8px;">
+            <p><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic state space by <strong>80.9&ndash;90.1%</strong>. Symbolic repair resolves <strong>93.4%</strong> of all terrain&ndash;request state pairs and reduces costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration (generating a new gait takes 27.23&nbsp;s on average, 145.66&nbsp;s maximum). Repair time grows approximately linearly in the number of state pairs&mdash;per state pair, the 5&times;5 grid takes 478.1% more time than the 3&times;3 grid.</p>
+            <p><strong>Online execution.</strong> The gait-fixed MICP averages about <strong>430&nbsp;ms</strong> on unstructured terrain and <strong>1.1&nbsp;s</strong> on rebar terrain; enabling collision-avoidance constraints (needed for elevation changes) raises the binary-variable count by 271% and the solve time by 441%.</p>
+          </div>
+
+          <div class="content has-text-justified" style="margin-top: 20px;">
+            <img src="static/images/online_repair.png" alt="Runtime symbolic repair for an unforeseen gap" style="width: 100%; border-radius: 8px;">
+            <p style="margin-top: 10px;"><strong>Runtime repair case study.</strong> When the robot meets an unforeseen <em>gap</em> deliberately excluded from offline synthesis, runtime repair proposes the missing transition and gait-free MICP synthesizes a leaping skill in <strong>12.36&nbsp;s</strong> total (0.18&nbsp;s symbolic repair + 12.18&nbsp;s MICP)&mdash;confirming the dominant cost is the dynamic-feasibility check, not the symbolic search. Online MICP solving failures trigger fast re-synthesis (0.07&ndash;0.11&nbsp;s) that routes a detour using existing skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Simulation -->
+
+<!-- Hardware: Unstructured Terrain -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Hardware &mdash; Unstructured Terrain</h2>
+          <p class="subtitle is-6" style="margin-bottom: 16px; color: #555;">
+            We deploy the full stack end-to-end on hardware. Stepping stones, gaps, and flat regions are built from wooden blocks (each stone ~0.12&nbsp;m tall); the abstraction cell size is 0.8&nbsp;m.
+          </p>
+          <div class="columns is-multiline" style="margin-top: 8px;">
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
                 <source src="static/videos/unstructured-1-sideview.mp4" type="video/mp4">
               </video>
-              <p class="subtitle is-5" style="margin-top: 10px;">Side View</p>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Scenario 1</strong> &mdash; Side view</p>
             </div>
-            <div style="text-align: center; width: 100%;">
-              <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
                 <source src="static/videos/unstructured-1-frontview.mp4" type="video/mp4">
               </video>
-              <p class="subtitle is-5" style="margin-top: 10px;">Front View</p>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Scenario 1</strong> &mdash; Front view</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Scenario 2 -->
-      <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
-        <div class="column is-four-fifths">
-          <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px;">Scenario 2</h3>
-          <div style="text-align: center; width: 100%;">
-            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
+          <div class="content has-text-justified">
+            <p>
+              <strong>Scenario 1 &mdash; misaligned stepping stones.</strong> Sparse stones (0.18&ndash;0.23&nbsp;m apart) are laterally misaligned with the walking direction, so the online MICP plans a sideways trajectory to land safely; all transitions use a 3&nbsp;s trotting gait.
+            </p>
+          </div>
+          <div class="column is-full" style="padding-left: 0; padding-right: 0;">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px; margin-top: 8px;">
               <source src="static/videos/unstructured-2.mp4" type="video/mp4">
             </video>
-            <!-- <p class="subtitle is-5" style="margin-top: 10px;">Unstructured Terrain with a Gap</p> -->
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Scenario 2</strong> &mdash; Stepping stones with a gap</p>
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              <strong>Scenario 2 &mdash; crossing a gap.</strong> A ~30&nbsp;cm gap requires leaping. Since the gap was covered in offline synthesis, the framework directly selects an optimized 1.5&nbsp;s leaping gait; end-effector tracking stays within 0.01&nbsp;m (x, y) as the NMPC absorbs MICP-level model simplifications.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End Unstructured Terrain -->
+<!-- End Hardware Unstructured -->
 
-<!-- Rebar Terrain -->
+<!-- Hardware: Rebar Terrain -->
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Rebar Terrain</h2>
-          <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Scenario 1</h3>
-          <div style="text-align: center; width: 100%;">
-            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
-              <source src="static/videos/rebar-1.mp4" type="video/mp4">
-            </video>
-            <!-- <p class="subtitle is-5" style="margin-top: 10px;">Rebar Terrain - Scenario 1</p> -->
+          <h2 class="title is-3">Hardware &mdash; Rebar Terrain</h2>
+          <p class="subtitle is-6" style="margin-bottom: 16px; color: #555;">
+            The SkyMul Chotu (a modified Unitree Go1 with a rebar gun and &ldquo;cross&rdquo;-shaped feet) traverses a rebar mat with 0.1&ndash;0.3&nbsp;m spacing. All transitions use a conservative 2.25&nbsp;s static walking gait (one foot at a time); the abstraction cell size is 0.45&nbsp;m.
+          </p>
+          <div class="columns is-multiline" style="margin-top: 8px;">
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+                <source src="static/videos/rebar-1.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Scenario 1</strong> &mdash; Nominal traversal</p>
+            </div>
+            <div class="column is-half">
+              <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+                <source src="static/videos/rebar-2.mp4" type="video/mp4">
+              </video>
+              <p class="subtitle is-6" style="margin-top: 6px;"><strong>Scenario 2</strong> &mdash; Runtime obstacle detour</p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Scenario 2 -->
-      <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
-        <div class="column is-four-fifths">
-          <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px;">Scenario 2</h3>
-          <div style="text-align: center; width: 100%;">
-            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
-              <source src="static/videos/rebar-2.mp4" type="video/mp4">
-            </video>
-            <!-- <p class="subtitle is-5" style="margin-top: 10px;">Rebar Terrain - Scenario 2</p> -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Scenario 3 -->
-      <div class="columns is-centered has-text-centered" style="margin-top: 40px;">
-        <div class="column is-four-fifths">
-          <h3 class="subtitle is-4" style="text-align: center; margin-bottom: 20px;">Scenario 3</h3>
-          <div style="text-align: center; width: 100%;">
-            <video poster="" id="tree" autoplay controls muted loop style="width: 100%;">
-              <source src="static/videos/rebar-3.mp4" type="video/mp4">
-            </video>
-            <!-- <p class="subtitle is-5" style="margin-top: 10px;">Rebar Terrain - Scenario 3</p> -->
+          <div class="content has-text-justified">
+            <p>
+              <strong>Scenario 1 &mdash; nominal traversal.</strong> With no obstacles, Chotu completes the maneuver to the goal without any runtime failures.
+            </p>
+            <p>
+              <strong>Scenario 2 &mdash; runtime obstacle detour.</strong> An obstacle is added but seen only at runtime (provided via motion-capture-aided annotation and handled at the symbolic level, not the MICP). On detecting the new terrain/request pair, the planner resynthesizes a detour within 0.05&nbsp;s, reusing existing skills.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- End Hardware Rebar -->
+
+<!-- Benchmark -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Benchmark</h2>
+        <p class="subtitle is-5" style="margin-bottom: 20px; color: #555;">
+          We benchmark the symbolic&ndash;continuous separation against a <strong>pure-MIP planner</strong> (an ablation of the symbolic level) and a <strong>heuristic foothold planner</strong>.
+        </p>
+
+        <img src="static/images/pure_mip_benchmark.png" alt="Pure-MIP solve time across terrains and horizons" style="width: 100%; border-radius: 8px;">
+        <p class="subtitle is-6" style="margin-top: 8px; color: #555;">
+          MIP solve time across four terrains (sparse/dense stone, sparse/dense rebar) and horizons of 1&ndash;5&nbsp;s, as box plots over 10 seeded waypoints per scenario. Solve time grows almost exponentially with the horizon, and denser terrains take longer; the 2&nbsp;s and 3&nbsp;s horizons sit on the knee of the trade-off curve.
+        </p>
+
+        <div class="columns is-multiline" style="margin-top: 16px;">
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/pure_mip_sparse_stone_h1.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Sparse stone</strong> &mdash; horizon H&nbsp;=&nbsp;1&nbsp;s</p>
+          </div>
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/pure_mip_dense_stone_h2.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Dense stone</strong> &mdash; horizon H&nbsp;=&nbsp;2&nbsp;s</p>
+          </div>
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/pure_mip_sparse_rebar_h4.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Sparse rebar</strong> &mdash; horizon H&nbsp;=&nbsp;4&nbsp;s</p>
+          </div>
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/pure_mip_dense_rebar_h5.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Dense rebar</strong> &mdash; horizon H&nbsp;=&nbsp;5&nbsp;s</p>
+          </div>
+        </div>
+        <p class="subtitle is-6" style="margin-top: 4px; color: #555;">
+          Representative pure-MIP traversals corresponding to the snapshots overlaid in the figure above (one terrain/horizon each).
+        </p>
+
+        <div class="columns is-vcentered" style="margin-top: 24px;">
+          <div class="column is-half">
+            <img src="static/images/dense_rebar_comparison.png" alt="Dense rebar comparison" style="width: 100%; border-radius: 8px;">
+            <p class="subtitle is-6" style="margin-top: 8px; color: #555;">
+              Representative dense-rebar trial: (a) pure-MIP with H&nbsp;=&nbsp;2&nbsp;s stalls, (b) pure-MIP with H&nbsp;=&nbsp;3&nbsp;s, (c) the proposed planner routes through a sequence of cells.
+            </p>
+          </div>
+          <div class="column is-half content has-text-left">
+            <p>
+              In the end-to-end dense-rebar test (10 seeded waypoints, identical terrain across methods with randomly removed rebars), the proposed planner attains <strong>90% success at 18.5&nbsp;s</strong> mean traversal&mdash;matching the 3&nbsp;s-horizon pure-MIP success rate at roughly three-quarters of the traversal time and less than half the MIP transition cost (5.26&nbsp;s vs. 11.54&nbsp;s). The myopic 2&nbsp;s-horizon pure-MIP reaches only 60%.
+            </p>
+            <p style="margin-bottom: 0;">
+              The ablations confirm the value of the online additions: disabling the feasibility check (FC) drops success substantially, and disabling delay-aware coordination (DAC) keeps 90% success but inflates traversal time from 18.5&nbsp;s to 23.4&nbsp;s.
+            </p>
+          </div>
+        </div>
+
+        <h3 class="title is-5" style="margin-top: 32px; margin-bottom: 12px;">End-to-end benchmark on dense rebar</h3>
+        <div class="table-container">
+          <table class="table is-fullwidth is-narrow is-bordered" style="font-size: 0.82rem;">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Success</th>
+                <th>Traversal (s)</th>
+                <th>MIP solve (s)</th>
+                <th>MIP feas. (s)</th>
+                <th>Reactive synth. (s)</th>
+                <th>Runtime repair (s)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s)</td><td>60% (6/10)</td><td>14.76</td><td>3.04</td><td>0.21</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s)</td><td>90% (9/10)</td><td>24.73</td><td>11.54</td><td>0.19</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s), no FC</td><td>20% (2/10)</td><td>9.00</td><td>1.38</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s), no FC</td><td>40% (4/10)</td><td>14.23</td><td>5.17</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr style="background:#e8f3fc;"><td class="has-text-left"><strong>Proposed</strong></td><td><strong>90% (9/10)</strong></td><td><strong>18.48</strong></td><td><strong>5.26</strong></td><td>0.19</td><td>0.29</td><td>0.03</td></tr>
+              <tr><td class="has-text-left">Proposed, no FC</td><td>60% (6/10)</td><td>20.08</td><td>5.85</td><td>&mdash;</td><td>0.33</td><td>0.05</td></tr>
+              <tr><td class="has-text-left">Proposed, no DAC</td><td>90% (9/10)</td><td>23.43</td><td>5.11</td><td>0.27</td><td>0.28</td><td>0.04</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="subtitle is-6" style="color: #555;">
+          Mean values over successful trials. FC = pre-flight MIP feasibility check; DAC = delay-aware coordination; reactive synthesis combines the per-step strategy query and per-spec-switch strategy reload. Dashes denote modules absent or disabled by the ablation.
+        </p>
+
+        <h3 class="title is-5" style="margin-top: 32px; margin-bottom: 12px;">Hardware: vs. a heuristic foothold planner (Scenario 3)</h3>
+        <div class="content has-text-justified">
+          <p>
+            We create a third hardware rebar scenario by removing two rebars to widen the maximum spacing to 0.48&nbsp;m, stressing the safety advantage of feasibility-aware planning. The heuristic baseline follows a strategy common to deployed perceptive-locomotion stacks (e.g., Fankhauser et&nbsp;al. 2018; Kim et&nbsp;al. 2020): it selects the nearest rebar polygon and the closest feasible foothold to a nominal target, then sends the footstep plan and a linearly interpolated base trajectory to the same tracking controller. We chose this nearest-feasible-foothold heuristic because it isolates the value of feasibility-aware, longer-horizon planning, and because such heuristics remain widely used in practice for their efficiency.
+          </p>
+          <p>
+            Without re-running offline synthesis, our framework reuses the previously generated skills, classifies the extreme-sparse region as an obstacle, and resynthesizes a safe detour to the goal. The heuristic is tuned for slow traversal at 0.1&nbsp;m/s; when tasked at 0.2&nbsp;m/s to match our effective gait speed (0.45&nbsp;m per 2.25&nbsp;s transition) it cannot reason about terrain&ndash;gait compatibility&mdash;end-effector tracking degrades after a few steps, the feet slip, and the robot becomes entangled in the sparse rebar and fails.
+          </p>
+        </div>
+        <img src="static/images/hardware_rebar_benchmark.png" alt="Comparison vs heuristic planner on extreme-sparse rebar" style="width: 100%; border-radius: 8px;">
+        <p class="subtitle is-6" style="margin-top: 8px; color: #555;">
+          Extreme-sparse rebar (up to 0.48&nbsp;m spacing): the proposed method resynthesizes a safe detour, while the heuristic planner fails as the robot's foot becomes trapped.
+        </p>
+
+        <div class="column is-full" style="padding-left: 0; padding-right: 0; margin-top: 16px;">
+          <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+            <source src="static/videos/rebar-3.mp4" type="video/mp4">
+          </video>
+          <p class="subtitle is-6" style="margin-top: 6px;"><strong>Proposed</strong> &mdash; resynthesizes a detour around the extreme-sparse region and reaches the goal</p>
+        </div>
+        <div class="columns is-multiline" style="margin-top: 4px;">
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/benchmark-rebar-0.1.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Heuristic baseline</strong> &mdash; 0.1&nbsp;m/s (heuristic's tuned slow speed)</p>
+          </div>
+          <div class="column is-half">
+            <video poster="" autoplay controls muted loop playsinline style="width: 100%; border-radius: 8px;">
+              <source src="static/videos/benchmark-rebar-0.2.mp4" type="video/mp4">
+            </video>
+            <p class="subtitle is-6" style="margin-top: 6px;"><strong>Heuristic baseline</strong> &mdash; 0.2&nbsp;m/s (matched to our gait speed): foot slippage and failure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Benchmark -->
 
 
 
@@ -291,7 +466,7 @@
 
       <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
           </iframe>
-        
+
       </div>
     </div>
   </section> -->
@@ -315,7 +490,7 @@
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
             You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
@@ -327,7 +502,7 @@
 </footer>
 
 <!-- Statcounter tracking code -->
-  
+
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->

@@ -1,0 +1,119 @@
+*** Summary ***
+
+The paper presents a hierarchical planning and control framework for
+legged locomotion on uneven terrain, extending the a previously
+existing work [24]. The system combines: (1) offline synthesis using
+LTL-based reactive synthesis with MICP to generate a repertoire of
+gaits and a symbolic strategy automaton, (2) online MICP solving for
+feet placement selection and feasibility verification, and (3)
+nonlinear MPC for trajectory tracking with centroidal dynamics.
+
+The key contributions beyond [24] are: (1) a coordination mechanism
+between the symbolic planner and tracking controller that handles MICP
+computation delays through two cases (robot waiting when MICP exceeds
+NMPC horizon, or seamless trajectory appending when MICP completes
+earlier), (2) online pose retargeting to ensure feasibility under
+actual terrain, and (3) comprehensive hardware validation with
+systematic benchmarking against both heuristic-based and pure MIP
+approaches.
+
+*** Assessment ***
+
+Strengths:
+- The integration of reactive synthesis with MICP-based planning
+addresses a relevant problem in terrain-adaptive locomotion.
+- Hardware validation demonstrates practical deployment capability,
+which is non-trivial.
+- The framework successfully handles runtime uncertainties through
+symbolic replanning.
+
+Concerns:
+
+1) Contribution clarity and significance:
+The incremental contributions relative to [24] requires stronger
+justification. Hardware deployment and delay handling appear to be
+practical achievements with limited scientific contribution. The
+proposed coordination mechanism (waiting for MICP or appending
+trajectories) are straightforward implementation choices do not appear
+to be innovative. The paper will benefit from a clearer identification
+and articulation of technical and scientific challenges that were
+overcome during hardware deployment.
+
+2) Technical clarity and reproducibility.
+
+ - Symbolic synthesis step: How are LTL specifications ($\phi$)
+constructed from MICP solutions? Are preconditions and postconditions
+manually encoded or learned? Section VI-B states skills execute "when
+at least one of its preconditions is satisfied" - please clarify
+whether this refers to one precondition set (&#963;_robot,
+&#963;_terrain pair) from &#931;^pre_o, or individual propositions
+within a precondition. 
+ - Benchmark definition: The "pure MIP planner" (Sec. IX-E) needs
+precise definition. Does it use the same convex relaxations as MICP but
+without symbolic-level guidance? Or does it formulate a non-convex MIP
+without relaxations?
+
+3) Calibrating claims with achieved results:
+Several claims appear overstated given the experimental evidence:
+- "Dynamically changing environments": All experiments use static,
+pre-mapped terrains. While runtime repair handles unexpected obstacles
+(Fig. 14), this differs from continuous environmental changes.
+- "Dynamic locomotion": The hardware experiments primarily use
+conservative gaits (3s trotting, 2.25s static walking). 
+- "Safety guarantees": The convex relaxations of dynamics (simplified
+angular dynamics in Eq. 3, fixed Jacobian in Eq. 14) and lack of
+verification between MICP and NMPC layers limits formal safety
+assurances. 
+
+4) Limited reactivity and Symbolic-Continuous interaction:
+The symbolic-MICP level interaction operates at a low frequency (once
+per MICP solve, ~0.37-9.13s per Table III-IV), with no symbolic/MICP
+level involvement
+during NMPC tracking. The backward communication from MICP to symbolic
+level also only conveys infeasibility, and no other environment or
+robot-related information that can enhance symbolic planning. This
+resembles a classical sense-plan-act cycle more than reactive
+synthesis.
+Questions to address:
+- How does this differ from a single MICP controller that can try out
+several gait
+sequencing heuristics with a gait-free fallback?
+- Could you demonstrate scenarios where symbolic-level reasoning
+provides qualitative advantages over purely optimization-based
+approaches?
+- What prevents more frequent symbolic-continuous interaction during
+execution?
+
+5) Baseline Comparisons
+
+The experimental validation would be strengthened by:
+-  Improving the heuristic baseline: The baseline (Section X-D)
+selecting "nearest rebar polygon and closest feasible foothold" is
+overly simplistic. Consider comparing against recent perceptive
+locomotion methods. Crucially, fixed gait-timing might also be
+unreasonably restrictive being the cause for its failure rather than
+any fundamental approach differences. Can you consider more
+sophisticated baselines such as, " "Winkler, A. W., Bellicoso, C. D.,
+Hutter, M., & Buchli, J. (2018). Gait and trajectory optimization for
+legged systems through phase-based end-effector parameterization. IEEE
+Robotics and Automation Letters, 3(3), 1560-1567." that are closer to
+the state-of-the-art?
+-   Pure MIP baseline: This approach requires major clarifications due
+to its currently ambiguous presentation.
+-   Ablation studies: Analyze contributions of (1) online retargeting,
+(2) delay coordination, (3) symbolic vs. direct MICP replanning.
+
+*** Minor Comments ***
+
+Please consider reorganizing sections better. For example, the section.
+IV is just seven lines long. 
+
+- While focusing on planning/control is reasonable, the lack of online
+perception limits validation of safety claims. Consider discussing how
+terrain segmentation uncertainty or perception delays would affect the
+framework.
+
+- The rationale for making discrete decisions at both symbolic-level
+and MICP-level could be clarified. What does the symbolic level provide
+that a better-designed MICP level couldn't achieve? Or alternately, why
+can't your symbolic level decide which polygon to step on?

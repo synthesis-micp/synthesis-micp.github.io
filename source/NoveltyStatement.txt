@@ -1,0 +1,26 @@
+IJRR Novelty Statement (limit: 80 words)
+========================================
+
+Drafted target (~76 words). Confirm the IROS 2025 DOI and exact licensing
+terms before submitting; replace the bracketed placeholders.
+
+----------------------------------------------------------------------------
+
+We present an integrated reactive-synthesis and mixed-integer convex
+programming (MICP) framework for terrain-adaptive quadrupedal locomotion,
+combining correct-by-construction symbolic-level controllers with physical-
+feasibility certificates. Building on our IROS 2025 paper (DOI: [TODO];
+licence: [TODO]), this article additionally contributes (i) a delay-aware
+coordination scheme between the strategy automaton and the tracking
+controller, (ii) online kinematic re-targeting, (iii) collision-region
+selection in the online MICP, and (iv) full hardware validation against
+pure-MIP and heuristic baselines on two robot platforms.
+
+----------------------------------------------------------------------------
+
+Word count: 76 words (excluding bracketed TODO placeholders).
+Per IJRR guidelines, this statement must be entered into the Manuscript
+Central submission form and is gating: only papers with justifiable novelty
+statements are moved to peer review.
+
+Source: https://journals.sagepub.com/author-instructions/ijr

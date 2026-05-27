@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main_ijrr.aux
+The style file: SageH.bst
+Database file #1: references.bib
+Warning--empty year in OCS2; set to ????
+Warning--empty journal in Kamohara2025RLMPC
+Warning--empty booktitle in muenprasitivej2026bipedal
+Warning--empty pages in muenprasitivej2026bipedal
+Warning--empty pages in Park2015OnlinePF
+Warning--empty journal in toussaint2018differentiable
+Warning--empty pages in yu2021visual
+Warning--empty pages in zhou2025physically
+You've used 117 entries,
+            2921 wiz_defined-function locations,
+            1167 strings with 30611 characters,
+and the built_in function-call counts, 153614 in all, are:
+= -- 15969
+> -- 4360
+< -- 78
++ -- 1683
+- -- 1546
+* -- 11246
+:= -- 18341
+add.period$ -- 292
+call.type$ -- 117
+change.case$ -- 1225
+chr.to.int$ -- 118
+cite$ -- 125
+duplicate$ -- 15149
+empty$ -- 11474
+format.name$ -- 1911
+if$ -- 31885
+int.to.chr$ -- 4
+int.to.str$ -- 1
+missing$ -- 1338
+newline$ -- 474
+num.names$ -- 468
+pop$ -- 7539
+preamble$ -- 1
+purify$ -- 983
+quote$ -- 0
+skip$ -- 2918
+stack$ -- 0
+substring$ -- 17097
+swap$ -- 3619
+text.length$ -- 60
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1050
+warning$ -- 8
+while$ -- 1100
+width$ -- 0
+write$ -- 1435
+(There were 8 warnings)

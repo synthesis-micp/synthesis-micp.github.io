@@ -1,0 +1,122 @@
+Before going into the details of the paper, I will first raise what
+appears to be a problem with respect to the new T-RO rules:
+
+"your manuscript must not be just a mere extension of the previous
+version(s) filling in, e.g., details of proofs or additional
+corollaries, additional experiments, or more detailed background and
+narrative. Rather, the new submission must contain new results of
+substantive research significance and impact beyond the previous
+papers."
+
+The work is clearly an extension of [24] and re-uses some of its
+figures and analysis.
+
+The claimed online retargeting mechanism appears to be already present
+in prior MICP-based online execution approaches, including [24], and is
+mainly reframed rather than newly introduced here. The main new results
+seem to be the (very nice) experiments on hardware, but the associate
+editor should decide whether in itself these already constitute a
+significant contribution or not.
+
+The remaining claimed new contribution with respect to [24] is the
+study of the addition of a rotation (yaw angle), but it is not
+demonstrated in the companion paper, only in Figure 10, which suggests
+the work is only preliminary (no quantitative analysis is reported
+either).
+
+Anyways, here is the review of the paper.
+
+The paper proposes to reduce the combinatorial complexity of Mixed
+Integer approaches for locomotion planning by adding a layer of
+abstractions in the planning to limit the planning horizon while
+considering long-term objectives. A symbolic planner works at the high
+level and is coupled with different forms of MICP problems, more or
+less challenging, to verify the validity of the plan.
+The approach is interesting, and the results qualitatively strong.
+However, the novelty of the paper (wrt to [24]) focuses on hardware
+experiments and reactivity, but there are insufficient details on this
+aspect to get a clear idea of what is implemented by the authors. The
+quantitative analysis does not really allow comparing methods with each
+other either, and would benefit from rewriting.
+
++ While the authors claim that the solutions are dynamically
+consistent, it is essential to be clear about the fact that angular
+momentum is completely neglected by the approach. This is a well-known
+limitation of MIP solvers, making their use tricky for any form of
+truly dynamic motions, or for applications to humanoid robots. This is
+not clearly stated, and the claims of feasibility should be toned down.
+In particular, when the yaw is included as a variable in the user
+study, this limitation should become apparent and it is not discussed.
+
++ "the online gait-fixed MICP is executed given accurate terrain
+information from a terrain segmentation module". We definitely need
+more information on that module!
+
+Section VII.A.2 raises several concerns. The section introduces
+collision-free regions for obstacle avoidance, but the paper does not
+specify how obstacles are detected or how these regions are constructed
+from sensor or terrain data. It is also unclear which parts of the
+robot are considered for collision checking. Figure 5 does not provide
+sufficient clarification. The description suggests that collision-free
+regions are selected rather than explicit collision avoidance being
+enforced, yet the section then discusses swing-foot height
+parametrization, which implies stepping over obstacles—something that
+is not demonstrated in the results. Overall, this section is confusing
+and would benefit from substantial clarification. Fig 14 is more
+informative, but it does not seem trivial to identify clear collision
+regions with off-the-shelf perception tools. More importantly, it is
+not clear how the obstacles affect the definition of the feasible
+convex regions in the plan. The discussion suggests manual labelling is
+done when classifying terrain, but is it also the case that the
+collision map is manually updated or not?  In any case, it is not
+entirely clear in the current form how this replanning was not already
+enabled by the previous framework.
+
+More importantly, although this is not a perception paper, the
+presentation implicitly suggests that identifying convex collision-free
+regions online is straightforward. In general, when terrain surfaces do
+not exhibit such regular structure, this is not the case. For instance,
+[108] does not reliably provide convex regions -contrary to what the
+name of the module implies-. The authors should either clarify the
+perception tools and assumptions used to obtain these regions or tone
+down the emphasis on online perception capabilities. In the current
+stage, the reviewer has no idea how the convex polygons are actually
+accurately built, obstacles detected, and appropriate regions sorted.
+
++ The orientation change is not demonstrated in the companion video,
+only in Figure 10. Including orientation is definitely a significant
+challenge and interesting avenue of research, which brings a variety of
+questions, principally around the combinatorial and the limitations of
+the abstract representation of the map in terms of turn and repairs
+necessary. The authors claim in the title of the section that they
+demonstrate generalizability, but the work is very preliminary and
+nothing is really demonstrated. I would suggest removing this section
+entirely, or being clearer on the results obtained.
+
++ Results:
+How is the MIP implemented? With which solver?
+Table III and Fig 9 are the only quantitative results regarding the
+comparisons of the MIP and the proposed framework, but they do not
+compare the same scenarios nor the same thing. While it is, I guess,
+obvious that the proposed approach would be faster, it would clarify
+things to compare the global running time of the proposed on each
+scenario, with a proper decomposition of the time spent in each module.
+Obtaining the actual computation times upon reading the paper proves
+challenging because the information is disseminated. There are no
+quantitative data on the amount of repair necessary, etc.
+
+What if a short-horizon MPC was used to repeatedly solve the proposed
+scenarios in a receding-horizon fashion, with a fixed gait for the
+rebar scenario? It might be interesting to see whether the problem is
+solved and whether computation time is favourable to the authors.
+Without such comparisons, the interest of using a long-term planner is
+not demonstrated. I assume that the scenarios proposed contain local
+minima that would make a nominal planner fail, but this is not clear
+from the current results.
+
+Minor comments:
+Symbolic repairing is repeatedly referenced to but only introduced in
+Section VI. It might be relevant to introduce it earlier for the
+non-familiar reader.
+
+Eq 1 does not specify that D is the system dynamics.

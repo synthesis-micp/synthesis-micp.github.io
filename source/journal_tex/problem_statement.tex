@@ -1,0 +1,21 @@
+\section{Problem Statement and Approach Overview}\label{sec:problem_statement}
+
+\subsection{Problem Statement}
+\textbf{Problem~\problemlabel{problem:1}}.
+Given
+\begin{enumerate*}[label=(\roman*),ref=\roman*]
+    \item a global goal $g_{\textrm{global}}$,
+    \item a set of possible local request goals $\mathcal{G}_{\textrm{local}}$
+    \item a set of predefined terrain polygons $\mathcal{P}_{\text{pre}}$ from user's prior knowledge,
+    and
+    \item a set of online terrain polygons $\mathcal{P}_{\text{on}}$ perceived during execution that may differ from the predefined ones,
+    \item a set of predefined locomotion gaits $\mathcal{L}$;
+\end{enumerate*}
+generate controls that enable the robot to navigate the environment and reach the goal.
+
+\subsection{Approach Overview}\label{sec:approach_overview}
+To address Problem~\ref{problem:1} efficiently, we manage complexity on both symbolic and physical levels. At the symbolic level, we employ reactive synthesis to break down the local navigation task into smaller subproblems, which can be reused across different scenarios. Each subproblem involves planning a short-horizon symbolic transition and is accompanied by solving a MICP to certify its physical feasibility.
+
+As shown in Fig.~\ref{fig:system_diagram}, our overall framework is composed of three main modules: offline synthesis (Sec.~\ref{sec:reactive_gait_synthesis}), online execution (Sec.~\ref{sec:online_execution}), and low-level tracking control (Sec.~\ref{sec:tracking_control}). During offline synthesis, we generate a diverse set of locomotion skills and their associated gaits for various predefined terrain-task combinations. Symbolic repair is applied to discover additional necessary transitions that may not be captured initially.
+
+At runtime, we invoke a symbolic repair mechanism to synthesize new transitions when the robot encounters unexpected terrain conditions or request goals not seen during offline planning. This allows the framework to remain flexible and adaptive to evolving environments. \revised{Additionally, the system re-targets the desired pose during each transition to reflect current terrain constraints, and coordinates the strategy automaton with the tracking controller to handle MICP solve-time variability without compromising execution continuity.}

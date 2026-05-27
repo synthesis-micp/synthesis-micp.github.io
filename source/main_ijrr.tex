@@ -1,0 +1,149 @@
+% sage_latex_guidelines.tex V1.20, 14 January 2017
+
+\documentclass[Afour,sageh,times]{sagej}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath}
+% \usepackage{cite}
+\usepackage{amssymb,amsfonts}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subfloat}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{verbatim} 
+\usepackage{mathrsfs}
+\usepackage{subfigure}
+\usepackage{empheq}
+\usepackage{courier}
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{gensymb}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{ wasysym } % For /ocircle
+\usepackage{soul}
+\usepackage[table]{xcolor}
+% \usepackage{moreverb,url}
+
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\input{commands}
+
+\newcommand{\vg}[1]{\bm{#1}}
+\renewcommand{\v}[1]{\mathbf{#1}}
+
+%\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\ye}[1]{\textbf{\textcolor{red}{Ye: #1}}}
+\newcommand{\ziyi}[1]{\textbf{\textcolor{blue}{Ziyi: #1}}}
+
+\def\volumeyear{2026}
+
+\begin{document}
+
+\runninghead{Zhou et al.}
+
+\title{Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion}
+
+\author{Ziyi Zhou\affilnum{1}, Qian Meng\affilnum{2}, Hadas Kress-Gazit\affilnum{2}, and Ye Zhao\affilnum{1}}
+
+\affiliation{\affilnum{1}Georgia Institute of Technology, Atlanta, GA, USA\\
+\affilnum{2}Cornell University, Ithaca, NY, USA}
+
+\corrauth{Ye Zhao, Georgia Institute of Technology, Atlanta, GA 30332, USA.}
+
+\email{ye.zhao@me.gatech.edu}
+
+\setcounter{secnumdepth}{3}
+
+%%%%%%%%% Abstract %%%%%%%%
+\input{journal_tex/abstract}
+
+% \begin{abstract}
+% This paper describes the use of the \LaTeXe\
+% \textsf{\journalclass} class file for setting papers to be
+% submitted to a \textit{SAGE Publications} journal.
+% The template can be downloaded \href{http://www.uk.sagepub.com/repository/binaries/SAGE LaTeX template.zip}{here}.
+% \end{abstract}
+
+\keywords{Legged Robots, Optimization and Optimal Control,
+Formal Methods in Robotics and Automation}
+
+\maketitle
+
+
+%%%%%%%%% Introduction %%%%%%%%
+\input{journal_tex/introduction}
+
+%%%%%%%%% Related work %%%%%%%%
+\input{journal_tex/related_work}
+
+%%%%%%%%% Preliminaries %%%%%%%%
+\input{journal_tex/preliminaries}
+
+%%%%%%%%% Problem statement and approach overview %%%%%%%%
+\input{journal_tex/problem_statement}
+
+%%%%%%%%% Offline synthesis %%%%%%%%
+\input{journal_tex/offline_synthesis}
+
+%%%%%%%%% Online execution %%%%%%%%
+\input{journal_tex/online_execution}
+
+%%%%%%%%% Result %%%%%%%%
+% \input{journal_tex/case_study}
+
+\input{journal_tex/results}
+
+\input{journal_tex/hardware}
+
+%%%%%%%%% Conclusion %%%%%%%%
+\input{journal_tex/discussion}
+
+\input{journal_tex/conclusion}
+
+\begin{acks}
+We thank Eohan George, Suphakorn Lertruchtkul, and Jane Ivanova for their hardware support on Chotu and contributions to rebar scenario design, and Pengyuan Shu for constructing the real-world terrains. The authors would also like to thank Hemanth Surya for the early exploration of the terrain segmentation.
+\end{acks}
+
+\begin{aucon}
+All authors contributed to the study. Ziyi Zhou: Conceptualization,
+Methodology, Formal analysis, Investigation, Software, Project
+administration, Writing - original draft. Qian Meng: Methodology, Formal analysis, Investigation Software, Writing - original draft. Hadas Kress-Gazit: Methodology, Supervision, Writing – review and editing. Ye Zhao: Funding acquisition, Resources, Methodology, Supervision, Writing – review and editing. All authors reviewed and approved the final version
+of the manuscript.
+\end{aucon}
+
+\begin{ethical}
+Not applicable.
+\end{ethical}
+
+\begin{conpart}
+Not applicable.
+\end{conpart}
+
+\begin{conpub}
+Not applicable.
+\end{conpub}
+
+\begin{dci}
+The author(s) declared no potential conflicts of interest with respect
+to the research, authorship, and/or publication of this article.
+\end{dci}
+
+\begin{funding}
+The author(s) disclosed receipt of the following financial support
+for the research, authorship, and/or publication of this article:
+This work was supported
+through a sponsored research grant from SkyMul Inc. and a Georgia Tech
+IRIM/IPaT Aware Home Seed Grant.
+This work was also supported in part by the National
+Science Foundation (NSF) under Grant \#CMMI-2144309, and Grant \#FRR-2328254, Office of Naval Research (ONR)
+under Grant N000142312223, and in part by the United States Department of Agriculture (USDA) under Grant 2023-67021-41397.
+\end{funding}
+
+\bibliographystyle{SageH}
+\bibliography{references}
+
+\end{document}

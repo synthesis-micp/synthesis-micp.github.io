@@ -23,6 +23,72 @@ body {
   padding-bottom: 3rem;
 }
 
+/* BeyondMimic-style hero: full-height video background with overlaid title */
+.hero.video {
+  position: relative;
+}
+
+.hero.video .hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 101%;
+  height: 101%;
+  z-index: 0;
+}
+
+.hero.video .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero.video .hero-head,
+.hero.video .hero-body {
+  position: relative;
+  z-index: 10;
+}
+
+.hero.video .hero-title-on-video {
+  font-size: 4rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.hero.video .hero-subtitle-on-video {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-top: 0;
+}
+
+.hero.video .hero-authors-on-video {
+  font-size: 1.25rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-top: 1rem;
+}
+
+.hero.video .hero-authors-on-video .author-block {
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .hero.video .hero-title-on-video {
+    font-size: 2.5rem;
+  }
+  .hero.video .hero-subtitle-on-video {
+    font-size: 1.1rem;
+  }
+}
+
 .teaser {
   font-family: 'Google Sans', sans-serif;
 }
@@ -107,6 +173,13 @@ body {
     height: 100%;
 }
 
+/* Video blocks in scenario sections */
+.hero .video-container video,
+.hero .column video {
+  max-width: 100%;
+  display: block;
+}
+
 .publication-body img {
 }
 
@@ -129,9 +202,6 @@ body {
   background: #000000;
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: smaller;
 }
-
-
-

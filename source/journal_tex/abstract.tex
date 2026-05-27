@@ -1,0 +1,35 @@
+\begin{abstract}
+% We propose an integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains.
+% Existing 
+% approaches either 
+% rely on heuristics for instantaneous foothold selection--compromising safety and versatility--or 
+% solve expensive trajectory optimization problems
+% with complex terrain features and long time horizons.
+% In contrast,
+% our framework leverages reactive synthesis to 
+% generate correct-by-construction controllers
+% at the symbolic level, 
+% and mixed-integer convex programming (MICP) 
+% for dynamic and physically feasible 
+% footstep planning 
+% for each symbolic transition.
+% We use a high-level manager to reduce the large state space
+% in synthesis
+% by incorporating local environment information, improving synthesis scalability.
+% To handle specifications that cannot be met due to dynamic infeasibility,
+% and to minimize costly
+% MICP solves,
+% we leverage a 
+% symbolic repair process to 
+% generate only necessary
+% symbolic transitions.
+% During online execution, 
+% re-running the MICP with real-world terrain data, along with runtime symbolic repair,
+% bridges the gap between offline synthesis and online execution.
+% Through extensive simulation and hardware experiments, we demonstrate
+% our framework's capabilities to discover missing locomotion skills and 
+% react promptly
+% in safety-critical environments, such as scattered stepping stones and rebars. Code and experimental videos are available at \url{https://synthesis-micp.github.io/}.
+We present an integrated planning framework for quadrupedal locomotion over \revised{discrete, unforeseen terrain configurations revealed at runtime}.
+Existing methods often depend on heuristics for real-time foothold selection---limiting robustness and adaptability---or rely on computationally intensive trajectory optimization across complex terrains and long horizons. In contrast, our approach combines reactive synthesis for generating correct-by-construction symbolic-level controllers with mixed-integer convex programming (MICP) for physically feasible footstep planning during each symbolic transition. To reduce the reliance on costly MICP solves and accommodate specifications that may be violated due to physical infeasibility, we adopt a symbolic repair mechanism that selectively generates only the required symbolic transitions. During execution, real-time MICP replanning based on actual terrain data, runtime symbolic repair, \revised{kinematic-feasibility re-targeting, and a delay-aware coordination scheme} enable seamless bridging between offline synthesis and online operation. Through extensive simulation and hardware experiments, we validate the framework's ability to identify missing locomotion skills and respond effectively in safety-critical environments, including scattered stepping stones and rebar scenarios. Code and experimental videos are available at \url{https://synthesis-micp.github.io/}.
+\end{abstract}

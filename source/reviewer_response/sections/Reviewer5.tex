@@ -1,0 +1,129 @@
+\section{Response to Reviewer \#5}
+\subsection*{Overall Comments}
+\begin{mdframed}
+\begin{quote}
+This paper pertains to a framework for motion planning, the crux of which is solving mixed-integer convex programs (MICPs). \ldots\ The paper adds some important content compared to the main point of reference, the IROS paper. First is of course the extensive (including real-world) experiments \ldots These experiments also include a benchmark in simulation, against pure MIP planning. \ldots\ Likely stemming from the need for real hardware experiments, the paper also adds a tracking control module based on nonlinear MPC.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We thank the reviewer for the careful and constructive review, and in particular for noting the value of the tracking-control and benchmark additions. The clarity-of-presentation comments below all map to specific revisions in the IJRR submission, summarized item-by-item.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 1: ``Reactive synthesis'' / LTL not defined}
+\begin{mdframed}
+\begin{quote}
+\ldots\ where the introduction falters is that it doesn't really, clearly define what the authors mean by ``reactive synthesis'' while employing it several times, along with ``LTL''. \ldots\ I think the authors could more strongly direct the reader to read [bloem2012synthesis] before continuing with the rest of the paper, or direct them towards the reference cited in \S III from the start \ldots The authors could, in the introduction still, even quickly describe what LTL is as they would to a layperson.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We added an inline definitional paragraph in the introduction immediately after the first use of ``LTL'' / ``reactive synthesis,'' aimed at readers without a formal-methods background:
+
+\textit{\revised{For readers unfamiliar with formal methods, LTL is a logic for expressing temporal properties of system behaviors using operators such as ``always,'' ``eventually,'' and ``until''~\citep{piterman2006synthesis,bloem2012synthesis}; reactive synthesis automatically constructs a controller (a strategy automaton) that satisfies an LTL specification against any admissible environment behavior, providing correct-by-construction guarantees at the symbolic level.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 2: Related-work section reuses jargon}
+\begin{mdframed}
+\begin{quote}
+\ldots\ the related work section still suffers from the problem of the introduction, using the term ``synthesis'' and ``Linear Temporal Logic (LTL)'' as if the reader already grappled with these concepts. Another criticism I have of the related work section (\S II) is that there is no mention at all of learning-based approaches \ldots
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+With the introductory definitional paragraph in place (response to Comment~1), the LTL/synthesis usage in the related-work section now has an anchor for readers. We additionally added a paragraph on learning-based perceptive locomotion approaches and explicitly position our model-based formal-methods framework as complementary:
+
+\textit{\revised{A complementary line of work uses end-to-end reinforcement learning to train perceptive locomotion policies that directly map terrain observations to joint commands, achieving impressive robustness on stairs, gaps, and unstructured outdoor terrain~\citep{miki2022learning,agarwal2023legged,zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie}. Compared with these data-driven approaches, our model-based, formal-methods framework offers explicit symbolic-level realizability guarantees and physical-feasibility certificates from MICP, at the cost of weaker generalization and the need for a terrain abstraction; we view the two approaches as complementary rather than competing.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 3: MICP solver}
+\begin{mdframed}
+\begin{quote}
+Which solver is used to solve the mixed-integer (convex) program? Is it Gurobi? CPLEX? Some other, homegrown MI(C)P solver? Have the authors compared how different solvers would perform?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We use Gurobi for all MICP problems in this work and have added an Implementation Details subsection at the start of the results section that states this explicitly. We did not benchmark across solvers; this is a reasonable additional study but is largely orthogonal to the symbolic-decomposition contribution we evaluate against the pure-MIP baseline (which uses the same solver in both configurations).
+
+\textit{\revised{All MICP problems---including the offline gait-free MICP, the online gait-fixed MICP, the kinematic-feasibility re-targeting MICP, and the pure-MIP benchmark---are solved using Gurobi~\citep{gurobi}.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 4: Hardware (CPU, RAM)}
+\begin{mdframed}
+\begin{quote}
+What kind of hardware (outside of the robot -- computer CPU, RAM) are the computations running on? AMD? Intel? Which architecture? How many cores?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+The Implementation Details subsection now reports the workstation specifications used for offline synthesis and online planning: an Intel Core i9-13900K (24 cores) with 64\,GB of RAM, running Gurobi~9.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 5: More sophisticated baseline}
+\begin{mdframed}
+\begin{quote}
+The authors compare with a heuristic on real hardware. What about another more sophisticated approach? Another hierarchical planner? A learning-based method?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We appreciate this suggestion and agree that a stronger baseline would add value. While a full implementation of such a baseline was beyond the scope of this revision, we have (i) strengthened the rationale for the nearest-feasible-foothold heuristic in the hardware section, and (ii) added an explicit future-work commitment listing concrete stronger baselines---TOWR-style phase-based parameterization~\citep{winkler2018gait} and parkour-style RL controllers~\citep{zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie}---in the new \textit{Stronger Baseline Comparisons as Future Work} subsection of the discussion (Sec.~\ref{sec:discussion}). The strengthened rationale in the hardware section reads:
+
+\textit{\revised{We chose this nearest-feasible-foothold heuristic because it isolates the value of feasibility-aware, longer-horizon planning over a single-step heuristic, and because such heuristics remain widely used in deployed perceptive-locomotion stacks. Comparisons against more sophisticated baselines are discussed as future work in Sec.~\ref{sec:discussion}.}}
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 6: Bipedal extension}
+\begin{mdframed}
+\begin{quote}
+As in [zhou2025physically], this paper focuses on quadrupedal walking. Does this framework extend to bipedal robots? \ldots\ I think the conclusion would be appropriate for that.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We added a dedicated subsection \textit{Extension to Bipedal and Other Platforms} in the discussion (Sec.~\ref{sec:discussion}). The symbolic machinery is platform-agnostic; the MICP layer needs adaptation, and the angular-momentum simplification becomes a stronger limitation in the bipedal regime---these points are stated explicitly.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 7: Sections IV and V are very short}
+\begin{mdframed}
+\begin{quote}
+Sections IV and V are very short. This is the most minor of minor comments but I feel the authors could rebalance a bit by merging them into a single section -- ``Problem statement and approach''?
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+Done. The previously separate Problem Statement and Approach sections are now merged into a single section ``Problem Statement and Approach Overview'' (Sec.~\ref{sec:problem_statement}) with two subsections.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 8: Fig.~9 error bars / Table~IV std deviation}
+\begin{mdframed}
+\begin{quote}
+Fig.~9, for the simulation benchmark \ldots is called a ``histogram''. It's rather a bar chart of the averages. I would like to see error bars/whiskers on here, to see the standard deviations. \ldots\ Table~IV (solve times for the online gait-fixed MICP) would benefit from including the standard deviation for the solve times.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We appreciate the suggestion and have addressed it on both fronts. Fig.~\ref{fig:pure_mip_benchmark} (previously Fig.~9) has been regenerated as \textbf{box plots} aggregated over $10$ seeded waypoints per scenario, so the reader can directly read off the median, interquartile range, and full spread of per-MIP solve times for each (terrain, horizon) combination---rather than only the mean as in the prior bar-chart version. Table~\ref{tab:micp_speed_hardware} (the hardware MICP solve-time table) also now includes a Std (s) column reporting the per-trial standard deviation for every scenario.
+
+\noindent\rule{17cm}{2.0pt}
+
+\subsection{Reviewer Comment 9: Typos}
+\begin{mdframed}
+\begin{quote}
+``high\textbf{ly} nonlinearity'' (\S II.B) \ldots\ ``and timing are chosen \textit{a prior\textbf{i}}'' (p.~3).
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+Both typos are fixed: ``high nonlinearity'' and ``\textit{a priori}'' in the related-work section.
+
+\noindent\rule{17cm}{6.0pt}
+\newpage

@@ -1,0 +1,104 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath}
+\usepackage{cite}
+\usepackage{amssymb,amsfonts}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{subfloat}
+\usepackage{textcomp}
+\usepackage{xcolor}
+% \usepackage{algorithm}
+\usepackage{verbatim} 
+\usepackage{mathrsfs}
+\usepackage{subfigure}
+\usepackage{empheq}
+\usepackage{courier}
+\usepackage{lipsum}
+\usepackage{comment}
+\usepackage{gensymb}
+\usepackage{mathtools, cuted}
+\usepackage{bm}
+\usepackage{ wasysym } % For /ocircle
+\usepackage{soul}
+\usepackage[colorlinks,citecolor=red,urlcolor=black,bookmarks=false,hypertexnames=true,hidelinks]{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% \usepackage{tikz,xcolor,hyperref}
+\input{commands}
+
+\newcommand{\vg}[1]{\bm{#1}}
+\renewcommand{\v}[1]{\mathbf{#1}}
+
+%\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\ye}[1]{\textbf{\textcolor{red}{Ye: #1}}}
+\newcommand{\ziyi}[1]{\textbf{\textcolor{blue}{Ziyi: #1}}}
+
+% \title{Reactive Gait Synthesis and Footstep Planning for Safety-Critical Quadrupedal Locomotion\\
+\title{Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion\\
+}
+
+\author{\large Anonymous Author(s)}
+
+% \author{
+% \large Ziyi Zhou$^{1}$,
+% Qian Meng$^{2}$, 
+% % Eohan George$^{3}$,
+% Hadas Kress-Gazit$^{2}$, and
+% Ye Zhao$^{1}$
+% % <-this % stops a space
+% \thanks{$^{1}$Ziyi Zhou, and Ye Zhao are with Georgia Institute of Technology. {\tt\small \{zhouziyi, yzhao301\}@gatech.edu.}}
+% \thanks{$^{2}$Qian Meng and Hadas Kress-Gazit are with Cornell University. {\tt\small \{qm34,hadaskg\}@cornell.edu.}}
+% % \thanks{$^{3}$Eohan George is Principal Investigator at SkyMul Inc. {\tt\small eg@skymul.com.}}
+% }
+\begin{document}
+\maketitle
+
+%%%%%%%%% Abstract %%%%%%%%
+\input{journal_tex/abstract}
+
+\begin{IEEEkeywords}
+Legged Robots, Optimization and Optimal Control,
+Formal Methods in Robotics and Automation
+\end{IEEEkeywords}
+
+%%%%%%%%% Introduction %%%%%%%%
+\input{journal_tex/introduction}
+
+%%%%%%%%% Related work %%%%%%%%
+\input{journal_tex/related_work}
+
+%%%%%%%%% Preliminaries %%%%%%%%
+\input{journal_tex/preliminaries}
+
+%%%%%%%%% Problem statement and approach overview %%%%%%%%
+\input{journal_tex/problem_statement}
+
+%%%%%%%%% Offline synthesis %%%%%%%%
+\input{journal_tex/offline_synthesis}
+
+%%%%%%%%% Online execution %%%%%%%%
+\input{journal_tex/online_execution}
+
+%%%%%%%%% Result %%%%%%%%
+% \input{journal_tex/case_study}
+
+\input{journal_tex/results}
+
+\input{journal_tex/hardware}
+
+%%%%%%%%% Conclusion %%%%%%%%
+\input{journal_tex/discussion}
+
+\input{journal_tex/conclusion}
+
+
+
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

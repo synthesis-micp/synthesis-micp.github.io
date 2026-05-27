@@ -1,0 +1,369 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{di2018dynamic,kim2019highly,zhou2022momentum}
+\citation{fankhauser2018robust,grandia2023perceptive}
+\citation{Park2015OnlinePF,kim2020vision,gilroy2021autonomous}
+\citation{norby2020fast}
+\citation{chignoli2022rapid}
+\citation{zhao2022reactive,shamsah2023integrated}
+\citation{valenzuela2016mixed,shirai2022simultaneous}
+\citation{deits2014footstep}
+\citation{dai2019global}
+\citation{ding2020kinodynamic,fey20243d}
+\citation{ponton2016convex,risbourg2022real,acosta2023bipedal}
+\citation{aceituno2017simultaneous}
+\citation{fankhauser2018robust}
+\citation{bloem2012synthesis}
+\citation{piterman2006synthesis,bloem2012synthesis}
+\providecommand \oddpage@label [2]{}
+\newlabel{FirstPage}{{}{1}{}{section*.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{bloem2012synthesis}
+\citation{wermelinger2016navigation,fernbach2017kinodynamic,norby2020fast,chignoli2022rapid,liao2023walking,feng2023gpf}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System architecture overview. The solid lines indicate online communication, while dashed lines represent offline processes. The request goals in the offline phase are user-defined, while those in the online phase are provided by a global planner based on the global goal. }}{2}{figure.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:system_diagram}{{1}{2}{System architecture overview. The solid lines indicate online communication, while dashed lines represent offline processes. The request goals in the offline phase are user-defined, while those in the online phase are provided by a global planner based on the global goal}{figure.caption.2}{}}
+\citation{zhou2025physically}
+\citation{kolter2008control,kalakrishnan2010fast,winkler2014path,mastalli2015line,fankhauser2018robust,griffin2019footstep}
+\citation{deits2014footstep,tonneau2020sl1m,risbourg2022real,ren2025accelerating}
+\citation{hauser2005non,bretl2006motion,tonneau2018efficient}
+\citation{jenelten2020perceptive,kim2020vision,agrawal2022vision}
+\citation{magana2019fast,villarreal2020mpc,yu2021visual,gangapurwala2022rloc,wu2025learn,Kamohara2025RLMPC}
+\citation{grandia2021multi,jenelten2022tamols,grandia2023perceptive}
+\citation{muenprasitivej2024bipedal,shamsah2025terrain,muenprasitivej2026bipedal}
+\citation{Park2015OnlinePF,kim2020vision,gilroy2021autonomous}
+\citation{fernbach2017kinodynamic,norby2020fast,chignoli2022rapid}
+\citation{norby2020fast}
+\citation{chignoli2022rapid}
+\citation{da2021learning,yang2022fast,xie2022glide,pmlr-v164-margolis22a,yu2024learning}
+\citation{boussema2019online,wang2023and,sun2023free}
+\citation{miki2022learning,agarwal2023legged,zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie}
+\citation{posa2014direct}
+\citation{mordatch2012discovery,drnach2021robust}
+\citation{aydinoglu2022real,le2024fast,drnach2022mediating}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Hierarchical Planning for Terrain-Adaptive Locomotion}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Simultaneous Planning via Optimization}{3}{subsection.2.2}\protected@file@percent }
+\citation{valenzuela2016mixed,shirai2022simultaneous,jiang2023locomotion}
+\citation{dai2019global}
+\citation{ponton2016convex,ding2020kinodynamic,acosta2023bipedal}
+\citation{aceituno2017simultaneous}
+\citation{garrett2021integrated,zhao2024survey}
+\citation{toussaint2015logic}
+\citation{toussaint2018differentiable}
+\citation{migimatsu2020object,zhao2021sydebo}
+\citation{sleiman2023versatile}
+\citation{ding2021hybrid,shirai2021lto,jelavic2021combined,amatucci2022monte,chen2021trajectotree,zhang2023simultaneous,zhu2023efficient,asselmeier2024hierarchical}
+\citation{kress2018synthesis}
+\citation{kulgod2020temporal,zhou2022reactive,jiang2023abstraction}
+\citation{gu2022reactive,shamsah2023integrated,zhao2022reactive}
+\citation{pnueli1989synthesis}
+\citation{kress2009temporal}
+\citation{shamsah2023integrated}
+\citation{gu2022reactive}
+\citation{zhao2022reactive}
+\citation{decastro2014dynamics,fainekos2006translating}
+\citation{bhatia2010sampling}
+\citation{liu2013synthesis}
+\citation{maly2013iterative}
+\citation{pacheck2020finding,pacheck2022physically}
+\citation{meng2024automated}
+\citation{zhou2025physically}
+\citation{zhou2025physically}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Task and Motion Planning for Contact-Rich Planning}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Physically-Feasible Reactive Synthesis}{4}{subsection.2.4}\protected@file@percent }
+\citation{ehlers2016slugs}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Preliminaries}{5}{section.3}\protected@file@percent }
+\newlabel{example:1}{{1}{5}{Preliminaries}{examplecounter.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Terrain abstraction and skill definition. (a) Top-down view of the real-world terrain before abstraction. The red polygons denote the segmented terrain polygons. (b) Abstraction of the terrain and robot's skills (pink) moving from one location to another. (c) Repair process to find a new skill (blue).}}{5}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:preliminary_nine_squares}{{2}{5}{Terrain abstraction and skill definition. (a) Top-down view of the real-world terrain before abstraction. The red polygons denote the segmented terrain polygons. (b) Abstraction of the terrain and robot's skills (pink) moving from one location to another. (c) Repair process to find a new skill (blue)}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Abstractions}{5}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:preliminaries_abstraction}{{3.1}{5}{Abstractions}{subsection.3.1}{}}
+\citation{bloem2012synthesis}
+\citation{baier2008principles}
+\citation{zhou2025physically}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Specifications}{6}{subsection.3.2}\protected@file@percent }
+\newlabel{def:partial_eval}{{1}{6}{Specifications}{defcounter.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Problem Statement and Approach Overview}{6}{section.4}\protected@file@percent }
+\newlabel{sec:problem_statement}{{4}{6}{Problem Statement and Approach Overview}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Problem Statement}{6}{subsection.4.1}\protected@file@percent }
+\newlabel{problem:1}{{1}{6}{Problem Statement}{problemcounter.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Approach Overview}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:approach_overview}{{4.2}{6}{Approach Overview}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Offline Synthesis}{6}{section.5}\protected@file@percent }
+\newlabel{sec:reactive_gait_synthesis}{{5}{6}{Offline Synthesis}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Locomotion Gait and Feasibility Checking via MICP}{6}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:motion_primitive}{{5.1}{6}{Locomotion Gait and Feasibility Checking via MICP}{subsection.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces System overview. During offline synthesis (pink arrows), an initial set of locomotion gaits is provided, and symbolic skills are iteratively generated by solving the MICP. When the task specifications are unrealizable, a symbolic repair is triggered to seek missing skills. During the online execution (black arrows), MICP is solved again taking online terrain segments and the symbolic state only advances when a solution is found. A runtime repair (blue arrows) is initiated if a solving failure occurs, or an unseen terrain or request goal is encountered. }}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:combined_offline_online}{{3}{7}{System overview. During offline synthesis (pink arrows), an initial set of locomotion gaits is provided, and symbolic skills are iteratively generated by solving the MICP. When the task specifications are unrealizable, a symbolic repair is triggered to seek missing skills. During the online execution (black arrows), MICP is solved again taking online terrain segments and the symbolic state only advances when a solution is found. A runtime repair (blue arrows) is initiated if a solving failure occurs, or an unseen terrain or request goal is encountered}{figure.caption.4}{}}
+\newlabel{ocp:mip_general}{{1}{7}{Locomotion Gait and Feasibility Checking via MICP}{equation.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Demonstration of decision variables and polygons when solving MICP for skill $a_0$ in Example~\ref {example:1} using a trotting locomotion gait.}}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:mip_go2}{{4}{7}{Demonstration of decision variables and polygons when solving MICP for skill $a_0$ in Example~\ref {example:1} using a trotting locomotion gait}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Continuous Decision Variables}{8}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}System Dynamics}{8}{subsubsection.5.1.2}\protected@file@percent }
+\newlabel{eq:dynamics}{{3}{8}{System Dynamics}{equation.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.3}Cost Function}{8}{subsubsection.5.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.4}Safe Region Constraint}{8}{subsubsection.5.1.4}\protected@file@percent }
+\newlabel{eq:safe_region}{{6}{8}{Safe Region Constraint}{equation.5.6}{}}
+\newlabel{eq:safe_region_eq}{{7}{8}{Safe Region Constraint}{equation.5.7}{}}
+\newlabel{eq:sum_contact_binary}{{8}{8}{Safe Region Constraint}{equation.5.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.5}Frictional and Contact Constraints}{8}{subsubsection.5.1.5}\protected@file@percent }
+\newlabel{eq:force_non_zero}{{10}{8}{Frictional and Contact Constraints}{equation.5.10}{}}
+\newlabel{eq:force_friction_cone}{{11}{8}{Frictional and Contact Constraints}{equation.5.11}{}}
+\newlabel{eq:ee_velocity_zero}{{12}{8}{Frictional and Contact Constraints}{equation.5.12}{}}
+\newlabel{eq:force_zero}{{13}{8}{Frictional and Contact Constraints}{equation.5.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.6}Actuation Constraint}{8}{subsubsection.5.1.6}\protected@file@percent }
+\newlabel{eq:max_torque}{{14}{8}{Actuation Constraint}{equation.5.14}{}}
+\newlabel{eq:max_acc}{{15}{8}{Actuation Constraint}{equation.5.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.7}Kinematics Constraint}{8}{subsubsection.5.1.7}\protected@file@percent }
+\newlabel{eq:rom}{{16}{8}{Kinematics Constraint}{equation.5.16}{}}
+\citation{ehlers2016slugs}
+\citation{pacheck2022physically}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Tracking Cost Weights}}{9}{table.caption.6}\protected@file@percent }
+\newlabel{tab:cost_weights}{{1}{9}{Tracking Cost Weights}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Task Specification Encoding}{9}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:spec_gen}{{5.2}{9}{Task Specification Encoding}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}High-level Manager and Symbolic Repair}{9}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:manager_and_repair}{{5.3}{9}{High-level Manager and Symbolic Repair}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Gait-Free MICP}{9}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:gait_free_micp}{{5.4}{9}{Gait-Free MICP}{subsection.5.4}{}}
+\citation{miki2022elevation,fankhauser2018robust}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.1}Safe Region Constraint}{10}{subsubsection.5.4.1}\protected@file@percent }
+\newlabel{eq:safe_region_2}{{21}{10}{Safe Region Constraint}{equation.5.21}{}}
+\newlabel{eq:safe_region_2_eq}{{22}{10}{Safe Region Constraint}{equation.5.22}{}}
+\newlabel{eq:sum_contact_binary_2}{{23}{10}{Safe Region Constraint}{equation.5.23}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.4.2}Frictional and Contact Constraints}{10}{subsubsection.5.4.2}\protected@file@percent }
+\newlabel{eq:force_non_zero_2}{{25}{10}{Frictional and Contact Constraints}{equation.5.25}{}}
+\newlabel{eq:force_friction_cone_2}{{26}{10}{Frictional and Contact Constraints}{equation.5.26}{}}
+\newlabel{eq:ee_velocity_zero_2}{{27}{10}{Frictional and Contact Constraints}{equation.5.27}{}}
+\newlabel{eq:force_zero_2}{{28}{10}{Frictional and Contact Constraints}{equation.5.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Online Execution}{10}{section.6}\protected@file@percent }
+\newlabel{sec:online_execution}{{6}{10}{Online Execution}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Strategy Automaton Execution and Online MICP Modifications}{10}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:automaton_online_evaluation}{{6.1}{10}{Strategy Automaton Execution and Online MICP Modifications}{subsection.6.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.1}Robot Pose Re-Targeting}{10}{subsubsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.1.2}Collision Avoidance and Swing Foot Constraints}{10}{subsubsection.6.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Demonstrations of (a) offline MICP for a skill transitioning from a flat terrain to a high terrain with predefined polygons; (b) online MICP for the same skill but with online terrain polygons.}}{11}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:online_micp}{{5}{11}{Demonstrations of (a) offline MICP for a skill transitioning from a flat terrain to a high terrain with predefined polygons; (b) online MICP for the same skill but with online terrain polygons}{figure.caption.7}{}}
+\newlabel{eq:collision_avoidance}{{29}{11}{Collision Avoidance and Swing Foot Constraints}{equation.6.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Runtime Repair}{11}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:online_repair}{{6.2}{11}{Runtime Repair}{subsection.6.2}{}}
+\citation{dai2014whole,chignoli2021humanoid,sleiman2021unified}
+\citation{OCS2}
+\citation{kuindersma2014efficiently}
+\citation{wensing2013generation}
+\citation{bledt2018cheetah}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Tracking Control}{12}{section.7}\protected@file@percent }
+\newlabel{sec:tracking_control}{{7}{12}{Tracking Control}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Tracking Control Module}{12}{subsection.7.1}\protected@file@percent }
+\newlabel{subsec:nmpc}{{7.1.1}{12}{Nonlinear Model Predictive Control (NMPC)}{subsubsection.7.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.1}Nonlinear Model Predictive Control (NMPC)}{12}{subsubsection.7.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.2}Whole-Body Control (WBC)}{12}{subsubsection.7.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.1.3}State Estimation}{12}{subsubsection.7.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Coordination between Strategy Execution and Tracking Module}{12}{subsection.7.2}\protected@file@percent }
+\newlabel{sec:coordination}{{7.2}{12}{Coordination between Strategy Execution and Tracking Module}{subsection.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Coordination between strategy execution and tracking control module. (a) The MICP solving time (denoted by PT) for transitioning from State 1 to State 2 is shorter than the time horizon of the previous reference trajectory (denoted by TT), allowing the seamless appending for the new trajectory. (b) The MICP solving time exceeds the time horizon of the previous reference trajectory, requiring the robot to come to a stop (red) and wait for the new trajectory whenever available.}}{12}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:micp_mpc_automaton}{{6}{12}{Coordination between strategy execution and tracking control module. (a) The MICP solving time (denoted by PT) for transitioning from State 1 to State 2 is shorter than the time horizon of the previous reference trajectory (denoted by TT), allowing the seamless appending for the new trajectory. (b) The MICP solving time exceeds the time horizon of the previous reference trajectory, requiring the robot to come to a stop (red) and wait for the new trajectory whenever available}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.1}Strategy Execution}{12}{subsubsection.7.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.2}Tracking Control Module}{12}{subsubsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.2.3}Delay Handling}{12}{subsubsection.7.2.3}\protected@file@percent }
+\citation{gurobi}
+\citation{OCS2}
+\citation{asselmeier2024hierarchical}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Robot Parameters}}{13}{table.caption.10}\protected@file@percent }
+\newlabel{tab:robot_parameter}{{2}{13}{Robot Parameters}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Simulation}{13}{section.8}\protected@file@percent }
+\newlabel{sec:experiments}{{8}{13}{Simulation}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Implementation Details}{13}{subsection.8.1}\protected@file@percent }
+\newlabel{sec:impl_details}{{8.1}{13}{Implementation Details}{subsection.8.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Robot Setup}{13}{subsection.8.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Hardware platforms used for experiments: Unitree Go2 and SkyMul Chotu (equipped with a rebar gun and ``cross"-shaped feet).}}{13}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:hardware_info}{{7}{13}{Hardware platforms used for experiments: Unitree Go2 and SkyMul Chotu (equipped with a rebar gun and ``cross"-shaped feet)}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Simulation Environment Setup}{13}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}Unstructured Terrain}{13}{subsubsection.8.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.2}Rebar Terrain}{13}{subsubsection.8.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Snapshots from online execution across the four simulation scenarios: (a) unstructured terrain with four terrain types, (b) unstructured terrain with the full eight-type abstraction, (c) rebar terrain with the 7-type abstraction, and (d) rebar terrain with the 14-type abstraction. Green trajectories in (c) and (d) are detours produced by runtime re-synthesis after online MICP solving failures.}}{14}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:online_terrains}{{8}{14}{Snapshots from online execution across the four simulation scenarios: (a) unstructured terrain with four terrain types, (b) unstructured terrain with the full eight-type abstraction, (c) rebar terrain with the 7-type abstraction, and (d) rebar terrain with the 14-type abstraction. Green trajectories in (c) and (d) are detours produced by runtime re-synthesis after online MICP solving failures}{figure.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Offline Synthesis and Repair Time}}{14}{table.caption.12}\protected@file@percent }
+\newlabel{tab:offline_synthesis_time}{{3}{14}{Offline Synthesis and Repair Time}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Offline Synthesis Results}{14}{subsection.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Runtime symbolic repair triggered by an unforeseen \textit  {gap} state in the \textit  {Unstructured-4} / $3\times 3$ scenario, in which gap states are deliberately excluded offline. Repair proposes the missing transition and gait-free MICP synthesizes a leaping skill, taking $12.36$\,s total ($0.18$\,s symbolic repair + $12.18$\,s gait-free MICP).}}{15}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:online_repair}{{9}{15}{Runtime symbolic repair triggered by an unforeseen \textit {gap} state in the \textit {Unstructured-4} / $3\times 3$ scenario, in which gap states are deliberately excluded offline. Repair proposes the missing transition and gait-free MICP synthesizes a leaping skill, taking $12.36$\,s total ($0.18$\,s symbolic repair + $12.18$\,s gait-free MICP)}{figure.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Online Gait-Fixed MICP Solving Time for Simulation}}{15}{table.caption.15}\protected@file@percent }
+\newlabel{tab:micp_speed}{{4}{15}{Online Gait-Fixed MICP Solving Time for Simulation}{table.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Offline symbolic-repair time versus the number of terrain--request state pairs for the $3\times 3$ and $5\times 5$ abstractions. Repair time grows approximately linearly in both cases; per state pair, the $5\times 5$ grid takes $478.1\%$ more time than the $3\times 3$ grid.}}{15}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:repair_vs_num_states}{{10}{15}{Offline symbolic-repair time versus the number of terrain--request state pairs for the $3\times 3$ and $5\times 5$ abstractions. Repair time grows approximately linearly in both cases; per state pair, the $5\times 5$ grid takes $478.1\%$ more time than the $3\times 3$ grid}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Online Execution Results}{15}{subsection.8.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}Runtime Repair Case Study}{15}{subsection.8.6}\protected@file@percent }
+\newlabel{sec:runtime_repair_case_study}{{8.6}{15}{Runtime Repair Case Study}{subsection.8.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.6.1}Unforeseen Terrain States}{15}{subsubsection.8.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.6.2}Solving Failure}{15}{subsubsection.8.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces {\color  {blue}MIP solve time across four terrains---sparse stone (blue), dense stone (yellow), sparse rebar (green), dense rebar (red)---and horizons of $1$--$5$\,s, as box plots over $10$ seeded waypoints per scenario. In each terrain subfigure, selected traversal snapshots at planning horizons of $1$\,s (blue), $2$\,s (yellow), $4$\,s (green), and $5$\,s (red) are overlaid for visualization.}}}{16}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:pure_mip_benchmark}{{11}{16}{\revised {MIP solve time across four terrains---sparse stone (blue), dense stone (yellow), sparse rebar (green), dense rebar (red)---and horizons of $1$--$5$\,s, as box plots over $10$ seeded waypoints per scenario. In each terrain subfigure, selected traversal snapshots at planning horizons of $1$\,s (blue), $2$\,s (yellow), $4$\,s (green), and $5$\,s (red) are overlaid for visualization.}}{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces {\color  {blue}Representative dense rebar trial after randomly removing terrains for benchmarking different baselines: (a) Pure-MIP with $H{=}2$ s; (b) Pure-MIP with $H{=}3$ s; (c) Proposed approach with $3\times 3$ grid.}}}{16}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:dense_rebar_comparison}{{12}{16}{\revised {Representative dense rebar trial after randomly removing terrains for benchmarking different baselines: (a) Pure-MIP with $H{=}2$ s; (b) Pure-MIP with $H{=}3$ s; (c) Proposed approach with $3\times 3$ grid.}}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.7}Benchmark: Pure-MIP Planner}{16}{subsection.8.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Demonstration of the robot executing multiple turning behaviors to continuously progress toward the global waypoint on terrain arranged in a zig-zag pattern.}}{17}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:yaw_extension}{{13}{17}{Demonstration of the robot executing multiple turning behaviors to continuously progress toward the global waypoint on terrain arranged in a zig-zag pattern}{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.8}Preliminary Study: Yaw Command Extension}{17}{subsection.8.8}\protected@file@percent }
+\newlabel{sec:extension}{{8.8}{17}{Preliminary Study: Yaw Command Extension}{subsection.8.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Hardware Demonstrations}{17}{section.9}\protected@file@percent }
+\newlabel{sec:hardware}{{9}{17}{Hardware Demonstrations}{section.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces {\color  {blue}End-to-end benchmark on the dense rebar scenario ($10$ seeded waypoints, identical seed and terrain across methods, with randomly removed rebars per trial to add randomness). Traversal time and per-module times are mean values computed over successful trials only. Reactive synthesis combines the per-step strategy query and the per-spec-switch strategy reload. Dashes denote modules that do not exist in the corresponding method or are disabled by the ablation.}}}{18}{table.caption.18}\protected@file@percent }
+\newlabel{tab:pure_mip_benchmark}{{5}{18}{\revised {End-to-end benchmark on the dense rebar scenario ($10$ seeded waypoints, identical seed and terrain across methods, with randomly removed rebars per trial to add randomness). Traversal time and per-module times are mean values computed over successful trials only. Reactive synthesis combines the per-step strategy query and the per-spec-switch strategy reload. Dashes denote modules that do not exist in the corresponding method or are disabled by the ablation.}}{table.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Hardware experiment on the first unstructured-terrain scenario: sparse stepping stones ($0.18$--$0.23$\,m apart) interleaved with flat regions. Side and front views highlight the lateral misalignment of the stones; the online MICP produces a sideways trajectory and a $3$\,s trotting gait is used throughout.}}{18}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:hardware_withoutgap}{{14}{18}{Hardware experiment on the first unstructured-terrain scenario: sparse stepping stones ($0.18$--$0.23$\,m apart) interleaved with flat regions. Side and front views highlight the lateral misalignment of the stones; the online MICP produces a sideways trajectory and a $3$\,s trotting gait is used throughout}{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Hardware Experiment Setup}{18}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Unstructured Terrain}{18}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Rebar Terrain}{18}{subsection.9.3}\protected@file@percent }
+\newlabel{subsec:rebar_terrain}{{9.3}{18}{Rebar Terrain}{subsection.9.3}{}}
+\citation{fankhauser2018robust,kim2020vision}
+\citation{marcucci2024shortest,lin2024accelerate}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Hardware experiment demonstration for the second unstructured terrain scenario with sparse stepping stones, flat, and gap terrains.}}{19}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:hardware_withgap}{{15}{19}{Hardware experiment demonstration for the second unstructured terrain scenario with sparse stepping stones, flat, and gap terrains}{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Tracking performance of the base and front-left foot positions: comparison between measured states and MICP-generated reference trajectories.}}{19}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:tracking_performance}{{16}{19}{Tracking performance of the base and front-left foot positions: comparison between measured states and MICP-generated reference trajectories}{figure.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Online Gait-Fixed MICP Solving Time for Hardware}}{19}{table.caption.25}\protected@file@percent }
+\newlabel{tab:micp_speed_hardware}{{6}{19}{Online Gait-Fixed MICP Solving Time for Hardware}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Benchmark: Heuristics-Based Planner}{19}{subsection.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5}Computational Time}{19}{subsection.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Discussion}{19}{section.10}\protected@file@percent }
+\newlabel{sec:discussion}{{10}{19}{Discussion}{section.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.1}Generalization to More Types of Terrain}{19}{subsection.10.1}\protected@file@percent }
+\citation{miki2022elevation}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Execution results in rebar terrain without (top row) and with obstacle (bottom row). In the obstacle case, runtime resynthesis is triggered to generate a detour strategy and ensure successful traversal.}}{20}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:hardware_rebar}{{17}{20}{Execution results in rebar terrain without (top row) and with obstacle (bottom row). In the obstacle case, runtime resynthesis is triggered to generate a detour strategy and ensure successful traversal}{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Comparison between the proposed method and a heuristics-based planner in an extreme sparse rebar scenario. The proposed method performs resynthesis and succeeds, while the heuristics-based planner fails due to foot trapping.}}{20}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:hardware_rebar_benchmark}{{18}{20}{Comparison between the proposed method and a heuristics-based planner in an extreme sparse rebar scenario. The proposed method performs resynthesis and succeeds, while the heuristics-based planner fails due to foot trapping}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.2}Optimality}{20}{subsection.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3}Perception Module}{20}{subsection.10.3}\protected@file@percent }
+\citation{bloem2012synthesis}
+\citation{winkler2018gait}
+\citation{zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie}
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.4}Reactivity and Update Frequencies}{21}{subsection.10.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.5}Stronger Baseline Comparisons as Future Work}{21}{subsection.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.6}Extension to Bipedal and Other Platforms}{21}{subsection.10.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11}Conclusion}{21}{section.11}\protected@file@percent }
+\bibstyle{SageH}
+\bibdata{references}
+\bibcite{aceituno2017simultaneous}{{1}{2017}{{Aceituno-Cabezas et~al.}}{{Aceituno-Cabezas, Mastalli, Dai, Focchi, Radulescu, Caldwell, Cappelletto, Grieco, Fern{\'a}ndez-L{\'o}pez and Semini}}}
+\bibcite{acosta2023bipedal}{{2}{2023}{{Acosta and Posa}}{{}}}
+\bibcite{agarwal2023legged}{{3}{2023}{{Agarwal et~al.}}{{Agarwal, Kumar, Malik and Pathak}}}
+\bibcite{agrawal2022vision}{{4}{2022}{{Agrawal et~al.}}{{Agrawal, Chen, Rai and Sreenath}}}
+\bibcite{amatucci2022monte}{{5}{2022}{{Amatucci et~al.}}{{Amatucci, Kim, Hwangbo and Park}}}
+\bibcite{asselmeier2024hierarchical}{{6}{2024}{{Asselmeier et~al.}}{{Asselmeier, Ivanova, Zhou, Vela and Zhao}}}
+\bibcite{aydinoglu2022real}{{7}{2022}{{Aydinoglu and Posa}}{{}}}
+\bibcite{baier2008principles}{{8}{2008}{{Baier and Katoen}}{{}}}
+\bibcite{bhatia2010sampling}{{9}{2010}{{Bhatia et~al.}}{{Bhatia, Kavraki and Vardi}}}
+\bibcite{bledt2018cheetah}{{10}{2018}{{Bledt et~al.}}{{Bledt, Powell, Katz, Di~Carlo, Wensing and Kim}}}
+\bibcite{bloem2012synthesis}{{11}{2012}{{Bloem et~al.}}{{Bloem, Jobstmann, Piterman, Pnueli and Saar}}}
+\bibcite{boussema2019online}{{12}{2019}{{Boussema et~al.}}{{Boussema, Powell, Bledt, Ijspeert, Wensing and Kim}}}
+\bibcite{bretl2006motion}{{13}{2006}{{Bretl}}{{}}}
+\bibcite{chen2021trajectotree}{{14}{2021}{{Chen et~al.}}{{Chen, Culbertson, Lepert, Schwager and Bohg}}}
+\bibcite{cheng2024extreme}{{15}{2024}{{Cheng et~al.}}{{Cheng, Shi, Agarwal and Pathak}}}
+\bibcite{chignoli2021humanoid}{{16}{2021}{{Chignoli et~al.}}{{Chignoli, Kim, Stanger-Jones and Kim}}}
+\bibcite{chignoli2022rapid}{{17}{2022}{{Chignoli et~al.}}{{Chignoli, Morozov and Kim}}}
+\bibcite{da2021learning}{{18}{2021}{{Da et~al.}}{{Da, Xie, Hoeller, Boots, Anandkumar, Zhu, Babich and Garg}}}
+\bibcite{dai2019global}{{19}{2019}{{Dai et~al.}}{{Dai, Izatt and Tedrake}}}
+\bibcite{dai2014whole}{{20}{2014}{{Dai et~al.}}{{Dai, Valenzuela and Tedrake}}}
+\bibcite{decastro2014dynamics}{{21}{2014}{{DeCastro et~al.}}{{DeCastro, Ehlers, Rungger, Balkan, Tabuada and Kress-Gazit}}}
+\bibcite{deits2014footstep}{{22}{2014}{{Deits and Tedrake}}{{}}}
+\bibcite{di2018dynamic}{{23}{2018}{{Di~Carlo et~al.}}{{Di~Carlo, Wensing, Katz, Bledt and Kim}}}
+\bibcite{ding2020kinodynamic}{{24}{2020}{{Ding et~al.}}{{Ding, Li and Park}}}
+\bibcite{ding2021hybrid}{{25}{2021}{{Ding et~al.}}{{Ding, Zhang, Li, Park and Hauser}}}
+\bibcite{drnach2022mediating}{{26}{2022}{{Drnach et~al.}}{{Drnach, Zhang and Zhao}}}
+\bibcite{drnach2021robust}{{27}{2021}{{Drnach and Zhao}}{{}}}
+\bibcite{ehlers2016slugs}{{28}{2016}{{Ehlers and Raman}}{{}}}
+\bibcite{fainekos2006translating}{{29}{2006}{{Fainekos et~al.}}{{Fainekos, Loizou and Pappas}}}
+\bibcite{fankhauser2018robust}{{30}{2018}{{Fankhauser et~al.}}{{Fankhauser, Bjelonic, Bellicoso, Miki and Hutter}}}
+\bibcite{OCS2}{{31}{}{{Farshidian et~al.}}{{}}}
+\bibcite{feng2023gpf}{{32}{2023}{{Feng et~al.}}{{Feng, Zhou, Smith, Asselmeier, Zhao and Vela}}}
+\bibcite{fernbach2017kinodynamic}{{33}{2017}{{Fernbach et~al.}}{{Fernbach, Tonneau, Del~Prete and Ta{\"\i }x}}}
+\bibcite{fey20243d}{{34}{2024}{{Fey et~al.}}{{Fey, Frei and Wensing}}}
+\bibcite{gangapurwala2022rloc}{{35}{2022}{{Gangapurwala et~al.}}{{Gangapurwala, Geisert, Orsolino, Fallon and Havoutis}}}
+\bibcite{garrett2021integrated}{{36}{2021}{{Garrett et~al.}}{{Garrett, Chitnis, Holladay, Kim, Silver, Kaelbling and Lozano-P{\'e}rez}}}
+\bibcite{gilroy2021autonomous}{{37}{2021}{{Gilroy et~al.}}{{Gilroy, Lau, Yang, Izaguirre, Biermayer, Xiao, Sun, Agrawal, Zeng, Li et~al.}}}
+\bibcite{grandia2023perceptive}{{38}{2023}{{Grandia et~al.}}{{Grandia, Jenelten, Yang, Farshidian and Hutter}}}
+\bibcite{grandia2021multi}{{39}{2021}{{Grandia et~al.}}{{Grandia, Taylor, Ames and Hutter}}}
+\bibcite{griffin2019footstep}{{40}{2019}{{Griffin et~al.}}{{Griffin, Wiedebach, McCrory, Bertrand, Lee and Pratt}}}
+\bibcite{gu2022reactive}{{41}{2022}{{Gu et~al.}}{{Gu, Boyd and Zhao}}}
+\bibcite{gurobi}{{42}{2025}{{Gurobi Optimization, LLC}}{{}}}
+\bibcite{hauser2005non}{{43}{2005}{{Hauser et~al.}}{{Hauser, Bretl and Latombe}}}
+\bibcite{hoeller2023anymal}{{44}{2023}{{Hoeller et~al.}}{{Hoeller, Rudin, Sako and Hutter}}}
+\bibcite{jelavic2021combined}{{45}{2021}{{Jelavic et~al.}}{{Jelavic, Farshidian and Hutter}}}
+\bibcite{jenelten2022tamols}{{46}{2022}{{Jenelten et~al.}}{{Jenelten, Grandia, Farshidian and Hutter}}}
+\bibcite{jenelten2020perceptive}{{47}{2020}{{Jenelten et~al.}}{{Jenelten, Miki, Vijayan, Bjelonic and Hutter}}}
+\bibcite{jiang2023abstraction}{{48}{2023{a}}{{Jiang et~al.}}{{Jiang, Coogan and Zhao}}}
+\bibcite{jiang2023locomotion}{{49}{2023{b}}{{Jiang et~al.}}{{Jiang, Chi, Zheng, Zhang, Ling, Xu and Zhang}}}
+\bibcite{kalakrishnan2010fast}{{50}{2010}{{Kalakrishnan et~al.}}{{Kalakrishnan, Buchli, Pastor, Mistry and Schaal}}}
+\bibcite{Kamohara2025RLMPC}{{51}{2025}{{Kamohara et~al.}}{{Kamohara, Wu, Wamorkar, Hutchinson and Zhao}}}
+\bibcite{kim2020vision}{{52}{2020}{{Kim et~al.}}{{Kim, Carballo, Di~Carlo, Katz, Bledt, Lim and Kim}}}
+\bibcite{kim2019highly}{{53}{2019}{{Kim et~al.}}{{Kim, Di~Carlo, Katz, Bledt and Kim}}}
+\bibcite{kolter2008control}{{54}{2008}{{Kolter et~al.}}{{Kolter, Rodgers and Ng}}}
+\bibcite{kress2009temporal}{{55}{2009}{{Kress-Gazit et~al.}}{{Kress-Gazit, Fainekos and Pappas}}}
+\bibcite{kress2018synthesis}{{56}{2018}{{Kress-Gazit et~al.}}{{Kress-Gazit, Lahijanian and Raman}}}
+\bibcite{kuindersma2014efficiently}{{57}{2014}{{Kuindersma et~al.}}{{Kuindersma, Permenter and Tedrake}}}
+\bibcite{kulgod2020temporal}{{58}{2020}{{Kulgod et~al.}}{{Kulgod, Chen, Huang, Zhao and Atanasov}}}
+\bibcite{le2024fast}{{59}{2024}{{Le~Cleac'h et~al.}}{{Le~Cleac'h, Howell, Yang, Lee, Zhang, Bishop, Schwager and Manchester}}}
+\bibcite{liao2023walking}{{60}{2023}{{Liao et~al.}}{{Liao, Li, Thirugnanam, Zeng and Sreenath}}}
+\bibcite{lin2024accelerate}{{61}{2024}{{Lin}}{{}}}
+\bibcite{liu2013synthesis}{{62}{2013}{{Liu et~al.}}{{Liu, Ozay, Topcu and Murray}}}
+\bibcite{luo2024pie}{{63}{2024}{{Luo et~al.}}{{Luo, Li, Yu, Wang, Wu and Zhu}}}
+\bibcite{magana2019fast}{{64}{2019}{{Magana et~al.}}{{Magana, Barasuol, Camurri, Franceschi, Focchi, Pontil, Caldwell and Semini}}}
+\bibcite{maly2013iterative}{{65}{2013}{{Maly et~al.}}{{Maly, Lahijanian, Kavraki, Kress-Gazit and Vardi}}}
+\bibcite{marcucci2024shortest}{{66}{2024}{{Marcucci et~al.}}{{Marcucci, Umenberger, Parrilo and Tedrake}}}
+\bibcite{pmlr-v164-margolis22a}{{67}{2022}{{Margolis et~al.}}{{Margolis, Chen, Paigwar, Fu, Kim, Kim and Agrawal}}}
+\bibcite{mastalli2015line}{{68}{2015}{{Mastalli et~al.}}{{Mastalli, Havoutis, Winkler, Caldwell and Semini}}}
+\bibcite{meng2024automated}{{69}{2024}{{Meng and Kress-Gazit}}{{}}}
+\bibcite{migimatsu2020object}{{70}{2020}{{Migimatsu and Bohg}}{{}}}
+\bibcite{miki2022learning}{{71}{2022{a}}{{Miki et~al.}}{{Miki, Lee, Hwangbo, Wellhausen, Koltun and Hutter}}}
+\bibcite{miki2022elevation}{{72}{2022{b}}{{Miki et~al.}}{{Miki, Wellhausen, Grandia, Jenelten, Homberger and Hutter}}}
+\bibcite{mordatch2012discovery}{{73}{2012}{{Mordatch et~al.}}{{Mordatch, Todorov and Popovi{\'c}}}}
+\bibcite{muenprasitivej2024bipedal}{{74}{2024}{{Muenprasitivej et~al.}}{{Muenprasitivej, Jiang, Shamsah, Coogan and Zhao}}}
+\bibcite{muenprasitivej2026bipedal}{{75}{2025}{{Muenprasitivej et~al.}}{{Muenprasitivej, Zhao and Chou}}}
+\bibcite{norby2020fast}{{76}{2020}{{Norby and Johnson}}{{}}}
+\bibcite{pacheck2022physically}{{77}{2023}{{Pacheck and Kress-Gazit}}{{}}}
+\bibcite{pacheck2020finding}{{78}{2020}{{Pacheck et~al.}}{{Pacheck, Moarref and Kress-Gazit}}}
+\bibcite{Park2015OnlinePF}{{79}{2015}{{Park et~al.}}{{Park, Wensing and Kim}}}
+\bibcite{piterman2006synthesis}{{80}{2006}{{Piterman et~al.}}{{Piterman, Pnueli and Sa’ar}}}
+\bibcite{pnueli1989synthesis}{{81}{1989}{{Pnueli and Rosner}}{{}}}
+\bibcite{ponton2016convex}{{82}{2016}{{Ponton et~al.}}{{Ponton, Herzog, Schaal and Righetti}}}
+\bibcite{posa2014direct}{{83}{2014}{{Posa et~al.}}{{Posa, Cantu and Tedrake}}}
+\bibcite{ren2025accelerating}{{84}{2025}{{Ren et~al.}}{{Ren, Lin, Mineyev, Feigh, Coogan and Zhao}}}
+\bibcite{risbourg2022real}{{85}{2022}{{Risbourg et~al.}}{{Risbourg, Corb{\`e}res, L{\'e}ziart, Flayols, Mansard and Tonneau}}}
+\bibcite{shamsah2023integrated}{{86}{2023}{{Shamsah et~al.}}{{Shamsah, Gu, Warnke, Hutchinson and Zhao}}}
+\bibcite{shamsah2025terrain}{{87}{2025}{{Shamsah et~al.}}{{Shamsah, Jiang, Yoon, Coogan and Zhao}}}
+\bibcite{shirai2021lto}{{88}{2021}{{Shirai et~al.}}{{Shirai, Lin, Mehta and Hong}}}
+\bibcite{shirai2022simultaneous}{{89}{2022}{{Shirai et~al.}}{{Shirai, Lin, Schperberg, Tanaka, Kato, Vichathorn and Hong}}}
+\bibcite{sleiman2023versatile}{{90}{2023}{{Sleiman et~al.}}{{Sleiman, Farshidian and Hutter}}}
+\bibcite{sleiman2021unified}{{91}{2021}{{Sleiman et~al.}}{{Sleiman, Farshidian, Minniti and Hutter}}}
+\bibcite{sun2023free}{{92}{2023}{{Sun et~al.}}{{Sun, Yang, Jia and Wang}}}
+\bibcite{tonneau2018efficient}{{93}{2018}{{Tonneau et~al.}}{{Tonneau, Del~Prete, Pettr{\'e}, Park, Manocha and Mansard}}}
+\bibcite{tonneau2020sl1m}{{94}{2020}{{Tonneau et~al.}}{{Tonneau, Song, Fernbach, Mansard, Ta{\"\i }x and Del~Prete}}}
+\bibcite{toussaint2015logic}{{95}{2015}{{Toussaint}}{{}}}
+\bibcite{toussaint2018differentiable}{{96}{2018}{{Toussaint et~al.}}{{Toussaint, Allen, Smith and Tenenbaum}}}
+\bibcite{valenzuela2016mixed}{{97}{2016}{{Valenzuela}}{{}}}
+\bibcite{villarreal2020mpc}{{98}{2020}{{Villarreal et~al.}}{{Villarreal, Barasuol, Wensing, Caldwell and Semini}}}
+\bibcite{wang2023and}{{99}{2023}{{Wang et~al.}}{{Wang, Hu, Tisnikar, Helander, Chappell and Kormushev}}}
+\bibcite{wensing2013generation}{{100}{2013}{{Wensing and Orin}}{{}}}
+\bibcite{wermelinger2016navigation}{{101}{2016}{{Wermelinger et~al.}}{{Wermelinger, Fankhauser, Diethelm, Kr{\"u}si, Siegwart and Hutter}}}
+\bibcite{winkler2014path}{{102}{2014}{{Winkler et~al.}}{{Winkler, Havoutis, Bazeille, Ortiz, Focchi, Dillmann, Caldwell and Semini}}}
+\bibcite{winkler2018gait}{{103}{2018}{{Winkler et~al.}}{{Winkler, Bellicoso, Hutter and Buchli}}}
+\bibcite{wu2025learn}{{104}{2025}{{Wu et~al.}}{{Wu, Nal, Jang, Zhu, Gu, Wu and Zhao}}}
+\bibcite{xie2022glide}{{105}{2022}{{Xie et~al.}}{{Xie, Da, Babich, Garg and de~Panne}}}
+\bibcite{yang2022fast}{{106}{2022}{{Yang et~al.}}{{Yang, Zhang, Coumans, Tan and Boots}}}
+\bibcite{yu2024learning}{{107}{2024}{{Yu et~al.}}{{Yu, Perera, Marew and Kim}}}
+\bibcite{yu2021visual}{{108}{2021}{{Yu et~al.}}{{Yu, Jain, Escontrela, Iscen, Xu, Coumans, Ha, Tan and Zhang}}}
+\bibcite{zhang2023simultaneous}{{109}{2023}{{Zhang et~al.}}{{Zhang, Jha, Raghunathan and Hauser}}}
+\bibcite{zhao2022reactive}{{110}{2022}{{Zhao et~al.}}{{Zhao, Li, Sentis, Topcu and Liu}}}
+\bibcite{zhao2024survey}{{111}{2024}{{Zhao et~al.}}{{Zhao, Cheng, Ding, Zhou, Zhang, Xu and Zhao}}}
+\bibcite{zhao2021sydebo}{{112}{2021}{{Zhao et~al.}}{{Zhao, Zhou, Park and Zhao}}}
+\bibcite{zhou2022reactive}{{113}{2022{a}}{{Zhou et~al.}}{{Zhou, Lee, Yoshinaga, Balakirsky, Guo and Zhao}}}
+\bibcite{zhou2025physically}{{114}{2025}{{Zhou et~al.}}{{Zhou, Meng, Kress-Gazit and Zhao}}}
+\bibcite{zhou2022momentum}{{115}{2022{b}}{{Zhou et~al.}}{{Zhou, Wingo, Boyd, Hutchinson and Zhao}}}
+\bibcite{zhu2023efficient}{{116}{2023}{{Zhu et~al.}}{{Zhu, Meduri and Righetti}}}
+\bibcite{zhuang2023robot}{{117}{2023}{{Zhuang et~al.}}{{Zhuang, Fu, Wang, Atkeson, Schwertfeger, Finn and Zhao}}}
+\newlabel{LastPage}{{11}{25}{Conclusion}{section*.33}{}}
+\gdef \@abspage@last{25}

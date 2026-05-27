@@ -1,0 +1,474 @@
+\begin{thebibliography}{117}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI:\discretionary{}{}{}\begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Aceituno-Cabezas et~al.(2017)Aceituno-Cabezas, Mastalli, Dai, Focchi, Radulescu, Caldwell, Cappelletto, Grieco, Fern{\'a}ndez-L{\'o}pez and Semini}]{aceituno2017simultaneous}
+Aceituno-Cabezas B, Mastalli C, Dai H, Focchi M, Radulescu A, Caldwell DG, Cappelletto J, Grieco JC, Fern{\'a}ndez-L{\'o}pez G and Semini C (2017) Simultaneous contact, gait, and motion planning for robust multilegged locomotion via mixed-integer convex optimization.
+\newblock \emph{IEEE Robotics and Automation Letters} 3(3): 2531--2538.
+
+\bibitem[{Acosta and Posa(2023)}]{acosta2023bipedal}
+Acosta B and Posa M (2023) Bipedal walking on constrained footholds with mpc footstep control.
+\newblock In: \emph{2023 IEEE-RAS 22nd International Conference on Humanoid Robots}. IEEE, pp. 1--8.
+
+\bibitem[{Agarwal et~al.(2023)Agarwal, Kumar, Malik and Pathak}]{agarwal2023legged}
+Agarwal A, Kumar A, Malik J and Pathak D (2023) Legged locomotion in challenging terrains using egocentric vision.
+\newblock In: \emph{Conference on robot learning}. PMLR, pp. 403--415.
+
+\bibitem[{Agrawal et~al.(2022)Agrawal, Chen, Rai and Sreenath}]{agrawal2022vision}
+Agrawal A, Chen S, Rai A and Sreenath K (2022) Vision-aided dynamic quadrupedal locomotion on discrete terrain using motion libraries.
+\newblock In: \emph{2022 International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 4708--4714.
+
+\bibitem[{Amatucci et~al.(2022)Amatucci, Kim, Hwangbo and Park}]{amatucci2022monte}
+Amatucci L, Kim JH, Hwangbo J and Park HW (2022) Monte carlo tree search gait planner for non-gaited legged system control.
+\newblock In: \emph{2022 International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 4701--4707.
+
+\bibitem[{Asselmeier et~al.(2024)Asselmeier, Ivanova, Zhou, Vela and Zhao}]{asselmeier2024hierarchical}
+Asselmeier M, Ivanova J, Zhou Z, Vela PA and Zhao Y (2024) Hierarchical experience-informed navigation for multi-modal quadrupedal rebar grid traversal.
+\newblock In: \emph{2024 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 8065--8072.
+
+\bibitem[{Aydinoglu and Posa(2022)}]{aydinoglu2022real}
+Aydinoglu A and Posa M (2022) Real-time multi-contact model predictive control via admm.
+\newblock In: \emph{2022 International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 3414--3421.
+
+\bibitem[{Baier and Katoen(2008)}]{baier2008principles}
+Baier C and Katoen JP (2008) \emph{Principles of model checking}.
+\newblock MIT press.
+
+\bibitem[{Bhatia et~al.(2010)Bhatia, Kavraki and Vardi}]{bhatia2010sampling}
+Bhatia A, Kavraki LE and Vardi MY (2010) Sampling-based motion planning with temporal goals.
+\newblock In: \emph{2010 IEEE International Conference on Robotics and Automation}. IEEE, pp. 2689--2696.
+
+\bibitem[{Bledt et~al.(2018)Bledt, Powell, Katz, Di~Carlo, Wensing and Kim}]{bledt2018cheetah}
+Bledt G, Powell MJ, Katz B, Di~Carlo J, Wensing PM and Kim S (2018) Mit cheetah 3: Design and control of a robust, dynamic quadruped robot.
+\newblock In: \emph{2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 2245--2252.
+
+\bibitem[{Bloem et~al.(2012)Bloem, Jobstmann, Piterman, Pnueli and Saar}]{bloem2012synthesis}
+Bloem R, Jobstmann B, Piterman N, Pnueli A and Saar Y (2012) Synthesis of reactive (1) designs.
+\newblock \emph{Journal of Computer and System Sciences} 78(3): 911--938.
+
+\bibitem[{Boussema et~al.(2019)Boussema, Powell, Bledt, Ijspeert, Wensing and Kim}]{boussema2019online}
+Boussema C, Powell MJ, Bledt G, Ijspeert AJ, Wensing PM and Kim S (2019) Online gait transitions and disturbance recovery for legged robots via the feasible impulse set.
+\newblock \emph{IEEE Robotics and automation letters} 4(2): 1611--1618.
+
+\bibitem[{Bretl(2006)}]{bretl2006motion}
+Bretl T (2006) Motion planning of multi-limbed robots subject to equilibrium constraints: The free-climbing robot problem.
+\newblock \emph{The International Journal of Robotics Research} 25(4): 317--342.
+
+\bibitem[{Chen et~al.(2021)Chen, Culbertson, Lepert, Schwager and Bohg}]{chen2021trajectotree}
+Chen C, Culbertson P, Lepert M, Schwager M and Bohg J (2021) Trajectotree: Trajectory optimization meets tree search for planning multi-contact dexterous manipulation.
+\newblock In: \emph{2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 8262--8268.
+
+\bibitem[{Cheng et~al.(2024)Cheng, Shi, Agarwal and Pathak}]{cheng2024extreme}
+Cheng X, Shi K, Agarwal A and Pathak D (2024) Extreme parkour with legged robots.
+\newblock In: \emph{2024 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 11443--11450.
+
+\bibitem[{Chignoli et~al.(2021)Chignoli, Kim, Stanger-Jones and Kim}]{chignoli2021humanoid}
+Chignoli M, Kim D, Stanger-Jones E and Kim S (2021) The mit humanoid robot: Design, motion planning, and control for acrobatic behaviors.
+\newblock In: \emph{2020 IEEE-RAS 20th International Conference on Humanoid Robots (Humanoids)}. IEEE, pp. 1--8.
+
+\bibitem[{Chignoli et~al.(2022)Chignoli, Morozov and Kim}]{chignoli2022rapid}
+Chignoli M, Morozov S and Kim S (2022) Rapid and reliable quadruped motion planning with omnidirectional jumping.
+\newblock In: \emph{International Conference on Robotics and Automation}. IEEE, pp. 6621--6627.
+
+\bibitem[{Da et~al.(2021)Da, Xie, Hoeller, Boots, Anandkumar, Zhu, Babich and Garg}]{da2021learning}
+Da X, Xie Z, Hoeller D, Boots B, Anandkumar A, Zhu Y, Babich B and Garg A (2021) Learning a contact-adaptive controller for robust, efficient legged locomotion.
+\newblock In: \emph{Conference on Robot Learning}. PMLR, pp. 883--894.
+
+\bibitem[{Dai et~al.(2019)Dai, Izatt and Tedrake}]{dai2019global}
+Dai H, Izatt G and Tedrake R (2019) Global inverse kinematics via mixed-integer convex optimization.
+\newblock \emph{The International Journal of Robotics Research} 38(12-13): 1420--1441.
+
+\bibitem[{Dai et~al.(2014)Dai, Valenzuela and Tedrake}]{dai2014whole}
+Dai H, Valenzuela A and Tedrake R (2014) Whole-body motion planning with centroidal dynamics and full kinematics.
+\newblock In: \emph{2014 IEEE-RAS International Conference on Humanoid Robots}. IEEE, pp. 295--302.
+
+\bibitem[{DeCastro et~al.(2014)DeCastro, Ehlers, Rungger, Balkan, Tabuada and Kress-Gazit}]{decastro2014dynamics}
+DeCastro JA, Ehlers R, Rungger M, Balkan A, Tabuada P and Kress-Gazit H (2014) Dynamics-based reactive synthesis and automated revisions for high-level robot control.
+\newblock \emph{arXiv preprint arXiv:1410.6375} .
+
+\bibitem[{Deits and Tedrake(2014)}]{deits2014footstep}
+Deits R and Tedrake R (2014) Footstep planning on uneven terrain with mixed-integer convex optimization.
+\newblock In: \emph{2014 IEEE-RAS international conference on humanoid robots}. IEEE, pp. 279--286.
+
+\bibitem[{Di~Carlo et~al.(2018)Di~Carlo, Wensing, Katz, Bledt and Kim}]{di2018dynamic}
+Di~Carlo J, Wensing PM, Katz B, Bledt G and Kim S (2018) Dynamic locomotion in the mit cheetah 3 through convex model-predictive control.
+\newblock In: \emph{2018 IEEE/RSJ international conference on intelligent robots and systems (IROS)}. IEEE, pp. 1--9.
+
+\bibitem[{Ding et~al.(2020)Ding, Li and Park}]{ding2020kinodynamic}
+Ding Y, Li C and Park HW (2020) Kinodynamic motion planning for multi-legged robot jumping via mixed-integer convex program.
+\newblock In: \emph{2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 3998--4005.
+
+\bibitem[{Ding et~al.(2021)Ding, Zhang, Li, Park and Hauser}]{ding2021hybrid}
+Ding Y, Zhang M, Li C, Park HW and Hauser K (2021) Hybrid sampling/optimization-based planning for agile jumping robots on challenging terrains.
+\newblock In: \emph{2021 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 2839--2845.
+
+\bibitem[{Drnach et~al.(2022)Drnach, Zhang and Zhao}]{drnach2022mediating}
+Drnach L, Zhang JZ and Zhao Y (2022) Mediating between contact feasibility and robustness of trajectory optimization through chance complementarity constraints.
+\newblock \emph{Frontiers in Robotics and AI} 8: 785925.
+
+\bibitem[{Drnach and Zhao(2021)}]{drnach2021robust}
+Drnach L and Zhao Y (2021) Robust trajectory optimization over uncertain terrain with stochastic complementarity.
+\newblock \emph{IEEE Robotics and Automation Letters} 6(2): 1168--1175.
+
+\bibitem[{Ehlers and Raman(2016)}]{ehlers2016slugs}
+Ehlers R and Raman V (2016) Slugs: Extensible \uppercase{GR(1)} synthesis.
+\newblock In: \emph{International Conference on Computer Aided Verification}. Springer, pp. 333--339.
+
+\bibitem[{Fainekos et~al.(2006)Fainekos, Loizou and Pappas}]{fainekos2006translating}
+Fainekos GE, Loizou SG and Pappas GJ (2006) Translating temporal logic to controller specifications.
+\newblock In: \emph{Proceedings of the 45th IEEE Conference on Decision and Control}. IEEE, pp. 899--904.
+
+\bibitem[{Fankhauser et~al.(2018)Fankhauser, Bjelonic, Bellicoso, Miki and Hutter}]{fankhauser2018robust}
+Fankhauser P, Bjelonic M, Bellicoso CD, Miki T and Hutter M (2018) Robust rough-terrain locomotion with a quadrupedal robot.
+\newblock In: \emph{2018 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 5761--5768.
+
+\bibitem[{Farshidian et~al.()}]{OCS2}
+Farshidian F et~al. (????) {OCS2}: An open source library for optimal control of switched systems.
+\newblock [Online]. Available: \url{https://github.com/leggedrobotics/ocs2}.
+
+\bibitem[{Feng et~al.(2023)Feng, Zhou, Smith, Asselmeier, Zhao and Vela}]{feng2023gpf}
+Feng S, Zhou Z, Smith JS, Asselmeier M, Zhao Y and Vela PA (2023) Gpf-bg: A hierarchical vision-based planning framework for safe quadrupedal navigation.
+\newblock In: \emph{2023 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 1968--1975.
+
+\bibitem[{Fernbach et~al.(2017)Fernbach, Tonneau, Del~Prete and Ta{\"\i}x}]{fernbach2017kinodynamic}
+Fernbach P, Tonneau S, Del~Prete A and Ta{\"\i}x M (2017) A kinodynamic steering-method for legged multi-contact locomotion.
+\newblock In: \emph{2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 3701--3707.
+
+\bibitem[{Fey et~al.(2024)Fey, Frei and Wensing}]{fey20243d}
+Fey N, Frei RJ and Wensing PM (2024) 3d hopping in discontinuous terrain using impulse planning with mixed-integer strategies.
+\newblock \emph{IEEE Robotics and Automation Letters} .
+
+\bibitem[{Gangapurwala et~al.(2022)Gangapurwala, Geisert, Orsolino, Fallon and Havoutis}]{gangapurwala2022rloc}
+Gangapurwala S, Geisert M, Orsolino R, Fallon M and Havoutis I (2022) Rloc: Terrain-aware legged locomotion using reinforcement learning and optimal control.
+\newblock \emph{IEEE Transactions on Robotics} 38(5): 2908--2927.
+
+\bibitem[{Garrett et~al.(2021)Garrett, Chitnis, Holladay, Kim, Silver, Kaelbling and Lozano-P{\'e}rez}]{garrett2021integrated}
+Garrett CR, Chitnis R, Holladay R, Kim B, Silver T, Kaelbling LP and Lozano-P{\'e}rez T (2021) Integrated task and motion planning.
+\newblock \emph{Annual review of control, robotics, and autonomous systems} 4(1): 265--293.
+
+\bibitem[{Gilroy et~al.(2021)Gilroy, Lau, Yang, Izaguirre, Biermayer, Xiao, Sun, Agrawal, Zeng, Li et~al.}]{gilroy2021autonomous}
+Gilroy S, Lau D, Yang L, Izaguirre E, Biermayer K, Xiao A, Sun M, Agrawal A, Zeng J, Li Z et~al. (2021) Autonomous navigation for quadrupedal robots with optimized jumping through constrained obstacles.
+\newblock In: \emph{2021 IEEE 17th International Conference on Automation Science and Engineering (CASE)}. IEEE, pp. 2132--2139.
+
+\bibitem[{Grandia et~al.(2023)Grandia, Jenelten, Yang, Farshidian and Hutter}]{grandia2023perceptive}
+Grandia R, Jenelten F, Yang S, Farshidian F and Hutter M (2023) Perceptive locomotion through nonlinear model-predictive control.
+\newblock \emph{IEEE Transactions on Robotics} .
+
+\bibitem[{Grandia et~al.(2021)Grandia, Taylor, Ames and Hutter}]{grandia2021multi}
+Grandia R, Taylor AJ, Ames AD and Hutter M (2021) Multi-layered safety for legged robots via control barrier functions and model predictive control.
+\newblock In: \emph{2021 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 8352--8358.
+
+\bibitem[{Griffin et~al.(2019)Griffin, Wiedebach, McCrory, Bertrand, Lee and Pratt}]{griffin2019footstep}
+Griffin RJ, Wiedebach G, McCrory S, Bertrand S, Lee I and Pratt J (2019) Footstep planning for autonomous walking over rough terrain.
+\newblock In: \emph{2019 IEEE-RAS 19th international conference on humanoid robots (humanoids)}. IEEE, pp. 9--16.
+
+\bibitem[{Gu et~al.(2022)Gu, Boyd and Zhao}]{gu2022reactive}
+Gu Z, Boyd N and Zhao Y (2022) Reactive locomotion decision-making and robust motion planning for real-time perturbation recovery.
+\newblock In: \emph{2022 International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 1896--1902.
+
+\bibitem[{{Gurobi Optimization, LLC}(2025)}]{gurobi}
+{Gurobi Optimization, LLC} (2025) {Gurobi Optimizer Reference Manual}.
+\newblock \url{https://www.gurobi.com}.
+
+\bibitem[{Hauser et~al.(2005)Hauser, Bretl and Latombe}]{hauser2005non}
+Hauser K, Bretl T and Latombe JC (2005) Non-gaited humanoid locomotion planning.
+\newblock In: \emph{5th IEEE-RAS International Conference on Humanoid Robots, 2005.} IEEE, pp. 7--12.
+
+\bibitem[{Hoeller et~al.(2023)Hoeller, Rudin, Sako and Hutter}]{hoeller2023anymal}
+Hoeller D, Rudin N, Sako D and Hutter M (2023) Anymal parkour: Learning agile navigation for quadrupedal robots.
+\newblock \emph{arXiv preprint arXiv:2306.14874} .
+
+\bibitem[{Jelavic et~al.(2021)Jelavic, Farshidian and Hutter}]{jelavic2021combined}
+Jelavic E, Farshidian F and Hutter M (2021) Combined sampling and optimization based planning for legged-wheeled robots.
+\newblock In: \emph{2021 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 8366--8372.
+
+\bibitem[{Jenelten et~al.(2022)Jenelten, Grandia, Farshidian and Hutter}]{jenelten2022tamols}
+Jenelten F, Grandia R, Farshidian F and Hutter M (2022) Tamols: Terrain-aware motion optimization for legged systems.
+\newblock \emph{IEEE Transactions on Robotics} 38(6): 3395--3413.
+
+\bibitem[{Jenelten et~al.(2020)Jenelten, Miki, Vijayan, Bjelonic and Hutter}]{jenelten2020perceptive}
+Jenelten F, Miki T, Vijayan AE, Bjelonic M and Hutter M (2020) Perceptive locomotion in rough terrain--online foothold optimization.
+\newblock \emph{IEEE Robotics and Automation Letters} 5(4): 5370--5376.
+
+\bibitem[{Jiang et~al.(2023{\natexlab{a}})Jiang, Coogan and Zhao}]{jiang2023abstraction}
+Jiang J, Coogan S and Zhao Y (2023{\natexlab{a}}) Abstraction-based planning for uncertainty-aware legged navigation.
+\newblock \emph{IEEE Open Journal of Control Systems} .
+
+\bibitem[{Jiang et~al.(2023{\natexlab{b}})Jiang, Chi, Zheng, Zhang, Ling, Xu and Zhang}]{jiang2023locomotion}
+Jiang X, Chi W, Zheng Y, Zhang S, Ling Y, Xu J and Zhang Z (2023{\natexlab{b}}) Locomotion generation for quadruped robots on challenging terrains via quadratic programming.
+\newblock \emph{Autonomous Robots} 47(1): 51--76.
+
+\bibitem[{Kalakrishnan et~al.(2010)Kalakrishnan, Buchli, Pastor, Mistry and Schaal}]{kalakrishnan2010fast}
+Kalakrishnan M, Buchli J, Pastor P, Mistry M and Schaal S (2010) Fast, robust quadruped locomotion over challenging terrain.
+\newblock In: \emph{2010 IEEE International Conference on Robotics and Automation}. IEEE, pp. 2665--2670.
+
+\bibitem[{Kamohara et~al.(2025)Kamohara, Wu, Wamorkar, Hutchinson and Zhao}]{Kamohara2025RLMPC}
+Kamohara J, Wu F, Wamorkar C, Hutchinson S and Zhao Y (2025) Rl-augmented adaptive model predictive control for bipedal locomotion over challenging terrain .
+
+\bibitem[{Kim et~al.(2020)Kim, Carballo, Di~Carlo, Katz, Bledt, Lim and Kim}]{kim2020vision}
+Kim D, Carballo D, Di~Carlo J, Katz B, Bledt G, Lim B and Kim S (2020) Vision aided dynamic exploration of unstructured terrain with a small-scale quadruped robot.
+\newblock In: \emph{IEEE International Conference on Robotics and Automation}. IEEE, pp. 2464--2470.
+
+\bibitem[{Kim et~al.(2019)Kim, Di~Carlo, Katz, Bledt and Kim}]{kim2019highly}
+Kim D, Di~Carlo J, Katz B, Bledt G and Kim S (2019) Highly dynamic quadruped locomotion via whole-body impulse control and model predictive control.
+\newblock \emph{arXiv preprint arXiv:1909.06586} .
+
+\bibitem[{Kolter et~al.(2008)Kolter, Rodgers and Ng}]{kolter2008control}
+Kolter JZ, Rodgers MP and Ng AY (2008) A control architecture for quadruped locomotion over rough terrain.
+\newblock In: \emph{2008 IEEE International Conference on Robotics and Automation}. IEEE, pp. 811--818.
+
+\bibitem[{Kress-Gazit et~al.(2009)Kress-Gazit, Fainekos and Pappas}]{kress2009temporal}
+Kress-Gazit H, Fainekos GE and Pappas GJ (2009) Temporal-logic-based reactive mission and motion planning.
+\newblock \emph{IEEE transactions on robotics} 25(6): 1370--1381.
+
+\bibitem[{Kress-Gazit et~al.(2018)Kress-Gazit, Lahijanian and Raman}]{kress2018synthesis}
+Kress-Gazit H, Lahijanian M and Raman V (2018) Synthesis for robots: Guarantees and feedback for robot behavior.
+\newblock \emph{Annual Review of Control, Robotics, and Autonomous Systems} 1: 211--236.
+
+\bibitem[{Kuindersma et~al.(2014)Kuindersma, Permenter and Tedrake}]{kuindersma2014efficiently}
+Kuindersma S, Permenter F and Tedrake R (2014) An efficiently solvable quadratic program for stabilizing dynamic locomotion.
+\newblock In: \emph{2014 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 2589--2594.
+
+\bibitem[{Kulgod et~al.(2020)Kulgod, Chen, Huang, Zhao and Atanasov}]{kulgod2020temporal}
+Kulgod S, Chen W, Huang J, Zhao Y and Atanasov N (2020) Temporal logic guided locomotion planning and control in cluttered environments.
+\newblock In: \emph{American Control Conference}. IEEE, pp. 5425--5432.
+
+\bibitem[{Le~Cleac'h et~al.(2024)Le~Cleac'h, Howell, Yang, Lee, Zhang, Bishop, Schwager and Manchester}]{le2024fast}
+Le~Cleac'h S, Howell TA, Yang S, Lee CY, Zhang J, Bishop A, Schwager M and Manchester Z (2024) Fast contact-implicit model predictive control.
+\newblock \emph{IEEE Transactions on Robotics} .
+
+\bibitem[{Liao et~al.(2023)Liao, Li, Thirugnanam, Zeng and Sreenath}]{liao2023walking}
+Liao Q, Li Z, Thirugnanam A, Zeng J and Sreenath K (2023) Walking in narrow spaces: Safety-critical locomotion control for quadrupedal robots with duality-based optimization.
+\newblock In: \emph{2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 2723--2730.
+
+\bibitem[{Lin(2024)}]{lin2024accelerate}
+Lin X (2024) Accelerate hybrid model predictive control using generalized benders decomposition.
+\newblock \emph{arXiv preprint arXiv:2406.00780} .
+
+\bibitem[{Liu et~al.(2013)Liu, Ozay, Topcu and Murray}]{liu2013synthesis}
+Liu J, Ozay N, Topcu U and Murray RM (2013) Synthesis of reactive switching protocols from temporal logic specifications.
+\newblock \emph{IEEE Transactions on Automatic Control} 58(7): 1771--1785.
+
+\bibitem[{Luo et~al.(2024)Luo, Li, Yu, Wang, Wu and Zhu}]{luo2024pie}
+Luo S, Li S, Yu R, Wang Z, Wu J and Zhu Q (2024) Pie: Parkour with implicit-explicit learning framework for legged robots.
+\newblock \emph{IEEE Robotics and Automation Letters} 9(11): 9986--9993.
+
+\bibitem[{Magana et~al.(2019)Magana, Barasuol, Camurri, Franceschi, Focchi, Pontil, Caldwell and Semini}]{magana2019fast}
+Magana OAV, Barasuol V, Camurri M, Franceschi L, Focchi M, Pontil M, Caldwell DG and Semini C (2019) Fast and continuous foothold adaptation for dynamic locomotion through cnns.
+\newblock \emph{IEEE Robotics and Automation Letters} 4(2): 2140--2147.
+
+\bibitem[{Maly et~al.(2013)Maly, Lahijanian, Kavraki, Kress-Gazit and Vardi}]{maly2013iterative}
+Maly MR, Lahijanian M, Kavraki LE, Kress-Gazit H and Vardi MY (2013) Iterative temporal motion planning for hybrid systems in partially unknown environments.
+\newblock In: \emph{Proceedings of the 16th international conference on Hybrid systems: computation and control}. pp. 353--362.
+
+\bibitem[{Marcucci et~al.(2024)Marcucci, Umenberger, Parrilo and Tedrake}]{marcucci2024shortest}
+Marcucci T, Umenberger J, Parrilo P and Tedrake R (2024) Shortest paths in graphs of convex sets.
+\newblock \emph{SIAM Journal on Optimization} 34(1): 507--532.
+
+\bibitem[{Margolis et~al.(2022)Margolis, Chen, Paigwar, Fu, Kim, Kim and Agrawal}]{pmlr-v164-margolis22a}
+Margolis GB, Chen T, Paigwar K, Fu X, Kim D, Kim Sb and Agrawal P (2022) Learning to jump from pixels.
+\newblock In: \emph{Proceedings of the 5th Conference on Robot Learning}. PMLR, pp. 1025--1034.
+
+\bibitem[{Mastalli et~al.(2015)Mastalli, Havoutis, Winkler, Caldwell and Semini}]{mastalli2015line}
+Mastalli C, Havoutis I, Winkler AW, Caldwell DG and Semini C (2015) On-line and on-board planning and perception for quadrupedal locomotion.
+\newblock In: \emph{2015 IEEE International Conference on Technologies for Practical Robot Applications (TePRA)}. IEEE, pp. 1--7.
+
+\bibitem[{Meng and Kress-Gazit(2024)}]{meng2024automated}
+Meng Q and Kress-Gazit H (2024) Automated {Robot} {Recovery} from {Assumption} {Violations} of {High}-{Level} {Specifications}.
+\newblock In: \emph{2024 {IEEE} 20th {International} {Conference} on {Automation} {Science} and {Engineering} ({CASE})}. IEEE, pp. 4154--4161.
+
+\bibitem[{Migimatsu and Bohg(2020)}]{migimatsu2020object}
+Migimatsu T and Bohg J (2020) Object-centric task and motion planning in dynamic environments.
+\newblock \emph{IEEE Robotics and Automation Letters} 5(2): 844--851.
+
+\bibitem[{Miki et~al.(2022{\natexlab{a}})Miki, Lee, Hwangbo, Wellhausen, Koltun and Hutter}]{miki2022learning}
+Miki T, Lee J, Hwangbo J, Wellhausen L, Koltun V and Hutter M (2022{\natexlab{a}}) Learning robust perceptive locomotion for quadrupedal robots in the wild.
+\newblock \emph{Science robotics} 7(62): eabk2822.
+
+\bibitem[{Miki et~al.(2022{\natexlab{b}})Miki, Wellhausen, Grandia, Jenelten, Homberger and Hutter}]{miki2022elevation}
+Miki T, Wellhausen L, Grandia R, Jenelten F, Homberger T and Hutter M (2022{\natexlab{b}}) Elevation mapping for locomotion and navigation using gpu.
+\newblock In: \emph{2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 2273--2280.
+
+\bibitem[{Mordatch et~al.(2012)Mordatch, Todorov and Popovi{\'c}}]{mordatch2012discovery}
+Mordatch I, Todorov E and Popovi{\'c} Z (2012) Discovery of complex behaviors through contact-invariant optimization.
+\newblock \emph{ACM Transactions on Graphics (ToG)} 31(4): 1--8.
+
+\bibitem[{Muenprasitivej et~al.(2024)Muenprasitivej, Jiang, Shamsah, Coogan and Zhao}]{muenprasitivej2024bipedal}
+Muenprasitivej K, Jiang J, Shamsah A, Coogan S and Zhao Y (2024) Bipedal safe navigation over uncertain rough terrain: Unifying terrain mapping and locomotion stability.
+\newblock In: \emph{2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 11264--11271.
+
+\bibitem[{Muenprasitivej et~al.(2025)Muenprasitivej, Zhao and Chou}]{muenprasitivej2026bipedal}
+Muenprasitivej K, Zhao Y and Chou G (2025) Probabilistically-safe bipedal navigation over uncertain terrain via conformal prediction and contraction analysis.
+
+\bibitem[{Norby and Johnson(2020)}]{norby2020fast}
+Norby J and Johnson AM (2020) Fast global motion planning for dynamic legged robots.
+\newblock In: \emph{2020 IEEE/RSJ International Conference on Intelligent Robots and Systems}. IEEE, pp. 3829--3836.
+
+\bibitem[{Pacheck and Kress-Gazit(2023)}]{pacheck2022physically}
+Pacheck A and Kress-Gazit H (2023) Physically feasible repair of reactive, linear temporal logic-based, high-level tasks.
+\newblock \emph{IEEE Transactions on Robotics} .
+
+\bibitem[{Pacheck et~al.(2020)Pacheck, Moarref and Kress-Gazit}]{pacheck2020finding}
+Pacheck A, Moarref S and Kress-Gazit H (2020) Finding missing skills for high-level behaviors.
+\newblock In: \emph{2020 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 10335--10341.
+
+\bibitem[{Park et~al.(2015)Park, Wensing and Kim}]{Park2015OnlinePF}
+Park HW, Wensing PM and Kim S (2015) Online planning for autonomous running jumps over obstacles in high-speed quadrupeds.
+\newblock In: \emph{Robotics: Science and Systems}.
+
+\bibitem[{Piterman et~al.(2006)Piterman, Pnueli and Sa’ar}]{piterman2006synthesis}
+Piterman N, Pnueli A and Sa’ar Y (2006) Synthesis of reactive (1) designs.
+\newblock In: \emph{Verification, Model Checking, and Abstract Interpretation: 7th International Conference, VMCAI 2006, Charleston, SC, USA, January 8-10, 2006. Proceedings 7}. Springer, pp. 364--380.
+
+\bibitem[{Pnueli and Rosner(1989)}]{pnueli1989synthesis}
+Pnueli A and Rosner R (1989) On the synthesis of a reactive module.
+\newblock In: \emph{Proceedings of the 16th ACM SIGPLAN-SIGACT symposium on Principles of programming languages}. pp. 179--190.
+
+\bibitem[{Ponton et~al.(2016)Ponton, Herzog, Schaal and Righetti}]{ponton2016convex}
+Ponton B, Herzog A, Schaal S and Righetti L (2016) A convex model of humanoid momentum dynamics for multi-contact motion generation.
+\newblock In: \emph{2016 IEEE-RAS 16th International Conference on Humanoid Robots (Humanoids)}. IEEE, pp. 842--849.
+
+\bibitem[{Posa et~al.(2014)Posa, Cantu and Tedrake}]{posa2014direct}
+Posa M, Cantu C and Tedrake R (2014) A direct method for trajectory optimization of rigid bodies through contact.
+\newblock \emph{The International Journal of Robotics Research} 33(1): 69--81.
+
+\bibitem[{Ren et~al.(2025)Ren, Lin, Mineyev, Feigh, Coogan and Zhao}]{ren2025accelerating}
+Ren J, Lin X, Mineyev R, Feigh KM, Coogan S and Zhao Y (2025) Accelerating signal-temporal-logic-based task and motion planning of bipedal navigation using benders decomposition.
+\newblock \emph{arXiv preprint arXiv:2508.13407} .
+
+\bibitem[{Risbourg et~al.(2022)Risbourg, Corb{\`e}res, L{\'e}ziart, Flayols, Mansard and Tonneau}]{risbourg2022real}
+Risbourg F, Corb{\`e}res T, L{\'e}ziart PA, Flayols T, Mansard N and Tonneau S (2022) Real-time footstep planning and control of the solo quadruped robot in 3d environments.
+\newblock In: \emph{IEEE/RSJ International Conference on Intelligent Robots and Systems}. pp. 12950--12956.
+
+\bibitem[{Shamsah et~al.(2023)Shamsah, Gu, Warnke, Hutchinson and Zhao}]{shamsah2023integrated}
+Shamsah A, Gu Z, Warnke J, Hutchinson S and Zhao Y (2023) Integrated task and motion planning for safe legged navigation in partially observable environments.
+\newblock \emph{IEEE Transactions on Robotics} .
+
+\bibitem[{Shamsah et~al.(2025)Shamsah, Jiang, Yoon, Coogan and Zhao}]{shamsah2025terrain}
+Shamsah A, Jiang J, Yoon Z, Coogan S and Zhao Y (2025) Terrain-aware model predictive control of heterogeneous bipedal and aerial robot coordination for search and rescue tasks.
+\newblock In: \emph{2025 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 12352--12358.
+
+\bibitem[{Shirai et~al.(2021)Shirai, Lin, Mehta and Hong}]{shirai2021lto}
+Shirai Y, Lin X, Mehta A and Hong D (2021) Lto: lazy trajectory optimization with graph-search planning for high dof robots in cluttered environments.
+\newblock In: \emph{2021 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 7533--7539.
+
+\bibitem[{Shirai et~al.(2022)Shirai, Lin, Schperberg, Tanaka, Kato, Vichathorn and Hong}]{shirai2022simultaneous}
+Shirai Y, Lin X, Schperberg A, Tanaka Y, Kato H, Vichathorn V and Hong D (2022) Simultaneous contact-rich grasping and locomotion via distributed optimization enabling free-climbing for multi-limbed robots.
+\newblock In: \emph{2022 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 13563--13570.
+
+\bibitem[{Sleiman et~al.(2023)Sleiman, Farshidian and Hutter}]{sleiman2023versatile}
+Sleiman JP, Farshidian F and Hutter M (2023) Versatile multicontact planning and control for legged loco-manipulation.
+\newblock \emph{Science Robotics} 8(81): eadg5014.
+
+\bibitem[{Sleiman et~al.(2021)Sleiman, Farshidian, Minniti and Hutter}]{sleiman2021unified}
+Sleiman JP, Farshidian F, Minniti MV and Hutter M (2021) A unified mpc framework for whole-body dynamic locomotion and manipulation.
+\newblock \emph{IEEE Robotics and Automation Letters} 6(3): 4688--4695.
+
+\bibitem[{Sun et~al.(2023)Sun, Yang, Jia and Wang}]{sun2023free}
+Sun H, Yang J, Jia Y and Wang C (2023) Free gait generation of quadruped robots via impulse-based feasibility analysis.
+\newblock \emph{IEEE/ASME Transactions on Mechatronics} .
+
+\bibitem[{Tonneau et~al.(2018)Tonneau, Del~Prete, Pettr{\'e}, Park, Manocha and Mansard}]{tonneau2018efficient}
+Tonneau S, Del~Prete A, Pettr{\'e} J, Park C, Manocha D and Mansard N (2018) An efficient acyclic contact planner for multiped robots.
+\newblock \emph{IEEE Transactions on Robotics} 34(3): 586--601.
+
+\bibitem[{Tonneau et~al.(2020)Tonneau, Song, Fernbach, Mansard, Ta{\"\i}x and Del~Prete}]{tonneau2020sl1m}
+Tonneau S, Song D, Fernbach P, Mansard N, Ta{\"\i}x M and Del~Prete A (2020) Sl1m: Sparse l1-norm minimization for contact planning on uneven terrain.
+\newblock In: \emph{2020 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 6604--6610.
+
+\bibitem[{Toussaint(2015)}]{toussaint2015logic}
+Toussaint M (2015) Logic-geometric programming: An optimization-based approach to combined task and motion planning.
+\newblock In: \emph{IJCAI}. pp. 1930--1936.
+
+\bibitem[{Toussaint et~al.(2018)Toussaint, Allen, Smith and Tenenbaum}]{toussaint2018differentiable}
+Toussaint MA, Allen KR, Smith KA and Tenenbaum JB (2018) Differentiable physics and stable modes for tool-use and manipulation planning .
+
+\bibitem[{Valenzuela(2016)}]{valenzuela2016mixed}
+Valenzuela AK (2016) \emph{Mixed-integer convex optimization for planning aggressive motions of legged robots over rough terrain}.
+\newblock PhD Thesis, Massachusetts Institute of Technology.
+
+\bibitem[{Villarreal et~al.(2020)Villarreal, Barasuol, Wensing, Caldwell and Semini}]{villarreal2020mpc}
+Villarreal O, Barasuol V, Wensing PM, Caldwell DG and Semini C (2020) Mpc-based controller with terrain insight for dynamic legged locomotion.
+\newblock In: \emph{2020 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 2436--2442.
+
+\bibitem[{Wang et~al.(2023)Wang, Hu, Tisnikar, Helander, Chappell and Kormushev}]{wang2023and}
+Wang K, Hu ZJ, Tisnikar P, Helander O, Chappell D and Kormushev P (2023) When and where to step: Terrain-aware real-time footstep location and timing optimization for bipedal robots.
+\newblock \emph{arXiv preprint arXiv:2302.07345} .
+
+\bibitem[{Wensing and Orin(2013)}]{wensing2013generation}
+Wensing PM and Orin DE (2013) Generation of dynamic humanoid behaviors through task-space control with conic optimization.
+\newblock In: \emph{2013 IEEE International Conference on Robotics and Automation}. IEEE, pp. 3103--3109.
+
+\bibitem[{Wermelinger et~al.(2016)Wermelinger, Fankhauser, Diethelm, Kr{\"u}si, Siegwart and Hutter}]{wermelinger2016navigation}
+Wermelinger M, Fankhauser P, Diethelm R, Kr{\"u}si P, Siegwart R and Hutter M (2016) Navigation planning for legged robots in challenging terrain.
+\newblock In: \emph{2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 1184--1189.
+
+\bibitem[{Winkler et~al.(2014)Winkler, Havoutis, Bazeille, Ortiz, Focchi, Dillmann, Caldwell and Semini}]{winkler2014path}
+Winkler A, Havoutis I, Bazeille S, Ortiz J, Focchi M, Dillmann R, Caldwell D and Semini C (2014) Path planning with force-based foothold adaptation and virtual model control for torque controlled quadruped robots.
+\newblock In: \emph{2014 IEEE International Conference on Robotics and Automation (ICRA)}. IEEE, pp. 6476--6482.
+
+\bibitem[{Winkler et~al.(2018)Winkler, Bellicoso, Hutter and Buchli}]{winkler2018gait}
+Winkler AW, Bellicoso CD, Hutter M and Buchli J (2018) Gait and trajectory optimization for legged systems through phase-based end-effector parameterization.
+\newblock \emph{IEEE Robotics and Automation Letters} 3(3): 1560--1567.
+
+\bibitem[{Wu et~al.(2025)Wu, Nal, Jang, Zhu, Gu, Wu and Zhao}]{wu2025learn}
+Wu F, Nal X, Jang J, Zhu W, Gu Z, Wu A and Zhao Y (2025) Learn to teach: Sample-efficient privileged learning for humanoid locomotion over real-world uneven terrain.
+\newblock \emph{IEEE Robotics and Automation Letters} .
+
+\bibitem[{Xie et~al.(2022)Xie, Da, Babich, Garg and de~Panne}]{xie2022glide}
+Xie Z, Da X, Babich B, Garg A and de~Panne Mv (2022) Glide: Generalizable quadrupedal locomotion in diverse environments with a centroidal model.
+\newblock In: \emph{International Workshop on the Algorithmic Foundations of Robotics}. Springer, pp. 523--539.
+
+\bibitem[{Yang et~al.(2022)Yang, Zhang, Coumans, Tan and Boots}]{yang2022fast}
+Yang Y, Zhang T, Coumans E, Tan J and Boots B (2022) Fast and efficient locomotion via learned gait transitions.
+\newblock In: \emph{Conference on Robot Learning}. PMLR, pp. 773--783.
+
+\bibitem[{Yu et~al.(2024)Yu, Perera, Marew and Kim}]{yu2024learning}
+Yu S, Perera N, Marew D and Kim D (2024) Learning generic and dynamic locomotion of humanoids across discrete terrains.
+\newblock \emph{arXiv preprint arXiv:2405.17227} .
+
+\bibitem[{Yu et~al.(2021)Yu, Jain, Escontrela, Iscen, Xu, Coumans, Ha, Tan and Zhang}]{yu2021visual}
+Yu W, Jain D, Escontrela A, Iscen A, Xu P, Coumans E, Ha S, Tan J and Zhang T (2021) Visual-locomotion: Learning to walk on complex terrains with vision.
+\newblock In: \emph{5th Annual Conference on Robot Learning}.
+
+\bibitem[{Zhang et~al.(2023)Zhang, Jha, Raghunathan and Hauser}]{zhang2023simultaneous}
+Zhang M, Jha DK, Raghunathan AU and Hauser K (2023) Simultaneous trajectory optimization and contact selection for multi-modal manipulation planning.
+\newblock \emph{arXiv preprint arXiv:2306.06465} .
+
+\bibitem[{Zhao et~al.(2022)Zhao, Li, Sentis, Topcu and Liu}]{zhao2022reactive}
+Zhao Y, Li Y, Sentis L, Topcu U and Liu J (2022) Reactive task and motion planning for robust whole-body dynamic locomotion in constrained environments.
+\newblock \emph{The International Journal of Robotics Research} : 02783649221077714.
+
+\bibitem[{Zhao et~al.(2024)Zhao, Cheng, Ding, Zhou, Zhang, Xu and Zhao}]{zhao2024survey}
+Zhao Z, Cheng S, Ding Y, Zhou Z, Zhang S, Xu D and Zhao Y (2024) A survey of optimization-based task and motion planning: From classical to learning approaches.
+\newblock \emph{IEEE/ASME Transactions on Mechatronics} .
+
+\bibitem[{Zhao et~al.(2021)Zhao, Zhou, Park and Zhao}]{zhao2021sydebo}
+Zhao Z, Zhou Z, Park M and Zhao Y (2021) Sydebo: Symbolic-decision-embedded bilevel optimization for long-horizon manipulation in dynamic environments.
+\newblock \emph{IEEE Access} 9: 128817--128826.
+
+\bibitem[{Zhou et~al.(2022{\natexlab{a}})Zhou, Lee, Yoshinaga, Balakirsky, Guo and Zhao}]{zhou2022reactive}
+Zhou Z, Lee DJ, Yoshinaga Y, Balakirsky S, Guo D and Zhao Y (2022{\natexlab{a}}) Reactive task allocation and planning for quadrupedal and wheeled robot teaming.
+\newblock In: \emph{IEEE International Conference on Automation Science and Engineering}. IEEE, pp. 2110--2117.
+
+\bibitem[{Zhou et~al.(2025)Zhou, Meng, Kress-Gazit and Zhao}]{zhou2025physically}
+Zhou Z, Meng Q, Kress-Gazit H and Zhao Y (2025) Physically-feasible reactive synthesis for terrain-adaptive locomotion via trajectory optimization and symbolic repair.
+\newblock In: \emph{2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE.
+
+\bibitem[{Zhou et~al.(2022{\natexlab{b}})Zhou, Wingo, Boyd, Hutchinson and Zhao}]{zhou2022momentum}
+Zhou Z, Wingo B, Boyd N, Hutchinson S and Zhao Y (2022{\natexlab{b}}) Momentum-aware trajectory optimization and control for agile quadrupedal locomotion.
+\newblock \emph{IEEE Robotics and Automation Letters} 7(3): 7755--7762.
+
+\bibitem[{Zhu et~al.(2023)Zhu, Meduri and Righetti}]{zhu2023efficient}
+Zhu H, Meduri A and Righetti L (2023) Efficient object manipulation planning with monte carlo tree search.
+\newblock In: \emph{2023 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}. IEEE, pp. 10628--10635.
+
+\bibitem[{Zhuang et~al.(2023)Zhuang, Fu, Wang, Atkeson, Schwertfeger, Finn and Zhao}]{zhuang2023robot}
+Zhuang Z, Fu Z, Wang J, Atkeson C, Schwertfeger S, Finn C and Zhao H (2023) Robot parkour learning.
+\newblock \emph{arXiv preprint arXiv:2309.05665} .
+
+\end{thebibliography}

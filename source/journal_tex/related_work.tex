@@ -1,0 +1,100 @@
+\section{Related Work}
+\subsection{Hierarchical Planning for Terrain-Adaptive Locomotion}
+Planning for terrain-adaptive locomotion can be boiled down into solving contact sequence and timing (equivalently gait), location (equivalently foothold), and robot motion (e.g., Center of Mass (CoM) or base pose), given the chosen kinematics/dynamics model and the perceived terrain information. Hierarchical approaches first separately or simultaneously address part of the above problems and then solve for the rest, which allows for higher computational efficiency.  
+% Among them, hierarchical approaches commonly separate the foothold from the gait/contact and base pose planning, which allows for higher computational efficiency.
+Kinematic footstep planning focuses on the first two problems, neglecting the robot dynamics through graph-based approaches \citep{kolter2008control,kalakrishnan2010fast,winkler2014path,mastalli2015line,fankhauser2018robust,griffin2019footstep} or optimization-based approaches \citep{deits2014footstep,tonneau2020sl1m,risbourg2022real, ren2025accelerating}.
+% Another perspective of hierarchical approaches is on planning over a set of actions\citep{kolter2008control,kalakrishnan2010fast,winkler2014path,mastalli2015line,griffin2019footstep}.
+Although non-fixed gait/contact plans can be generated for very rough terrains \citep{hauser2005non,bretl2006motion,tonneau2018efficient}, conservative quasi-static motions are generated for challenging terrains due to the kinematic simplification during  footstep planning. 
+% While dynamically-feasible contact plans are also reported in, heavy computational time and difficulty in handling collision avoidance restrict the online re-planning.
+
+Given the recent advances in optimization-based approaches, notably Model Predictive Control (MPC), another focus of the literature is on the local foothold adaptation and the integration of robot dynamics for dynamic locomotion.
+Instantaneous foothold adaptation around a nominal location, with a fixed and cyclic gait, is performed based on heuristic search \citep{jenelten2020perceptive,kim2020vision,agrawal2022vision} or learning approaches \citep{magana2019fast, villarreal2020mpc,yu2021visual,gangapurwala2022rloc, wu2025learn, Kamohara2025RLMPC}. 
+In \citep{grandia2021multi,jenelten2022tamols,grandia2023perceptive}, the base pose and foothold are optimized jointly, demonstrating impressive terrain traversing capabilities on rough terrains. More recently, MPC has been employed within hierarchically integrated planning frameworks for legged navigation over rough terrain, incorporating explicit terrain uncertainty quantification \citep{muenprasitivej2024bipedal, shamsah2025terrain, muenprasitivej2026bipedal}.
+% , which generates dynamically consistent trajectories. 
+
+However, the above dynamic locomotion works consider a fixed gait pattern that usually prohibits achieving versatile behaviors, such as jumping.
+In \citep{Park2015OnlinePF, kim2020vision,gilroy2021autonomous}, jumping motions are generated offline and triggered through heuristics.
+In \citep{fernbach2017kinodynamic,norby2020fast,chignoli2022rapid}, RRT-Connect is used for rapid kino-dynamic locomotion planning, and the switch between normal walking and jumping is either embedded inside a reduced-order model during sampling \citep{norby2020fast} or decided by a pre-trained feasibility classifier \citep{chignoli2022rapid}.
+Beyond limited gait modes, other works focus on online gait planning and/or foothold selection and deploy MPC to track the plan,
+which can be further categorized into model-free \citep{da2021learning,yang2022fast,xie2022glide,pmlr-v164-margolis22a,yu2024learning} and model-based methods \citep{boussema2019online,wang2023and,sun2023free}.
+
+\revised{A complementary line of work uses end-to-end reinforcement learning (RL) to train perceptive locomotion policies that directly map terrain observations to joint commands, achieving impressive robustness on stairs, gaps, and unstructured outdoor terrain~\citep{miki2022learning,agarwal2023legged,zhuang2023robot,hoeller2023anymal,cheng2024extreme,luo2024pie}. Compared with these data-driven approaches, our model-based, formal-methods framework offers explicit symbolic-level realizability guarantees and physical-feasibility certificates from MICP, at the cost of weaker generalization and the need for a terrain abstraction; we view the RL approaches and ours as complementary rather than competing.}
+
+\subsection{Simultaneous Planning via Optimization}
+Planning for terrain-adaptive locomotion problem can also be formulated as a combinatorial optimization problem that simultaneously optimizes for gait, foothold, and robot dynamics.
+One approach is to incorporate rigid \citep{posa2014direct} or smoothed \citep{mordatch2012discovery, drnach2021robust} complementarity constraints, which accurately model the physical contact interaction behavior but remains computationally inefficient due to the non-smoothness and high nonlinearity. Promising online contact-implicit MPC results are reported in \citep{aydinoglu2022real,le2024fast, drnach2022mediating} but still limited to low-dimensional system or static environment. 
+
+Another way of encoding discrete contact decisions is to treat both the contact state and the contact plane selection for each leg at each timestep as binary variables \citep{valenzuela2016mixed,shirai2022simultaneous,jiang2023locomotion}. The underlying problem can be formulated as Mixed Integer Program (MIP). Convex approximations of nonlinear dynamics, usually centroidal dynamics, and constraints are typically required to transform the MIP into a more tractable Mixed Integer Convex Program (MICP), albeit with an increased number of binary variables. 
+A global certificate for the approximated convex problem exists upon convergence \citep{dai2019global}, providing an ideal means to determine the feasibility in our proposed method.
+To relieve the computational burden due to the introduction of many binary variables, the works of \citep{ponton2016convex,ding2020kinodynamic,acosta2023bipedal} assume the contact sequence and timing are chosen \textit{a priori}, and only optimize the contact plane selection. Aceituno-Cabezas et al. \citep{aceituno2017simultaneous} optimize the contact sequence within a certain gait cycle that fixes the number of footsteps. 
+However, it is inevitable that the problem complexity grows exponentially when the number of discrete contact options increases along with the time horizon and terrain features. Our work aims to alleviate computational burden through a two-stage approach. In the offline phase, expensive MICPs that optimize both contact state and foothold selection are solved to generate necessary locomotion gaits. In the online phase, efficient MICPs with adaptive and predefined gaits are used to produce dynamically feasible motions and footholds. Additionally, guided by a synthesis-based task planner, each MICP in our work considers shorter time horizons and fewer terrain features compared to solving a single large MICP problem.
+
+% Our approach: between hierarchical planning and combinatorial optimization. Split the contact planning problem into gait and footstep selections, while the gait planner considers dynamical feasibility given the terrain information.
+
+% Different from \citep{shirai2022simultaneous}, this work: 
+
+% 1. Considers the angular evolvement of the robot to allow more versatile motion generation 
+
+% 2. We consider a more complicated centroidal optimization problem which provides higher-fidelity solution back to the MICP 
+
+% 3. We fix the gait selection to allow real-time foothold selection 
+
+ 
+
+% Different from the LGP work \citep{toussaint2015logic}: 
+
+% 1. We evaluate the entire course of a trajectory and incorporate the underactuated dynamics, which is hard to be divided into multiple sub-problems. 
+
+% Different from the MCTS \citep{amatucci2022monte}: 
+
+% 1. We mostly care about the computational efficiency and the motion feasibility across a certain course. Therefore, two different choices we made here: 
+
+% 2. Our footstep planner assumes a fixed gait and only determines the foothold locations given the steppable regions. 
+
+% 3. The gait selection in our problem setup stays in a relatively higher level, whereas the MCTS is able to discover and optimize the gait. In other words, the high-level search space in our framework is smaller than MCTS.   
+
+% Independent Gait Scheduling
+
+% As discussed above, simultaneously planning for the gait and the footholds given perception feedback remains a challenging problem. Alternatively, impressive results have been reported by separating the gait scheduling and the foothold selection. The state-of-the-art works that handle gait transitions can be divided into model-free \citep{da2021learning,yang2022fast,xie2022glide,pmlr-v164-margolis22a}... and model-based approaches \citep{boussema2019online,wang2023and,sun2023free}.
+
+\subsection{Task and Motion Planning for Contact-Rich Planning}
+% Instead of capturing every discrete option as in general MIP, 
+Task and Motion Planning (TAMP) formally defines symbolic-level tasks and searches through a graph of predefined motion primitives that enable feasible symbolic transitions \citep{garrett2021integrated, zhao2024survey}. For more complex physical contact resoning, Toussaint et al. propose Logic Geometric Programming (LGP) \citep{toussaint2015logic} and embed the high-level
+logic representation into the low-level motion planner, demonstrating contact-rich tool-use behaviors \citep{toussaint2018differentiable}
+after defining abundant action primitives. 
+Building on this, a broader range of motions has been showcased, including versatile manipulation \citep{migimatsu2020object,zhao2021sydebo} and loco-manipulation tasks \citep{sleiman2023versatile}.
+In a similar vein, works such as \citep{ding2021hybrid,shirai2021lto,jelavic2021combined,amatucci2022monte,chen2021trajectotree,zhang2023simultaneous,zhu2023efficient,asselmeier2024hierarchical} integrate graph-search or sampling-based methods with optimization-based approaches in a holistic manner, abstracting contact modes within a discrete domain. However, the combinatorial nature of these problems often leads to poor scalability due to the explosion of contact modes. Deploying such approaches online in dynamic environments remains an open challenge. From a different perspective, we abstract a smaller set of task-level contact modes as locomotion gaits over a specific time horizon and distance, allowing the MICP to solve for details such as contact locations and robot motion during execution. This shifts the focus to selecting locomotion gaits within a local environment while ensuring safety and completeness through synthesis-based approaches.
+
+Unlike LGP that solves an integrated TAMP problem, synthesis-based approaches using Linear Temporal Logic (LTL) operate primarily at the task level, emphasizing safety and completeness guarantees within the task domain \citep{kress2018synthesis}. These methods typically synthesize a sequence of task-level actions, which are then executed by a motion planner. Recently, LTL has been applied to safe locomotion tasks, employing distinct task-level abstractions on topological maps of terrain \citep{kulgod2020temporal,zhou2022reactive,jiang2023abstraction} or locomotion keyframes for reduced-order models \citep{gu2022reactive,shamsah2023integrated,zhao2022reactive}.
+Reactive synthesis \citep{pnueli1989synthesis}, widely applied to mobile robots \citep{kress2009temporal}, has been employed to enable prompt decision-making in response to more complex environments \citep{shamsah2023integrated} or external perturbations \citep{gu2022reactive}. Notably, \citep{zhao2022reactive} formulate the terrain-adaptive locomotion problem as a sequential decision-making task, selecting appropriate locomotion modes with predefined contact and locomotion keyframes to accommodate dynamically changing terrains. However, the locomotion mode selection is explicitly encoded in the LTL specification using expert knowledge, lacking a physically feasibility guarantee.
+% To reduce the complexity of solving multi-contact, long-horizon, and kino-dynamic planning problems, a single optimization problem can be divided into multiple sub-problems, facilitating faster computation through holistic approaches. Graph-search planning (GSP) or sampling-based planning (SBP) methods have been proposed to be combined with dynamically feasible motion primitives \citep{shkolnik2011bounding, fernbach2017kinodynamic,norby2020fast,shirai2021lto,ding2021hybrid,jelavic2021combined,chignoli2022rapid,amatucci2022monte}. Superior planning speed has been reported with reduced-order models \citep{fernbach2017kinodynamic,norby2020fast,carpentier2018multicontact} or pre-trained feasibility classifier \citep{chignoli2022rapid}. 
+% The authors in \citep{zhao2021sydebo,shirai2021lto,ding2021hybrid,jelavic2021combined,amatucci2022monte,chen2021trajectotree,zhang2023simultaneous} fully exploit the robot dynamics through TO combined with a high-level search. 
+% Among them, researchers in \citep{jelavic2021combined,amatucci2022monte} explicitly reason the gait/contact mode in the search process. 
+% However, the combinatorial nature of the problem renders poor scalability due to the explosion of contact modes. Online deployment of this type of approaches given changing terrain information remains an open problem.
+In this work, we aim to combine the strengths of reactive synthesis and MICP, utilizing the global certificate of MICP as a feasibility checker for terrain-adaptive locomotion.
+
+% The lack of immediate reaction and safety guarantee given real-time terrain information still prohibits this type of approach from online deployment.
+
+\subsection{Physically-Feasible Reactive Synthesis}
+% Linear Temporal Logic (LTL) serves as a prevalent tool for encoding temporal task specifications and automating the synthesis of system transition behaviors within the robotics community. Originating from its proposal for model checking by Pnueli in 1977 \citep{pnueli1977temporal}, LTL has gained substantial traction in robotics research, initially prevalent in studies involving wheeled robots \citep{kress2009temporal, decastro2018collision}, and more recently, extending to legged robots \citep{warnke2020towards, zhao2022reactive, kulgod2020temporal, gu2022reactive, shamsah2023integrated}.
+% Reactive Synthesis, denoting the automated generation of a reactive system to ensure compliance with desired specifications, regardless of external inputs, was introduced by Pnueli in 1989 \citep{pnueli1989synthesis}. Given the escalating complexity associated with lengthy LTL formulas, a subset of LTL, General Reactivity of Rank 1 (GR(1)), was proposed to streamline the synthesis process \citep{piterman2006synthesis}. This subset proves especially beneficial in managing the synthesis process efficiently.
+
+% (Replanning in the task level; BT, TAMP; inflation? Check Jonas paper again) 
+
+% In contrast to Task and Motion Planning (TAMP), a paradigm that typically integrates symbolic search with geometric or optimization-based motion planners, reactive synthesis primarily operates at the task level. 
+
+% Reactive synthesis primarily operates at the task level and involves specifying Linear Temporal Logic (LTL) formulas that encompass sequencing, conditions, and reactions to environmental events. 
+While reactive synthesis can promptly and safely respond to dynamic environments, it typically does not assess physical feasibility when being deployed on complex robotic systems. To bridge the gap between discrete abstraction and continuous system dynamics, various strategies have been proposed. Studies in  \citep{decastro2014dynamics,fainekos2006translating} focus on automatically synthesizing controllers in the continuous domain based on high-level specifications. Another approach involves incorporating dynamics directly into the reactive synthesis process by abstracting physical systems, including nonlinear \citep{bhatia2010sampling}, switched \citep{liu2013synthesis}, and hybrid systems \citep{maly2013iterative} with manageable model complexity. However, for legged robots with multiple contacts navigating dynamic terrains, these physically feasible reactive synthesis approaches remain computationally intractable.
+
+Recent efforts \citep{pacheck2020finding, pacheck2022physically} focus on symbolic repair for unrealizable task specifications, defining symbolic skills with preconditions and postconditions, similar to TAMP, to identify missing skills that make the specification realizable. These works introduce iterative feasibility checks based on symbolic repair suggestions, emphasizing alignment between symbolic task specifications and physical reality. Building upon this, Meng et al. \citep{meng2024automated} extend this type of approach to online symbolic repair.
+Inspired by these works, Zhou et al. \citep{zhou2025physically} adopt a similar mechanism for terrain-adaptive locomotion. Specifically, they abstract the robot and terrain states in a local environment and define physically feasible skills by solving MICP. 
+% To address scalability issues arising from complex terrain features, they employ a high-level manager to decompose the problem into smaller subproblems, enabling faster repair and synthesis. 
+They leverage high-level manager and symbolic repair to efficiently identify missing but necessary skills, reducing the need for frequent calls to the computationally expensive gait-free MICP. Our work significantly completes \citep{zhou2025physically} through seamless integration with a low-level tracking control module, enabling systematic benchmarking, and demonstrating real-world hardware deployment.
+
+% Three main novelties in our reactive planner:
+
+% 1) We leverage the powerfulness of reactive synthesis to  reason about the robot traversability with regard to the terrain information.
+
+% 2) We generate skills that are physically feasible offline; a symbolic repair process is proposed to handle unrealizable specifications.
+
+% 3) We perform fast run-time feasibility checking through graceful coordination toward MPC given real-time robot and environment representations.

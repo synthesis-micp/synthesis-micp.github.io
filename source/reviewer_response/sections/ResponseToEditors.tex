@@ -1,0 +1,21 @@
+\section*{Acknowledgement of Prior Editorial Feedback}
+\subsection{Editor's overall comments (T-RO 25-1489)}
+\begin{mdframed}
+\begin{quote}
+All reviewers raise a major concern that the current manuscript is a direct extension of [zhou2025physically], published in 2025 in the IROS proceedings. While this submission essentially presents additional hardware experiments, it reuses the very same materials and approaches. \ldots\ Unfortunately, in the current state, the submission does not provide new results of substantive research significance and impact beyond the previous papers.
+\end{quote}
+\end{mdframed}
+
+\subsection{Response}
+We thank the editor for the candid feedback. The shared concern across the three reviewers---that the technical contribution of the journal extension required stronger justification---was fair, and we have made substantial efforts to address it in this revision. The journal-specific mechanisms (delay-aware coordination, kinematic-feasibility re-targeting, and collision-region selection in the online MICP) are now described in the introduction with explicit motivation for why each closes a concrete deployment gap, and the contribution narrative has been reworked so that the conference-introduced scalability machinery and the new mechanisms are presented end-to-end at the same level of detail. Most importantly, we have \textbf{strengthened the technical soundness of the newly proposed mechanisms with new quantitative evidence and explicit ablations}: the Pure-MIP benchmark subsection now includes (i) a per-MIP solve-time scaling study over $10$ seeded waypoints per scenario and (ii) a new end-to-end benchmark on the dense-rebar scenario (Table~\ref{tab:pure_mip_benchmark}) reporting success rate, mean traversal time, and per-module computational cost, with explicit ablation rows for the MIP feasibility check (disabling it drops success from $90\%$ to $60\%$) and delay-aware coordination (disabling it inflates traversal time from $18.5$\,s to $23.4$\,s). We have also expanded the rest of the technical and quantitative content along the dimensions the reviewers requested: a clearer treatment of obstacle handling at the symbolic and MICP levels, per-trial standard deviations on the hardware MICP-solve-time table, an offline-synthesis-and-repair-time table with concrete success rates and skill-discovery counts, a runtime-repair case study, calibrated dynamic-locomotion and safety-guarantee claims, an angular-momentum disclosure on the MICP dynamics, and a new \textit{Reactivity and Update Frequencies} discussion subsection. The contribution list now reads:
+\begin{enumerate}
+    \item The integrated reactive-synthesis-and-MICP framework for terrain-adaptive locomotion.
+    \item Scalable offline synthesis via the high-level manager and symbolic repair with dynamic feasibility checks (with concrete $80.9$--$90.1\%$ state-space-reduction and $71.6$--$97.6\%$ MICP-solve-reduction numbers).
+    \item The online-execution module bridging offline synthesis and real-world deployment, with new mechanisms introduced in this article: kinematic-feasibility re-targeting, delay-aware coordination between the strategy automaton and the tracking controller, and collision-region selection in the online MICP.
+    \item Comprehensive empirical validation: simulation across four scenarios, two baseline comparisons, hardware deployment on two robot platforms, and a preliminary yaw-extension feasibility study.
+\end{enumerate}
+
+\noindent The detailed reviewer-by-reviewer responses follow on the next pages.
+
+\noindent\rule{17cm}{6.0pt}
+\newpage
