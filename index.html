@@ -136,7 +136,7 @@
       <div class="column is-half">
         <h2 class="title is-3">Video</h2>
         <div class="video-abstract-card" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 1px solid #ddd;">
-          <video controls playsinline poster="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background: #000;">
+          <video autoplay muted controls playsinline poster="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background: #000;">
             <source src="static/videos/TRO-video-full.mp4" type="video/mp4">
           </video>
         </div>
@@ -417,17 +417,8 @@
         </p>
 
         <h3 class="title is-5" style="margin-top: 32px; margin-bottom: 12px;">Hardware: vs. a heuristic foothold planner (Scenario 3)</h3>
-        <div class="content has-text-justified">
-          <p>
-            We create a third hardware rebar scenario by removing two rebars to widen the maximum spacing to 0.48&nbsp;m, stressing the safety advantage of feasibility-aware planning. The heuristic baseline follows a strategy common to deployed perceptive-locomotion stacks (e.g., Fankhauser et&nbsp;al. 2018; Kim et&nbsp;al. 2020): it selects the nearest rebar polygon and the closest feasible foothold to a nominal target, then sends the footstep plan and a linearly interpolated base trajectory to the same tracking controller. We chose this nearest-feasible-foothold heuristic because it isolates the value of feasibility-aware, longer-horizon planning, and because such heuristics remain widely used in practice for their efficiency.
-          </p>
-          <p>
-            Without re-running offline synthesis, our framework reuses the previously generated skills, classifies the extreme-sparse region as an obstacle, and resynthesizes a safe detour to the goal. The heuristic is tuned for slow traversal at 0.1&nbsp;m/s; when tasked at 0.2&nbsp;m/s to match our effective gait speed (0.45&nbsp;m per 2.25&nbsp;s transition) it cannot reason about terrain&ndash;gait compatibility&mdash;end-effector tracking degrades after a few steps, the feet slip, and the robot becomes entangled in the sparse rebar and fails.
-          </p>
-        </div>
-        <img src="static/images/hardware_rebar_benchmark.png" alt="Comparison vs heuristic planner on extreme-sparse rebar" style="width: 100%; border-radius: 8px;">
-        <p class="subtitle is-6" style="margin-top: 8px; color: #555;">
-          Extreme-sparse rebar (up to 0.48&nbsp;m spacing): the proposed method resynthesizes a safe detour, while the heuristic planner fails as the robot's foot becomes trapped.
+        <p class="content has-text-justified">
+          On extreme-sparse rebar (up to 0.48&nbsp;m spacing), our planner classifies the region as an obstacle and resynthesizes a safe detour, while a nearest-feasible-foothold heuristic slips and gets trapped once run at our matched 0.2&nbsp;m/s gait speed.
         </p>
 
         <div class="column is-full" style="padding-left: 0; padding-right: 0; margin-top: 16px;">
