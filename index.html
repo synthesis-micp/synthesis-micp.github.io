@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains, combining reactive synthesis with mixed-integer convex programming.">
+  <meta name="description" content="An integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime, combining reactive synthesis with mixed-integer convex programming.">
   <meta property="og:title" content="Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion"/>
-  <meta property="og:description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains."/>
+  <meta property="og:description" content="An integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime."/>
   <meta property="og:url" content="URL OF THE WEBSITE"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
   <meta property="og:image" content="static/images/system_diagram.png" />
@@ -15,7 +15,7 @@
 
 
   <meta name="twitter:title" content="Physically-Feasible Reactive Synthesis for Terrain-Adaptive Locomotion">
-  <meta name="twitter:description" content="An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains.">
+  <meta name="twitter:description" content="An integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime.">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
   <meta name="twitter:image" content="static/images/system_diagram.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -86,7 +86,7 @@
           Physically-Feasible Reactive Synthesis<br>for Terrain-Adaptive Locomotion
         </h1>
         <h2 class="subtitle is-3 publication-title is-size-5-mobile hero-subtitle-on-video">
-          An integrated planning framework for quadrupedal locomotion over dynamically changing, unforeseen terrains
+          An integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime
         </h2>
       </div>
     </div>
@@ -102,6 +102,7 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block">Ziyi Zhou<sup>1</sup>,</span>
               <span class="author-block">Qian Meng<sup>2</sup>,</span>
+              <span class="author-block">A. Minji Kim<sup>1</sup>,</span>
               <span class="author-block">Hadas Kress-Gazit<sup>2</sup>,</span>
               <span class="author-block">Ye Zhao<sup>1</sup></span>
             </div>
@@ -145,7 +146,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content" style="font-size: 0.8rem; line-height: 1.45;">
           <p class="has-text-justified" style="margin: 0;">
-            We present an integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime. Existing methods often depend on heuristics for real-time foothold selection&mdash;limiting robustness and adaptability&mdash;or rely on computationally intensive trajectory optimization across complex terrains and long horizons. In contrast, our approach combines reactive synthesis for generating correct-by-construction symbolic-level controllers with mixed-integer convex programming (MICP) for physically feasible footstep planning during each symbolic transition. To reduce the reliance on costly MICP solves and accommodate specifications that may be violated due to physical infeasibility, we adopt a symbolic repair mechanism that selectively generates only the required symbolic transitions. During execution, real-time MICP replanning based on actual terrain data, runtime symbolic repair, kinematic-feasibility re-targeting, and a delay-aware coordination scheme enable seamless bridging between offline synthesis and online operation. Through extensive simulation and hardware experiments, we validate the framework's ability to identify missing locomotion skills and respond effectively in safety-critical environments, including scattered stepping stones and rebar scenarios.
+            We present an integrated planning framework for quadrupedal locomotion over discrete, unforeseen terrain configurations revealed at runtime. Existing methods often depend on heuristics for real-time foothold selection&mdash;limiting robustness and adaptability&mdash;or rely on computationally intensive trajectory optimization across complex terrains and long horizons. In contrast, our approach combines reactive synthesis for generating correct-by-construction symbolic-level controllers with mixed-integer convex programming (MICP) that checks the feasibility of footstep and gait plans under a reduced-order dynamics model during each symbolic transition. For each transition, the framework uses the first feasible gait it finds and does not rank feasible gaits by motion quality. To reduce the reliance on costly MICP solves and handle specifications that become unrealizable when transitions are infeasible under this model, we adopt a symbolic repair mechanism that selectively generates only the required symbolic transitions. During execution, online MICP replanning based on actual terrain data, runtime symbolic repair, kinematic-feasibility re-targeting, and a delay-aware coordination scheme enable seamless bridging between offline synthesis and online operation. Through extensive simulation and hardware experiments, with terrain geometry obtained from motion capture on hardware, we validate the framework's ability to identify missing locomotion skills and respond effectively in safety-critical environments, including scattered stepping stones and rebar scenarios.
           </p>
         </div>
       </div>
@@ -166,7 +167,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            We manage complexity at both the symbolic and physical levels. At the <strong>symbolic level</strong>, reactive synthesis decomposes local navigation into manageable subproblems whose solutions are reusable across scenarios; each subproblem is a short-horizon symbolic transition. At the <strong>physical level</strong>, each transition is validated by a mixed-integer convex program (MICP) that certifies dynamic and kinematic feasibility. This symbolic guidance limits the planning horizon and the number of terrain features any single MICP must consider, mitigating the poor scaling of pure mixed-integer planning.
+            We manage complexity at both the symbolic and physical levels. At the <strong>symbolic level</strong>, reactive synthesis decomposes local navigation into manageable subproblems whose solutions are reusable across scenarios; each subproblem is a short-horizon symbolic transition. At the <strong>physical level</strong>, each transition is checked by a mixed-integer convex program (MICP) for dynamic and kinematic feasibility under a reduced-order model. This symbolic guidance limits the planning horizon and the number of terrain features any single MICP must consider, mitigating the poor scaling of pure mixed-integer planning.
           </p>
           <p>
             <strong>Offline</strong>, gait-free MICP precomputes a diverse set of locomotion skills (e.g., trotting and leaping gaits) for predefined terrain states and goals. A high-level manager fixes the local terrain/goal context and retains only the skills relevant to the current environment, while symbolic repair&mdash;equipped with dynamic-feasibility checks&mdash;generates only the missing transitions that need to be verified.
@@ -177,10 +178,10 @@
         <div class="content has-text-left" style="margin-top: 8px;">
           <p class="subtitle is-5 has-text-centered" style="margin-bottom: 10px;">Key contributions</p>
           <ul style="list-style: disc; padding-left: 1.4em;">
-            <li><strong>Integrated reactive-synthesis + MICP framework</strong> bridging high-level symbolic reasoning with low-level physical feasibility.</li>
-            <li><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic state space by <strong>80.9&ndash;90.1%</strong>; symbolic repair with gait-free MICP feasibility checks generates only necessary skills, cutting costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration.</li>
+            <li><strong>Integrated reactive-synthesis + MICP framework</strong> bridging high-level symbolic reasoning with low-level dynamic feasibility checks.</li>
+            <li><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic variable count by <strong>80.9&ndash;90.1%</strong>; symbolic repair with gait-free MICP feasibility checks generates only necessary skills, cutting costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration.</li>
             <li><strong>Online execution module</strong> with delay-aware coordination, kinematic-feasibility re-targeting, online collision-avoidance constraints, and runtime symbolic repair.</li>
-            <li><strong>Comprehensive validation</strong> across four simulated terrain scenarios, benchmarks against pure-MIP and heuristic planners, and hardware deployment on two robots (Unitree Go2 and SkyMul Chotu).</li>
+            <li><strong>Comprehensive validation</strong> across four simulated terrain scenarios, benchmarks against pure-MIP and heuristic planners, and hardware deployment on two robots (Unitree Go2 and SkyMul Chotu). On hardware, terrain polygons are provided by motion-capture-aided manual labeling.</li>
           </ul>
         </div>
       </div>
@@ -224,7 +225,7 @@
           </div>
 
           <div class="content has-text-left" style="margin-top: 8px;">
-            <p><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic state space by <strong>80.9&ndash;90.1%</strong>. Symbolic repair resolves <strong>93.4%</strong> of all terrain&ndash;request state pairs and reduces costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration (generating a new gait takes 27.23&nbsp;s on average, 145.66&nbsp;s maximum). Repair time grows approximately linearly in the number of state pairs&mdash;per state pair, the 5&times;5 grid takes 478.1% more time than the 3&times;3 grid.</p>
+            <p><strong>Scalable offline synthesis.</strong> The high-level manager reduces the symbolic variable count by <strong>80.9&ndash;90.1%</strong>. Symbolic repair resolves <strong>93.4%</strong> of all terrain&ndash;request state pairs and reduces costly gait-free MICP solves by <strong>71.6&ndash;97.6%</strong> versus exhaustive enumeration (generating a new gait takes 27.23&nbsp;s on average, 145.66&nbsp;s maximum). Repair time grows approximately linearly in the number of state pairs&mdash;per state pair, the 5&times;5 grid takes 478.1% more time than the 3&times;3 grid.</p>
             <p><strong>Online execution.</strong> The gait-fixed MICP averages about <strong>430&nbsp;ms</strong> on unstructured terrain and <strong>1.1&nbsp;s</strong> on rebar terrain; enabling collision-avoidance constraints (needed for elevation changes) raises the binary-variable count by 271% and the solve time by 441%.</p>
           </div>
 
@@ -247,7 +248,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Hardware &mdash; Unstructured Terrain</h2>
           <p class="subtitle is-6" style="margin-bottom: 16px; color: #555;">
-            We deploy the full stack end-to-end on hardware. Stepping stones, gaps, and flat regions are built from wooden blocks (each stone ~0.12&nbsp;m tall); the abstraction cell size is 0.8&nbsp;m.
+            We deploy the integrated stack on hardware. Terrain polygons come from motion-capture-aided manual labeling, and the strategy automaton and online MICP run offboard on the workstation (wired Ethernet). Each scenario is a single representative run. Stepping stones, gaps, and flat regions are built from wooden blocks (each stone ~0.12&nbsp;m tall); the abstraction cell size is 0.8&nbsp;m.
           </p>
           <div class="columns is-multiline" style="margin-top: 8px;">
             <div class="column is-half">
@@ -276,7 +277,7 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              <strong>Scenario 2 &mdash; crossing a gap.</strong> A ~30&nbsp;cm gap requires leaping. Since the gap was covered in offline synthesis, the framework directly selects an optimized 1.5&nbsp;s leaping gait; end-effector tracking stays within 0.01&nbsp;m (x, y) as the NMPC absorbs MICP-level model simplifications.
+              <strong>Scenario 2 &mdash; crossing a gap.</strong> A ~30&nbsp;cm gap requires leaping (smaller than the 0.4&nbsp;m gap in simulation, since take-off torques come close to the motor limits). Since the gap was covered in offline synthesis, the framework directly selects an optimized 1.5&nbsp;s leaping gait; end-effector tracking stays within 0.01&nbsp;m (x, y) as the NMPC absorbs MICP-level model simplifications.
             </p>
           </div>
         </div>
@@ -312,7 +313,7 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              <strong>Scenario 1 &mdash; nominal traversal.</strong> With no obstacles, Chotu completes the maneuver to the goal without any runtime failures.
+              <strong>Scenario 1 &mdash; nominal traversal.</strong> With no obstacles, in the reported run, Chotu completes the maneuver to the goal without any runtime failures.
             </p>
             <p>
               <strong>Scenario 2 &mdash; runtime obstacle detour.</strong> An obstacle is added but seen only at runtime (provided via motion-capture-aided annotation and handled at the symbolic level, not the MICP). On detecting the new terrain/request pair, the planner resynthesizes a detour within 0.05&nbsp;s, reusing existing skills.
@@ -379,46 +380,47 @@
           </div>
           <div class="column is-half content has-text-left">
             <p>
-              In the end-to-end dense-rebar test (10 seeded waypoints, identical terrain across methods with randomly removed rebars), the proposed planner attains <strong>90% success at 18.5&nbsp;s</strong> mean traversal&mdash;matching the 3&nbsp;s-horizon pure-MIP success rate at roughly three-quarters of the traversal time and less than half the MIP transition cost (5.26&nbsp;s vs. 11.54&nbsp;s). The myopic 2&nbsp;s-horizon pure-MIP reaches only 60%.
+              In the end-to-end dense-rebar test (50 seeded trials per method; trial&nbsp;<em>k</em> has the same waypoint and the same randomly removed rebars for every method), the proposed planner succeeds in <strong>90% (45/50)</strong> of the trials, a similar rate to the 3&nbsp;s-horizon pure MIP (92%, 46/50), with about half the MIP transition cost (5.07&nbsp;s vs. 11.01&nbsp;s per trial) and a traversal 7.5&nbsp;s shorter on the 45 trials both solve. The 2&nbsp;s-horizon pure MIP reaches 80% (40/50).
             </p>
             <p style="margin-bottom: 0;">
-              The ablations confirm the value of the online additions: disabling the feasibility check (FC) drops success substantially, and disabling delay-aware coordination (DAC) keeps 90% success but inflates traversal time from 18.5&nbsp;s to 23.4&nbsp;s.
+              The pre-flight feasibility check (FC) is essential for the pure-MIP planner (without it, success drops to 12% at H&nbsp;=&nbsp;2&nbsp;s and 40% at H&nbsp;=&nbsp;3&nbsp;s) but matters much less for the proposed planner (90% to 82%). Disabling delay-aware coordination (DAC) keeps 45/50 successes but increases the mean traversal time from 18.1&nbsp;s to 23.1&nbsp;s.
             </p>
           </div>
         </div>
 
         <h3 class="title is-5" style="margin-top: 32px; margin-bottom: 12px;">End-to-end benchmark on dense rebar</h3>
         <div class="table-container">
-          <table class="table is-fullwidth is-narrow is-bordered" style="font-size: 0.82rem;">
+          <table class="table is-fullwidth is-narrow is-bordered" style="font-size: 0.78rem; white-space: nowrap;">
             <thead>
               <tr>
                 <th>Method</th>
                 <th>Success</th>
+                <th>95% CI (%)</th>
                 <th>Traversal (s)</th>
-                <th>MIP solve (s)</th>
-                <th>MIP feas. (s)</th>
-                <th>Reactive synth. (s)</th>
-                <th>Runtime repair (s)</th>
+                <th>MIP<br>solve (s)</th>
+                <th>MIP<br>feas. (s)</th>
+                <th>Reactive<br>synth. (s)</th>
+                <th>Runtime<br>repair (s)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s)</td><td>60% (6/10)</td><td>14.76</td><td>3.04</td><td>0.21</td><td>&mdash;</td><td>&mdash;</td></tr>
-              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s)</td><td>90% (9/10)</td><td>24.73</td><td>11.54</td><td>0.19</td><td>&mdash;</td><td>&mdash;</td></tr>
-              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s), no FC</td><td>20% (2/10)</td><td>9.00</td><td>1.38</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s), no FC</td><td>40% (4/10)</td><td>14.23</td><td>5.17</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-              <tr style="background:#e8f3fc;"><td class="has-text-left"><strong>Proposed</strong></td><td><strong>90% (9/10)</strong></td><td><strong>18.48</strong></td><td><strong>5.26</strong></td><td>0.19</td><td>0.29</td><td>0.03</td></tr>
-              <tr><td class="has-text-left">Proposed, no FC</td><td>60% (6/10)</td><td>20.08</td><td>5.85</td><td>&mdash;</td><td>0.33</td><td>0.05</td></tr>
-              <tr><td class="has-text-left">Proposed, no DAC</td><td>90% (9/10)</td><td>23.43</td><td>5.11</td><td>0.27</td><td>0.28</td><td>0.04</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s)</td><td>80% (40/50)</td><td>[66.3, 90.0]</td><td>19.36 &plusmn; 7.19</td><td>3.77</td><td>0.27</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s)</td><td>92% (46/50)</td><td>[80.8, 97.8]</td><td>25.99 &plusmn; 11.91</td><td>11.01</td><td>0.21</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;2&nbsp;s), no FC</td><td>12% (6/50)</td><td>[4.5, 24.3]</td><td>10.54 &plusmn; 2.11</td><td>1.72</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">Pure MIP (H&nbsp;=&nbsp;3&nbsp;s), no FC</td><td>40% (20/50)</td><td>[26.4, 54.8]</td><td>16.37 &plusmn; 4.98</td><td>6.43</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+              <tr style="background:#e8f3fc;"><td class="has-text-left"><strong>Proposed</strong></td><td><strong>90% (45/50)</strong></td><td>[78.2, 96.7]</td><td><strong>18.14 &plusmn; 6.55</strong></td><td><strong>5.07</strong></td><td>0.18</td><td>0.33</td><td>0.04</td></tr>
+              <tr><td class="has-text-left">Proposed, no FC</td><td>82% (41/50)</td><td>[68.6, 91.4]</td><td>17.98 &plusmn; 6.62</td><td>4.99</td><td>&mdash;</td><td>0.31</td><td>0.04</td></tr>
+              <tr><td class="has-text-left">Proposed, no DAC</td><td>90% (45/50)</td><td>[78.2, 96.7]</td><td>23.14 &plusmn; 8.62</td><td>5.03</td><td>0.25</td><td>0.35</td><td>0.04</td></tr>
             </tbody>
           </table>
         </div>
         <p class="subtitle is-6" style="color: #555;">
-          Mean values over successful trials. FC = pre-flight MIP feasibility check; DAC = delay-aware coordination; reactive synthesis combines the per-step strategy query and per-spec-switch strategy reload. Dashes denote modules absent or disabled by the ablation.
+          50 seeded trials per configuration. Success rates with 95% Clopper&ndash;Pearson intervals; traversal time (mean &plusmn; SD) and per-module times (means) over successful trials only. FC = pre-flight MIP feasibility check; DAC = delay-aware coordination; reactive synthesis combines the per-step strategy query and per-spec-switch strategy reload. Dashes denote modules absent or disabled by the ablation.
         </p>
 
         <h3 class="title is-5" style="margin-top: 32px; margin-bottom: 12px;">Hardware: vs. a heuristic foothold planner (Scenario 3)</h3>
         <p class="content has-text-justified">
-          On extreme-sparse rebar (up to 0.48&nbsp;m spacing), our planner classifies the region as an obstacle and resynthesizes a safe detour, while a nearest-feasible-foothold heuristic slips and gets trapped once run at our matched 0.2&nbsp;m/s gait speed.
+          On extreme-sparse rebar (up to 0.48&nbsp;m spacing; one representative run per method), our planner classifies the region as an obstacle and resynthesizes a safe detour, while a nearest-feasible-foothold heuristic slips and gets trapped once run at our matched 0.2&nbsp;m/s gait speed.
         </p>
 
         <div class="column is-full" style="padding-left: 0; padding-right: 0; margin-top: 16px;">
